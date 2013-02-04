@@ -117,39 +117,529 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="mainMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="mainMenuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="mainMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>801, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="mainMenuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="mainMenuStrip.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;mainMenuStrip.Name" xml:space="preserve">
+    <value>mainMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;mainMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mainMenuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mainMenuStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 20</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="foodSplitContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 24</value>
+  <data name="foodSplitContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+  <data name="addNewFoodButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="addNewFoodButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 431</value>
+  </data>
+  <data name="addNewFoodButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="addNewFoodButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="addNewFoodButton.Text" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="&gt;&gt;addNewFoodButton.Name" xml:space="preserve">
+    <value>addNewFoodButton</value>
+  </data>
+  <data name="&gt;&gt;addNewFoodButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addNewFoodButton.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;addNewFoodButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
+  <data name="foodTreeView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
+  <data name="foodTreeView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="foodTreeView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 425</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+  <data name="foodTreeView.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;foodTreeView.Name" xml:space="preserve">
+    <value>foodTreeView</value>
+  </data>
+  <data name="&gt;&gt;foodTreeView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;foodTreeView.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;foodTreeView.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Panel1.Name" xml:space="preserve">
+    <value>foodSplitContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Panel1.Parent" xml:space="preserve">
+    <value>foodSplitContainer</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="foodSplitContainer.Panel1MinSize" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="deleteFoodButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>145, 108</value>
+  </data>
+  <data name="deleteFoodButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="deleteFoodButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="deleteFoodButton.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="&gt;&gt;deleteFoodButton.Name" xml:space="preserve">
+    <value>deleteFoodButton</value>
+  </data>
+  <data name="&gt;&gt;deleteFoodButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteFoodButton.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;deleteFoodButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="euroLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="euroLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 85</value>
+  </data>
+  <data name="euroLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 13</value>
+  </data>
+  <data name="euroLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="euroLabel.Text" xml:space="preserve">
+    <value>€</value>
+  </data>
+  <data name="&gt;&gt;euroLabel.Name" xml:space="preserve">
+    <value>euroLabel</value>
+  </data>
+  <data name="&gt;&gt;euroLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;euroLabel.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;euroLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="priceLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="priceLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 85</value>
+  </data>
+  <data name="priceLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="priceLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="priceLabel.Text" xml:space="preserve">
+    <value>Price:</value>
+  </data>
+  <data name="&gt;&gt;priceLabel.Name" xml:space="preserve">
+    <value>priceLabel</value>
+  </data>
+  <data name="&gt;&gt;priceLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;priceLabel.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;priceLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="priceTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 82</value>
+  </data>
+  <data name="priceTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="priceTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="priceTextBox.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="priceTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;priceTextBox.Name" xml:space="preserve">
+    <value>priceTextBox</value>
+  </data>
+  <data name="&gt;&gt;priceTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;priceTextBox.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;priceTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="amountLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="amountLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 59</value>
+  </data>
+  <data name="amountLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="amountLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="amountLabel.Text" xml:space="preserve">
+    <value>Amount:</value>
+  </data>
+  <data name="&gt;&gt;amountLabel.Name" xml:space="preserve">
+    <value>amountLabel</value>
+  </data>
+  <data name="&gt;&gt;amountLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;amountLabel.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;amountLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="amountUnitComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 56</value>
+  </data>
+  <data name="amountUnitComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="amountUnitComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;amountUnitComboBox.Name" xml:space="preserve">
+    <value>amountUnitComboBox</value>
+  </data>
+  <data name="&gt;&gt;amountUnitComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;amountUnitComboBox.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;amountUnitComboBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="amountTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 56</value>
+  </data>
+  <data name="amountTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="amountTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="amountTextBox.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="amountTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;amountTextBox.Name" xml:space="preserve">
+    <value>amountTextBox</value>
+  </data>
+  <data name="&gt;&gt;amountTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;amountTextBox.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;amountTextBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="categoryComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="categoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 29</value>
+  </data>
+  <data name="categoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>477, 21</value>
+  </data>
+  <data name="categoryComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;categoryComboBox.Name" xml:space="preserve">
+    <value>categoryComboBox</value>
+  </data>
+  <data name="&gt;&gt;categoryComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;categoryComboBox.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;categoryComboBox.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="categoryLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="categoryLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="categoryLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="categoryLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="categoryLabel.Text" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="&gt;&gt;categoryLabel.Name" xml:space="preserve">
+    <value>categoryLabel</value>
+  </data>
+  <data name="&gt;&gt;categoryLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;categoryLabel.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;categoryLabel.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 108</value>
+  </data>
+  <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="saveButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="saveButton.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
+    <value>saveButton</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="titleTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="titleTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 3</value>
+  </data>
+  <data name="titleTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>477, 20</value>
+  </data>
+  <data name="titleTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;titleTextBox.Name" xml:space="preserve">
+    <value>titleTextBox</value>
+  </data>
+  <data name="&gt;&gt;titleTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;titleTextBox.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;titleTextBox.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="titleLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="titleLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="titleLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="titleLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="titleLabel.Text" xml:space="preserve">
+    <value>Title:</value>
+  </data>
+  <data name="&gt;&gt;titleLabel.Name" xml:space="preserve">
+    <value>titleLabel</value>
+  </data>
+  <data name="&gt;&gt;titleLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;titleLabel.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;titleLabel.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Panel2.Name" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Panel2.Parent" xml:space="preserve">
+    <value>foodSplitContainer</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="foodSplitContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>787, 454</value>
+  </data>
+  <data name="foodSplitContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>245</value>
+  </data>
+  <data name="foodSplitContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Name" xml:space="preserve">
+    <value>foodSplitContainer</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.Parent" xml:space="preserve">
+    <value>foodMenuTabPage</value>
+  </data>
+  <data name="&gt;&gt;foodSplitContainer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="mainTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="foodMenuTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="foodMenuTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="foodMenuTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>793, 460</value>
+  </data>
+  <data name="foodMenuTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="foodMenuTabPage.Text" xml:space="preserve">
+    <value>Food menu</value>
+  </data>
+  <data name="&gt;&gt;foodMenuTabPage.Name" xml:space="preserve">
+    <value>foodMenuTabPage</value>
+  </data>
+  <data name="&gt;&gt;foodMenuTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;foodMenuTabPage.Parent" xml:space="preserve">
+    <value>mainTabControl</value>
+  </data>
+  <data name="&gt;&gt;foodMenuTabPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="screensTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="screensTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="screensTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>793, 460</value>
+  </data>
+  <data name="screensTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="screensTabPage.Text" xml:space="preserve">
+    <value>Screens</value>
+  </data>
+  <data name="&gt;&gt;screensTabPage.Name" xml:space="preserve">
+    <value>screensTabPage</value>
+  </data>
+  <data name="&gt;&gt;screensTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;screensTabPage.Parent" xml:space="preserve">
+    <value>mainTabControl</value>
+  </data>
+  <data name="&gt;&gt;screensTabPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="mainTabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="mainTabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>801, 486</value>
+  </data>
+  <data name="mainTabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;mainTabControl.Name" xml:space="preserve">
+    <value>mainTabControl</value>
+  </data>
+  <data name="&gt;&gt;mainTabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mainTabControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;mainTabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -159,7 +649,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>292, 266</value>
+    <value>801, 513</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CanteenBoard</value>

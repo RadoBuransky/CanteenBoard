@@ -57,7 +57,6 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -66,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CastleContainer.cs" />
-    <Compile Include="Config\Windsor\LoggerInstaller.cs" />
+    <Compile Include="Config\Windsor\CommonInstaller.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +74,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AmountUnit.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmountUnit.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\CommonValidator.cs" />
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,7 +96,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="App.config" />
+    <EmbeddedResource Include="Resources\AmountUnit.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AmountUnit.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -108,14 +119,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{A2B12ABE-9FD1-44E1-B124-7797B9400AAB}</Project>
+      <Project>{0AAD483C-90E1-45D0-A4A6-B36F2E3322ED}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{A2B12ABE-9FD1-44E1-B124-7797B9400AAB}</Project>
+      <Name>Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Repositories\Repositories.csproj">
       <Project>{BE9C588F-2800-4BAD-9B11-AACF8002EEB0}</Project>
       <Name>Repositories</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

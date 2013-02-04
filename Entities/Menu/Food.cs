@@ -1,4 +1,4 @@
-﻿namespace CanteenBoard.Core.Meal
+﻿namespace CanteenBoard.Entities.Menu
 {
     /// <summary>
     /// One food in a menu.
@@ -43,6 +43,6 @@
         /// <value>
         /// The category.
         /// </value>
-        public Category Category { get; set; }
+        public string Category { get; set; }
     }
 }

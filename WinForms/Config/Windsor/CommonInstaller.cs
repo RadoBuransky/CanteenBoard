@@ -6,13 +6,18 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Facilities.Logging;
+using CanteenBoard.Core;
+using CanteenBoard.Core.Processors;
+using CanteenBoard.Repositories;
+using CanteenBoard.Repositories.Impl;
+using System.Configuration;
 
 namespace CanteenBoard.WinForms.Config.Windsor
 {
     /// <summary>
     /// Logger installer
     /// </summary>
-    public class LoggerInstaller : IWindsorInstaller
+    public class CommonInstaller : IWindsorInstaller
     {
         /// <summary>
         /// Performs the installation in the <see cref="T:Castle.Windsor.IWindsorContainer" />.
@@ -22,6 +27,14 @@ namespace CanteenBoard.WinForms.Config.Windsor
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.AddFacility<LoggingFacility>(f => f.UseLog4Net());
+            container.Register(
+                Component.For<IRepository>()
+                    .ImplementedBy<GenericRepository>()
+                    .DependsOn(
+                        Dependency.OnValue("connectionString", ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString),
+                        Dependency.OnAppSettingsValue("databaseName", "DbName")),
+                Component.For<IFoodProcessor>()
+                    .ImplementedBy<FoodProcessor>());
         }
     }
 }

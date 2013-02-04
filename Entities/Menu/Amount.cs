@@ -1,4 +1,4 @@
-﻿namespace CanteenBoard.Core.Meal
+﻿namespace CanteenBoard.Entities.Menu
 {
     /// <summary>
     /// Amount of food with specified units.

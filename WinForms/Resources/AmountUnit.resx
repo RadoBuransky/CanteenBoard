@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Táckareň</value>
+  <data name="Count" xml:space="preserve">
+    <value>pc</value>
   </data>
-  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ko&amp;niec</value>
+  <data name="Grams" xml:space="preserve">
+    <value>g</value>
   </data>
-  <data name="newCatButton.Text" xml:space="preserve">
-    <value>+</value>
+  <data name="Milliliters" xml:space="preserve">
+    <value>ml</value>
   </data>
 </root>

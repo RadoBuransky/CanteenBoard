@@ -8,8 +8,8 @@
     <ProjectGuid>{BE9C588F-2800-4BAD-9B11-AACF8002EEB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Repositories</RootNamespace>
-    <AssemblyName>Repositories</AssemblyName>
+    <RootNamespace>CanteenBoard.Repositories</RootNamespace>
+    <AssemblyName>CanteenBoard.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuRepository.cs" />
-    <Compile Include="MongoRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Impl\MongoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
+    <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{A2B12ABE-9FD1-44E1-B124-7797B9400AAB}</Project>
-      <Name>Core</Name>
+      <Name>Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

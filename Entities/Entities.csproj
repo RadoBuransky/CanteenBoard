@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0AAD483C-90E1-45D0-A4A6-B36F2E3322ED}</ProjectGuid>
+    <ProjectGuid>{A2B12ABE-9FD1-44E1-B124-7797B9400AAB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CanteenBoard.Core</RootNamespace>
-    <AssemblyName>CanteenBoard.Core</AssemblyName>
+    <RootNamespace>CanteenBoard.Entities</RootNamespace>
+    <AssemblyName>CanteenBoard.Entities</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,21 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CommonProcessor.cs" />
-    <Compile Include="Common\ICommonProcessor.cs" />
-    <Compile Include="IFoodProcessor.cs" />
-    <Compile Include="Processors\FoodProcessor.cs" />
+    <Compile Include="Boards\Board.cs" />
+    <Compile Include="Boards\Screen.cs" />
+    <Compile Include="CanteenBoardException.cs" />
+    <Compile Include="Menu\Amount.cs" />
+    <Compile Include="Menu\AmountUnit.cs" />
+    <Compile Include="Menu\Food.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{A2B12ABE-9FD1-44E1-B124-7797B9400AAB}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Repositories\Repositories.csproj">
-      <Project>{BE9C588F-2800-4BAD-9B11-AACF8002EEB0}</Project>
-      <Name>Repositories</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

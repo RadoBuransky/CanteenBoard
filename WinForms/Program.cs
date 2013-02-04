@@ -8,6 +8,8 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Castle.Windsor.Installer;
 using Castle.Core.Logging;
+using System.Globalization;
+using CanteenBoard.Core;
 
 namespace CanteenBoard.WinForms
 {
@@ -35,10 +37,14 @@ namespace CanteenBoard.WinForms
                         // Install all Windsor Castle components
                         CastleContainer.Instance.Install(FromAssembly.This());
 
+                        // Set language to Slovak by default
+                        Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("sk");
+                        Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+
                         // Initialize winforms
                         Application.EnableVisualStyles();
                         Application.SetCompatibleTextRenderingDefault(false);
-                        Application.Run(new MainForm());
+                        Application.Run(new MainForm(CastleContainer.Resolve<IFoodProcessor>()));
                     }
                     else
                     {

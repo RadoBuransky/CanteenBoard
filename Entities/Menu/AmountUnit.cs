@@ -1,4 +1,4 @@
-﻿namespace CanteenBoard.Core.Meal
+﻿namespace CanteenBoard.Entities.Menu
 {
     /// <summary>
     /// Unit in which the amount is expressed.
