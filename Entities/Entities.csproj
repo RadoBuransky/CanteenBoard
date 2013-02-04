@@ -43,6 +43,7 @@
     <Compile Include="Boards\Board.cs" />
     <Compile Include="Boards\Screen.cs" />
     <Compile Include="CanteenBoardException.cs" />
+    <Compile Include="Menu\Allergen.cs" />
     <Compile Include="Menu\Amount.cs" />
     <Compile Include="Menu\AmountUnit.cs" />
     <Compile Include="Menu\Food.cs" />

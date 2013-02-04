@@ -49,6 +49,8 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.foodMenuTabPage = new System.Windows.Forms.TabPage();
             this.screensTabPage = new System.Windows.Forms.TabPage();
+            this.allergensListBox = new System.Windows.Forms.ListBox();
+            this.allergensLabel = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).BeginInit();
             this.foodSplitContainer.Panel1.SuspendLayout();
@@ -84,6 +86,8 @@
             // 
             // foodSplitContainer.Panel2
             // 
+            this.foodSplitContainer.Panel2.Controls.Add(this.allergensLabel);
+            this.foodSplitContainer.Panel2.Controls.Add(this.allergensListBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.deleteFoodButton);
             this.foodSplitContainer.Panel2.Controls.Add(this.euroLabel);
             this.foodSplitContainer.Panel2.Controls.Add(this.priceLabel);
@@ -195,6 +199,33 @@
             this.screensTabPage.Name = "screensTabPage";
             this.screensTabPage.UseVisualStyleBackColor = true;
             // 
+            // allergensListBox
+            // 
+            this.allergensListBox.FormattingEnabled = true;
+            this.allergensListBox.Items.AddRange(new object[] {
+            resources.GetString("allergensListBox.Items"),
+            resources.GetString("allergensListBox.Items1"),
+            resources.GetString("allergensListBox.Items2"),
+            resources.GetString("allergensListBox.Items3"),
+            resources.GetString("allergensListBox.Items4"),
+            resources.GetString("allergensListBox.Items5"),
+            resources.GetString("allergensListBox.Items6"),
+            resources.GetString("allergensListBox.Items7"),
+            resources.GetString("allergensListBox.Items8"),
+            resources.GetString("allergensListBox.Items9"),
+            resources.GetString("allergensListBox.Items10"),
+            resources.GetString("allergensListBox.Items11"),
+            resources.GetString("allergensListBox.Items12"),
+            resources.GetString("allergensListBox.Items13")});
+            resources.ApplyResources(this.allergensListBox, "allergensListBox");
+            this.allergensListBox.Name = "allergensListBox";
+            this.allergensListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            // 
+            // allergensLabel
+            // 
+            resources.ApplyResources(this.allergensLabel, "allergensLabel");
+            this.allergensLabel.Name = "allergensLabel";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -242,5 +273,7 @@
         private System.Windows.Forms.Label amountLabel;
         private System.Windows.Forms.ComboBox amountUnitComboBox;
         private System.Windows.Forms.TextBox amountTextBox;
+        private System.Windows.Forms.Label allergensLabel;
+        private System.Windows.Forms.ListBox allergensListBox;
     }
 }

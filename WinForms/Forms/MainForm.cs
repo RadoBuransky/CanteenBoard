@@ -52,6 +52,9 @@ namespace CanteenBoard.WinForms.Forms
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitAmountUnits();
+            ReloadTree();
+            ReloadCategoriesComboBox();
+
             CommonValidator.ToDecimal(priceTextBox);
             CommonValidator.ToDecimal(amountTextBox);
         }
@@ -71,7 +74,15 @@ namespace CanteenBoard.WinForms.Forms
             };
             food.Price = Convert.ToDecimal(priceTextBox.Text);
 
+            // Save food
             _foodProcessor.Save(food);
+
+            // Reload controls
+            ReloadTree();
+            ReloadCategoriesComboBox();
+
+            // Reselect combo
+            categoryComboBox.SelectedIndex = categoryComboBox.Items.IndexOf(food.Category);
         }
 
         //==========================================================================================
@@ -92,6 +103,52 @@ namespace CanteenBoard.WinForms.Forms
                     (AmountUnit)Enum.Parse(typeof(AmountUnit), name)));
             }
             amountUnitComboBox.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// Inits the tree.
+        /// </summary>
+        private void ReloadTree()
+        {
+            foodTreeView.BeginUpdate();
+            try
+            {
+                foodTreeView.Nodes.Clear();
+                foreach (string category in _foodProcessor.GetCategories())
+                {
+                    TreeNode categoryTreeNode = foodTreeView.Nodes.Add(category);
+                    foreach (Food food in _foodProcessor.GetFood(category))
+                    {
+                        categoryTreeNode.Nodes.Add(food.Title);
+                    }
+                    categoryTreeNode.Expand();
+                }
+            }
+            finally
+            {
+                foodTreeView.EndUpdate();
+            }
+        }
+
+        /// <summary>
+        /// Reloads the categories combo box.
+        /// </summary>
+        private void ReloadCategoriesComboBox()
+        {
+            categoryComboBox.BeginUpdate();
+            try
+            {
+                categoryComboBox.Items.Clear();
+                foreach (string category in _foodProcessor.GetCategories())
+                {
+                    categoryComboBox.Items.Add(category);
+                }
+                categoryComboBox.SelectedIndex = categoryComboBox.Items.Count > 0 ? 0 : -1;
+            }
+            finally
+            {
+                categoryComboBox.EndUpdate();
+            }
         }
     }
 }

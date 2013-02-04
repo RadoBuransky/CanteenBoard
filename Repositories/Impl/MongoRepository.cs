@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using CanteenBoard.Entities.Menu;
 using CanteenBoard.Entities;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
 
 namespace CanteenBoard.Repositories.Impl
 {
@@ -50,7 +53,19 @@ namespace CanteenBoard.Repositories.Impl
         /// <param name="entity">The entity.</param>
         public void Save(object entity)
         {
-            GetDatabase()[GetCollectionName(entity)].Save(entity);
+            GetCollection(entity.GetType()).Save(entity);
+        }
+
+        /// <summary>
+        /// Finds this instance.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>
+        /// Queryable interface for further usage in LINQ expression.
+        /// </returns>
+        public IQueryable<T> Find<T>()
+        {
+            return GetCollection(typeof(T)).AsQueryable<T>();
         }
 
         /// <summary>
@@ -62,6 +77,7 @@ namespace CanteenBoard.Repositories.Impl
             if (_mongoClient == null)
             {
                 _mongoClient = new MongoClient(ConnectionString);
+                CreateClassMaps();
             }
 
             return _mongoClient;
@@ -79,16 +95,38 @@ namespace CanteenBoard.Repositories.Impl
         /// <summary>
         /// Gets the collection.
         /// </summary>
+        /// <param name="typeName">Name of the type.</param>
+        /// <returns></returns>
+        private MongoCollection<BsonDocument> GetCollection(Type type)
+        {
+            return GetDatabase()[GetCollectionName(type)];
+        }
+
+        /// <summary>
+        /// Gets the collection.
+        /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        private static string GetCollectionName(object entity)
+        private static string GetCollectionName(Type type)
         {
-            if (entity is Food)
+            if (type.IsAssignableFrom(typeof(Food)))
             {
                 return _foodCollection;
             }
 
             throw new CanteenBoardException("Collection not defined!");
+        }
+
+        /// <summary>
+        /// Creates the class maps.
+        /// </summary>
+        private static void CreateClassMaps()
+        {
+            BsonClassMap.RegisterClassMap<Food>(cm =>
+            {
+                cm.AutoMap();
+                cm.SetIdMember(cm.GetMemberMap(c => c.Title));
+            });
         }
     }
 }
