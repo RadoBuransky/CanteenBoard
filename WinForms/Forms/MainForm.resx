@@ -252,48 +252,6 @@
   <data name="&gt;&gt;allergensLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="allergensListBox.Items" xml:space="preserve">
-    <value>1 – obilniny obsahujúce lepok</value>
-  </data>
-  <data name="allergensListBox.Items1" xml:space="preserve">
-    <value>2 – kôrovce a výrobky z nich</value>
-  </data>
-  <data name="allergensListBox.Items2" xml:space="preserve">
-    <value>3 – vajcia a výrobky z nich</value>
-  </data>
-  <data name="allergensListBox.Items3" xml:space="preserve">
-    <value>4 – ryby a výrobky z nich</value>
-  </data>
-  <data name="allergensListBox.Items4" xml:space="preserve">
-    <value>5 – arašidy a výrobky z nich</value>
-  </data>
-  <data name="allergensListBox.Items5" xml:space="preserve">
-    <value>6 – sójové zrná a výrobky z nich</value>
-  </data>
-  <data name="allergensListBox.Items6" xml:space="preserve">
-    <value>7 – mlieko a výrobky z neho vrátane laktózy</value>
-  </data>
-  <data name="allergensListBox.Items7" xml:space="preserve">
-    <value>8 – orechy: mandle, lieskové, vlašské, makadamové, pekanové, queenslandské a para orechy, kešu, pistácie</value>
-  </data>
-  <data name="allergensListBox.Items8" xml:space="preserve">
-    <value>9 – zeler a výrobky z neho</value>
-  </data>
-  <data name="allergensListBox.Items9" xml:space="preserve">
-    <value>10 – horčica a výrobky z nej</value>
-  </data>
-  <data name="allergensListBox.Items10" xml:space="preserve">
-    <value>11 – sezamové semená a výrobky z nich</value>
-  </data>
-  <data name="allergensListBox.Items11" xml:space="preserve">
-    <value>12 – oxid siričitý a siričitany</value>
-  </data>
-  <data name="allergensListBox.Items12" xml:space="preserve">
-    <value>13 – vlčí bôb a výrobky z neho</value>
-  </data>
-  <data name="allergensListBox.Items13" xml:space="preserve">
-    <value>14 - mäkkýše a výrobky z nich</value>
-  </data>
   <data name="allergensListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 108</value>
   </data>
@@ -691,7 +649,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="screensTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>793, 460</value>
+    <value>961, 664</value>
   </data>
   <data name="screensTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

@@ -8,6 +8,7 @@ using CanteenBoard.Entities.Menu;
 using CanteenBoard.Entities;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson;
+using System.Diagnostics.Contracts;
 
 namespace CanteenBoard.Repositories.Impl
 {
@@ -53,7 +54,9 @@ namespace CanteenBoard.Repositories.Impl
         /// <param name="entity">The entity.</param>
         public void Save(object entity)
         {
-            GetCollection(entity.GetType()).Save(entity);
+            Contract.Requires(entity != null);
+
+            GetCollection(entity).Save(entity);
         }
 
         /// <summary>
@@ -66,6 +69,15 @@ namespace CanteenBoard.Repositories.Impl
         public IQueryable<T> Find<T>()
         {
             return GetCollection(typeof(T)).AsQueryable<T>();
+        }
+
+        /// <summary>
+        /// Deletes the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        public void Delete(object entity)
+        {
+            Contract.Requires(entity != null);
         }
 
         /// <summary>
@@ -90,6 +102,16 @@ namespace CanteenBoard.Repositories.Impl
         protected MongoDatabase GetDatabase()
         {
             return GetMongoClient().GetServer().GetDatabase(DatabaseName);
+        }
+
+        /// <summary>
+        /// Gets the collection.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
+        private MongoCollection<BsonDocument> GetCollection(object entity)
+        {
+            return GetCollection(entity.GetType());
         }
 
         /// <summary>

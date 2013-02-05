@@ -12,6 +12,7 @@ using CanteenBoard.Entities.Menu;
 using CanteenBoard.Core;
 using System.Threading;
 using CanteenBoard.WinForms.Validation;
+using CanteenBoard.WinForms.Forms.MainFormControls;
 
 namespace CanteenBoard.WinForms.Forms
 {
@@ -26,6 +27,11 @@ namespace CanteenBoard.WinForms.Forms
         private readonly IFoodProcessor _foodProcessor;
 
         /// <summary>
+        /// The Food panel
+        /// </summary>
+        private readonly FoodPanel _foodPanel;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="MainForm" /> class.
         /// </summary>
         /// <param name="foodProcessor">The food processor.</param>
@@ -34,6 +40,8 @@ namespace CanteenBoard.WinForms.Forms
             InitializeComponent();
 
             _foodProcessor = foodProcessor;
+            _foodPanel = new FoodPanel(this, amountUnitComboBox, allergensListBox, titleTextBox, categoryComboBox, amountTextBox,
+                priceTextBox, foodProcessor);
         }
 
         //==========================================================================================
@@ -51,64 +59,47 @@ namespace CanteenBoard.WinForms.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            InitAmountUnits();
+            _foodPanel.InitAmountUnits();
+            _foodPanel.InitAllergens();
             ReloadTree();
-            ReloadCategoriesComboBox();
+            _foodPanel.ReloadCategoriesComboBox();
 
             CommonValidator.ToDecimal(priceTextBox);
             CommonValidator.ToDecimal(amountTextBox);
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        public void saveButton_Click(object sender, EventArgs e)
         {
-            if (!ValidateChildren())
+            _foodPanel.saveButton_Click(sender, e);
+        }
+
+        private void foodTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Level == 0)
                 return;
 
-            Food food = new Food();
-            food.Title = titleTextBox.Text;
-            food.Category = categoryComboBox.Text;
-            food.Amount = new Amount()
-            {
-                Value = Convert.ToDecimal(amountTextBox.Text),
-                Unit = ((KeyValuePair<string, AmountUnit>)amountUnitComboBox.SelectedItem).Value
-            };
-            food.Price = Convert.ToDecimal(priceTextBox.Text);
+            _foodPanel.ShowFood(e.Node.Text);
+        }
 
-            // Save food
-            _foodProcessor.Save(food);
+        private void addNewFoodButton_Click(object sender, EventArgs e)
+        {
+            _foodPanel.addNewFoodButton_Click(sender, e);
+        }
 
-            // Reload controls
-            ReloadTree();
-            ReloadCategoriesComboBox();
-
-            // Reselect combo
-            categoryComboBox.SelectedIndex = categoryComboBox.Items.IndexOf(food.Category);
+        private void deleteFoodButton_Click(object sender, EventArgs e)
+        {
+            _foodPanel.deleteFoodButton_Click(sender, e);
         }
 
         //==========================================================================================
         // Private methods
         //==========================================================================================
 
-        /// <summary>
-        /// Inits the amount units.
-        /// </summary>
-        private void InitAmountUnits()
-        {
-            amountUnitComboBox.DisplayMember = "Key";
-            amountUnitComboBox.ValueMember = "Value";
-            foreach (string name in Enum.GetNames(typeof(AmountUnit)))
-            {
-                amountUnitComboBox.Items.Add(new KeyValuePair<string, AmountUnit>(
-                    Res.AmountUnit.ResourceManager.GetString(name),
-                    (AmountUnit)Enum.Parse(typeof(AmountUnit), name)));
-            }
-            amountUnitComboBox.SelectedIndex = 0;
-        }
 
         /// <summary>
         /// Inits the tree.
         /// </summary>
-        private void ReloadTree()
+        internal void ReloadTree()
         {
             foodTreeView.BeginUpdate();
             try
@@ -117,7 +108,7 @@ namespace CanteenBoard.WinForms.Forms
                 foreach (string category in _foodProcessor.GetCategories())
                 {
                     TreeNode categoryTreeNode = foodTreeView.Nodes.Add(category);
-                    foreach (Food food in _foodProcessor.GetFood(category))
+                    foreach (Food food in _foodProcessor.GetFoods(category))
                     {
                         categoryTreeNode.Nodes.Add(food.Title);
                     }
@@ -127,27 +118,6 @@ namespace CanteenBoard.WinForms.Forms
             finally
             {
                 foodTreeView.EndUpdate();
-            }
-        }
-
-        /// <summary>
-        /// Reloads the categories combo box.
-        /// </summary>
-        private void ReloadCategoriesComboBox()
-        {
-            categoryComboBox.BeginUpdate();
-            try
-            {
-                categoryComboBox.Items.Clear();
-                foreach (string category in _foodProcessor.GetCategories())
-                {
-                    categoryComboBox.Items.Add(category);
-                }
-                categoryComboBox.SelectedIndex = categoryComboBox.Items.Count > 0 ? 0 : -1;
-            }
-            finally
-            {
-                categoryComboBox.EndUpdate();
             }
         }
     }

@@ -44,5 +44,13 @@
         /// The category.
         /// </value>
         public string Category { get; set; }
+
+        /// <summary>
+        /// Gets or sets the allergens.
+        /// </summary>
+        /// <value>
+        /// The allergens.
+        /// </value>
+        public Allergen Allergens { get; set; }
     }
 }

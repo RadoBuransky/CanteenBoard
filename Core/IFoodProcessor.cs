@@ -19,6 +19,19 @@ namespace CanteenBoard.Core
         /// </summary>
         /// <param name="category">The category.</param>
         /// <returns></returns>
-        Food[] GetFood(string category);
+        Food[] GetFoods(string category);
+
+        /// <summary>
+        /// Gets the food.
+        /// </summary>
+        /// <param name="foodTitle">The food title.</param>
+        /// <returns></returns>
+        Food GetFood(string foodTitle);
+
+        /// <summary>
+        /// Deletes the food.
+        /// </summary>
+        /// <param name="food">The food.</param>
+        void DeleteFood(Food food);
     }
 }
