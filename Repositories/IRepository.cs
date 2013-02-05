@@ -24,7 +24,8 @@ namespace CanteenBoard.Repositories
         /// <summary>
         /// Deletes the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        void Delete(object entity);
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectId">The object id.</param>
+        void Delete<T>(string objectId);
     }
 }

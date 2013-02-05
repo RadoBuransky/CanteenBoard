@@ -6,6 +6,15 @@
     public class Food
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Food" /> class.
+        /// </summary>
+        public Food()
+        {
+            // Unassigned by default
+            Index = -1;
+        }
+
+        /// <summary>
         /// Gets or sets the amount.
         /// </summary>
         /// <value>
@@ -52,5 +61,13 @@
         /// The allergens.
         /// </value>
         public Allergen Allergens { get; set; }
+
+        /// <summary>
+        /// Gets or sets the index.
+        /// </summary>
+        /// <value>
+        /// The index.
+        /// </value>
+        public int Index { get; set; }
     }
 }

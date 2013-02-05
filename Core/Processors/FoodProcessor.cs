@@ -3,6 +3,7 @@ using CanteenBoard.Repositories;
 using CanteenBoard.Core.Common;
 using System.Linq;
 using System.Diagnostics.Contracts;
+using System;
 
 namespace CanteenBoard.Core.Processors
 {
@@ -18,6 +19,23 @@ namespace CanteenBoard.Core.Processors
         public FoodProcessor(IRepository repository)
             : base(repository)
         {
+        }
+
+        /// <summary>
+        /// Saves the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        public override void Save(Food entity)
+        {
+            Contract.Requires(entity != null);
+
+            if (entity.Index == -1)
+            {
+                // Set new index as max + 1
+                entity.Index = Repository.Find<Food>().Max(f => f.Index) + 1;
+            }
+
+            base.Save(entity);
         }
 
         /// <summary>
@@ -45,6 +63,7 @@ namespace CanteenBoard.Core.Processors
 
             var food = from f in Repository.Find<Food>()
                        where f.Category == category
+                       orderby f.Index
                        select f;
 
             return food.ToArray();
@@ -65,9 +84,40 @@ namespace CanteenBoard.Core.Processors
         /// <summary>
         /// Deletes the food.
         /// </summary>
-        /// <param name="food">The food.</param>
-        public void DeleteFood(Food food)
+        /// <param name="foodTitle">The food title.</param>
+        public void DeleteFood(string foodTitle)
         {
+            Repository.Delete<Food>(foodTitle);
+        }
+
+        /// <summary>
+        /// Swaps the food.
+        /// </summary>
+        /// <param name="foodTitle">The food title.</param>
+        /// <param name="up">if set to <c>true</c> [up].</param>
+        public void SwapFood(string foodTitle, bool up)
+        {
+            Contract.Requires(!string.IsNullOrEmpty(foodTitle));
+
+            // Find this food
+            Food food = GetFood(foodTitle);
+
+            Func<Food, bool> predicate = up ?
+                (Func<Food, bool>)(f => f.Index < food.Index) :
+                (Func<Food, bool>)(f => f.Index > food.Index);
+
+            Food[] result = Repository.Find<Food>().Where(predicate).OrderBy(f => f.Index).ToArray();
+            if (result.Length == 0)
+                return;
+
+            Food toSwap = result[up ? result.Length - 1 : 0];
+
+            int index = toSwap.Index;
+            toSwap.Index = food.Index;
+            food.Index = index;
+
+            Save(food);
+            Save(toSwap);
         }
     }
 }

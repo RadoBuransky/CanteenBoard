@@ -51,6 +51,8 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.foodMenuTabPage = new System.Windows.Forms.TabPage();
             this.screensTabPage = new System.Windows.Forms.TabPage();
+            this.downButton = new System.Windows.Forms.Button();
+            this.upButton = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).BeginInit();
             this.foodSplitContainer.Panel1.SuspendLayout();
@@ -81,7 +83,9 @@
             // 
             // foodSplitContainer.Panel1
             // 
+            this.foodSplitContainer.Panel1.Controls.Add(this.upButton);
             this.foodSplitContainer.Panel1.Controls.Add(this.addNewFoodButton);
+            this.foodSplitContainer.Panel1.Controls.Add(this.downButton);
             this.foodSplitContainer.Panel1.Controls.Add(this.foodTreeView);
             // 
             // foodSplitContainer.Panel2
@@ -169,8 +173,8 @@
             // 
             // categoryComboBox
             // 
-            resources.ApplyResources(this.categoryComboBox, "categoryComboBox");
             this.categoryComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.categoryComboBox, "categoryComboBox");
             this.categoryComboBox.Name = "categoryComboBox";
             // 
             // categoryLabel
@@ -215,6 +219,20 @@
             resources.ApplyResources(this.screensTabPage, "screensTabPage");
             this.screensTabPage.Name = "screensTabPage";
             this.screensTabPage.UseVisualStyleBackColor = true;
+            // 
+            // downButton
+            // 
+            resources.ApplyResources(this.downButton, "downButton");
+            this.downButton.Name = "downButton";
+            this.downButton.UseVisualStyleBackColor = true;
+            this.downButton.Click += new System.EventHandler(this.downButton_Click);
+            // 
+            // upButton
+            // 
+            resources.ApplyResources(this.upButton, "upButton");
+            this.upButton.Name = "upButton";
+            this.upButton.UseVisualStyleBackColor = true;
+            this.upButton.Click += new System.EventHandler(this.upButton_Click);
             // 
             // MainForm
             // 
@@ -265,5 +283,7 @@
         private System.Windows.Forms.TextBox amountTextBox;
         private System.Windows.Forms.Label allergensLabel;
         private System.Windows.Forms.ListBox allergensListBox;
+        private System.Windows.Forms.Button upButton;
+        private System.Windows.Forms.Button downButton;
     }
 }

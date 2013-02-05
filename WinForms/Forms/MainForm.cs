@@ -13,6 +13,7 @@ using CanteenBoard.Core;
 using System.Threading;
 using CanteenBoard.WinForms.Validation;
 using CanteenBoard.WinForms.Forms.MainFormControls;
+using CanteenBoard.WinForms.Extensions;
 
 namespace CanteenBoard.WinForms.Forms
 {
@@ -66,6 +67,7 @@ namespace CanteenBoard.WinForms.Forms
 
             CommonValidator.ToDecimal(priceTextBox);
             CommonValidator.ToDecimal(amountTextBox);
+            CommonValidator.NotEmpty(titleTextBox);
         }
 
         public void saveButton_Click(object sender, EventArgs e)
@@ -75,20 +77,40 @@ namespace CanteenBoard.WinForms.Forms
 
         private void foodTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            upButton.Enabled = e.Node.Level != 0;
+            downButton.Enabled = e.Node.Level != 0;
+
             if (e.Node.Level == 0)
+            {
+                _foodPanel.ClearPanel();
                 return;
+            }
 
             _foodPanel.ShowFood(e.Node.Text);
         }
 
         private void addNewFoodButton_Click(object sender, EventArgs e)
         {
-            _foodPanel.addNewFoodButton_Click(sender, e);
+            foodTreeView.SelectedNode = null;
+            upButton.Enabled = false;
+            downButton.Enabled = false;
+            _foodPanel.ClearPanel();
         }
 
         private void deleteFoodButton_Click(object sender, EventArgs e)
         {
-            _foodPanel.deleteFoodButton_Click(sender, e);
+            if (_foodPanel.deleteFoodButton_Click(sender, e))
+                ReloadTree();
+        }
+
+        private void downButton_Click(object sender, EventArgs e)
+        {
+            SwapFood(false);
+        }
+
+        private void upButton_Click(object sender, EventArgs e)
+        {
+            SwapFood(true);
         }
 
         //==========================================================================================
@@ -104,6 +126,11 @@ namespace CanteenBoard.WinForms.Forms
             foodTreeView.BeginUpdate();
             try
             {
+                string selectedTitle = null;
+                if (foodTreeView.SelectedNode != null)
+                {
+                    selectedTitle = foodTreeView.SelectedNode.Text;
+                }
                 foodTreeView.Nodes.Clear();
                 foreach (string category in _foodProcessor.GetCategories())
                 {
@@ -114,11 +141,31 @@ namespace CanteenBoard.WinForms.Forms
                     }
                     categoryTreeNode.Expand();
                 }
+
+                bool selected = false;
+                if (selectedTitle != null)
+                {
+                    selected = foodTreeView.Select(tn => tn.Text == selectedTitle);
+                }
+
+                upButton.Enabled = selected;
+                downButton.Enabled = selected;
             }
             finally
             {
                 foodTreeView.EndUpdate();
             }
+        }
+
+        private void SwapFood(bool up)
+        {
+            if (foodTreeView.SelectedNode == null)
+            {
+                return;
+            }
+
+            _foodProcessor.SwapFood(foodTreeView.SelectedNode.Text, up);
+            ReloadTree();
         }
     }
 }

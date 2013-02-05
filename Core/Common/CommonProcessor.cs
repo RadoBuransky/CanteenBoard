@@ -1,4 +1,5 @@
 ﻿using CanteenBoard.Repositories;
+using System.Diagnostics.Contracts;
 
 namespace CanteenBoard.Core.Common
 {
@@ -23,6 +24,8 @@ namespace CanteenBoard.Core.Common
         /// <param name="entity">The entity.</param>
         public virtual void Save(T entity)
         {
+            Contract.Requires(entity != null);
+
             Repository.Save(entity);
         }
 

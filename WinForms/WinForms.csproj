@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="CastleContainer.cs" />
     <Compile Include="Config\Windsor\CommonInstaller.cs" />
+    <Compile Include="Extensions\TreeViewExtensions.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +90,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AmountUnit.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Messages.sk.Designer.cs">
+      <DependentUpon>Messages.sk.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
     <Compile Include="Validation\CommonValidator.cs" />
     <EmbeddedResource Include="Forms\MainForm.resx">
@@ -114,6 +125,14 @@
     <EmbeddedResource Include="Resources\AmountUnit.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AmountUnit.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages.sk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.sk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>

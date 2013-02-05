@@ -31,7 +31,14 @@ namespace CanteenBoard.Core
         /// <summary>
         /// Deletes the food.
         /// </summary>
-        /// <param name="food">The food.</param>
-        void DeleteFood(Food food);
+        /// <param name="foodTitle">The food title.</param>
+        void DeleteFood(string foodTitle);
+
+        /// <summary>
+        /// Swaps the food.
+        /// </summary>
+        /// <param name="foodTitle">The food title.</param>
+        /// <param name="up">if set to <c>true</c> [up].</param>
+        void SwapFood(string foodTitle, bool up);
     }
 }

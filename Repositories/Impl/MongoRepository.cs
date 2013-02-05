@@ -9,6 +9,7 @@ using CanteenBoard.Entities;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson;
 using System.Diagnostics.Contracts;
+using MongoDB.Driver.Builders;
 
 namespace CanteenBoard.Repositories.Impl
 {
@@ -74,10 +75,13 @@ namespace CanteenBoard.Repositories.Impl
         /// <summary>
         /// Deletes the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        public void Delete(object entity)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectId">The object id.</param>
+        public void Delete<T>(string objectId)
         {
-            Contract.Requires(entity != null);
+            Contract.Requires(!string.IsNullOrEmpty(objectId));
+
+            GetCollection(typeof(T)).Remove(Query.EQ("_id", objectId));
         }
 
         /// <summary>

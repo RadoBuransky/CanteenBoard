@@ -21,6 +21,8 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
 
         private readonly IFoodProcessor _foodProcessor;
 
+        private Food _food = new Food();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FoodPanel" /> class.
         /// </summary>
@@ -115,6 +117,20 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             }
         }
 
+        /// <summary>
+        /// Clears the panel.
+        /// </summary>
+        public void ClearPanel()
+        {
+            _food = null;
+            _titleTextBox.Clear();
+            _categoryComboBox.SelectedIndex = _categoryComboBox.Items.Count == 0 ? -1 : 0;
+            _amountTextBox.Text = "0";
+            _amountUnitComboBox.SelectedIndex = 0;
+            _priceTextBox.Text = "0";
+            _allergensListBox.SelectedItems.Clear();
+        }
+
         //==========================================================================================
         // Event handlers
         //==========================================================================================
@@ -124,45 +140,45 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             if (!_mainForm.ValidateChildren())
                 return;
 
-            Food food = new Food();
-            food.Title = _titleTextBox.Text;
-            food.Category = _categoryComboBox.Text;
-            food.Amount = new Amount()
+            if (_food == null)
+            {
+                _food = new Food();
+            }
+
+            _food.Title = _titleTextBox.Text;
+            _food.Category = _categoryComboBox.Text;
+            _food.Amount = new Amount()
             {
                 Value = Convert.ToDecimal(_amountTextBox.Text),
                 Unit = ((KeyValuePair<string, AmountUnit>)_amountUnitComboBox.SelectedItem).Value
             };
-            food.Price = Convert.ToDecimal(_priceTextBox.Text);
-            food.Allergens = 0;
+            _food.Price = Convert.ToDecimal(_priceTextBox.Text);
+            _food.Allergens = 0;
             foreach (KeyValuePair<string, Allergen> item in _allergensListBox.SelectedItems)
             {
-                food.Allergens |= item.Value;
+                _food.Allergens |= item.Value;
             }
 
             // Save food
-            _foodProcessor.Save(food);
+            _foodProcessor.Save(_food);
 
             // Reload controls
             _mainForm.ReloadTree();
             ReloadCategoriesComboBox();
 
             // Reselect combo
-            _categoryComboBox.SelectedIndex = _categoryComboBox.Items.IndexOf(food.Category);
+            _categoryComboBox.SelectedIndex = _categoryComboBox.Items.IndexOf(_food.Category);
         }
 
-        public void addNewFoodButton_Click(object sender, EventArgs e)
+        public bool deleteFoodButton_Click(object sender, EventArgs e)
         {
-            _titleTextBox.Clear();
-            _categoryComboBox.SelectedIndex = -1;
-            _amountTextBox.Clear();
-            _amountUnitComboBox.SelectedIndex = 0;
-            _priceTextBox.Clear();
-            _allergensListBox.SelectedItems.Clear();
-        }
+            if (MessageBox.Show(Res.Messages.DeleteText, Res.Messages.DeleteCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+                return false;
 
-        public void deleteFoodButton_Click(object sender, EventArgs e)
-        {
+            _foodProcessor.DeleteFood(_titleTextBox.Text);
+            ClearPanel();
 
+            return true;
         }
 
         //==========================================================================================
@@ -175,6 +191,8 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
         /// <param name="food">The food.</param>
         private void FoodToPanel(Food food)
         {
+            _food = food;
+
             _titleTextBox.Text = food.Title;
             _categoryComboBox.SelectedIndex = _categoryComboBox.Items.IndexOf(food.Category);
             _amountTextBox.Text = food.Amount.Value.ToString();

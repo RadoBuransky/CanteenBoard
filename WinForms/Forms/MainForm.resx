@@ -159,11 +159,41 @@
   <data name="foodSplitContainer.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
+  <data name="upButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="upButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="upButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>57, 360</value>
+  </data>
+  <data name="upButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 23</value>
+  </data>
+  <data name="upButton.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="upButton.Text" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="&gt;&gt;upButton.Name" xml:space="preserve">
+    <value>upButton</value>
+  </data>
+  <data name="&gt;&gt;upButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;upButton.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;upButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="addNewFoodButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="addNewFoodButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 635</value>
+    <value>219, 361</value>
   </data>
   <data name="addNewFoodButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -184,7 +214,37 @@
     <value>foodSplitContainer.Panel1</value>
   </data>
   <data name="&gt;&gt;addNewFoodButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <data name="downButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="downButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="downButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 360</value>
+  </data>
+  <data name="downButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 23</value>
+  </data>
+  <data name="downButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="downButton.Text" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="&gt;&gt;downButton.Name" xml:space="preserve">
+    <value>downButton</value>
+  </data>
+  <data name="&gt;&gt;downButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;downButton.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;downButton.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="foodTreeView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -193,7 +253,7 @@
     <value>0, 0</value>
   </data>
   <data name="foodTreeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 629</value>
+    <value>294, 355</value>
   </data>
   <data name="foodTreeView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -208,7 +268,7 @@
     <value>foodSplitContainer.Panel1</value>
   </data>
   <data name="&gt;&gt;foodTreeView.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;foodSplitContainer.Panel1.Name" xml:space="preserve">
     <value>foodSplitContainer.Panel1</value>
@@ -453,14 +513,11 @@
   <data name="&gt;&gt;amountTextBox.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="categoryComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
   <data name="categoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 29</value>
   </data>
   <data name="categoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>593, 21</value>
+    <value>578, 21</value>
   </data>
   <data name="categoryComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -528,14 +585,11 @@
   <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="titleTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
   <data name="titleTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 3</value>
   </data>
   <data name="titleTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>593, 20</value>
+    <value>578, 20</value>
   </data>
   <data name="titleTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -592,7 +646,7 @@
     <value>1</value>
   </data>
   <data name="foodSplitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>955, 658</value>
+    <value>955, 384</value>
   </data>
   <data name="foodSplitContainer.SplitterDistance" type="System.Int32, mscorlib">
     <value>297</value>
@@ -622,7 +676,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="foodMenuTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>961, 664</value>
+    <value>961, 390</value>
   </data>
   <data name="foodMenuTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -673,7 +727,7 @@
     <value>0, 27</value>
   </data>
   <data name="mainTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>969, 690</value>
+    <value>969, 416</value>
   </data>
   <data name="mainTabControl.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -697,7 +751,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>969, 717</value>
+    <value>969, 443</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CanteenBoard</value>
