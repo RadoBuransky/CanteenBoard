@@ -32,7 +32,9 @@
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.foodSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.upButton = new System.Windows.Forms.Button();
             this.addNewFoodButton = new System.Windows.Forms.Button();
+            this.downButton = new System.Windows.Forms.Button();
             this.foodTreeView = new System.Windows.Forms.TreeView();
             this.allergensLabel = new System.Windows.Forms.Label();
             this.allergensListBox = new System.Windows.Forms.ListBox();
@@ -51,8 +53,7 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.foodMenuTabPage = new System.Windows.Forms.TabPage();
             this.screensTabPage = new System.Windows.Forms.TabPage();
-            this.downButton = new System.Windows.Forms.Button();
-            this.upButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).BeginInit();
             this.foodSplitContainer.Panel1.SuspendLayout();
@@ -90,6 +91,7 @@
             // 
             // foodSplitContainer.Panel2
             // 
+            this.foodSplitContainer.Panel2.Controls.Add(this.button1);
             this.foodSplitContainer.Panel2.Controls.Add(this.allergensLabel);
             this.foodSplitContainer.Panel2.Controls.Add(this.allergensListBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.deleteFoodButton);
@@ -105,12 +107,26 @@
             this.foodSplitContainer.Panel2.Controls.Add(this.titleTextBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.titleLabel);
             // 
+            // upButton
+            // 
+            resources.ApplyResources(this.upButton, "upButton");
+            this.upButton.Name = "upButton";
+            this.upButton.UseVisualStyleBackColor = true;
+            this.upButton.Click += new System.EventHandler(this.upButton_Click);
+            // 
             // addNewFoodButton
             // 
             resources.ApplyResources(this.addNewFoodButton, "addNewFoodButton");
             this.addNewFoodButton.Name = "addNewFoodButton";
             this.addNewFoodButton.UseVisualStyleBackColor = true;
             this.addNewFoodButton.Click += new System.EventHandler(this.addNewFoodButton_Click);
+            // 
+            // downButton
+            // 
+            resources.ApplyResources(this.downButton, "downButton");
+            this.downButton.Name = "downButton";
+            this.downButton.UseVisualStyleBackColor = true;
+            this.downButton.Click += new System.EventHandler(this.downButton_Click);
             // 
             // foodTreeView
             // 
@@ -220,19 +236,12 @@
             this.screensTabPage.Name = "screensTabPage";
             this.screensTabPage.UseVisualStyleBackColor = true;
             // 
-            // downButton
+            // button1
             // 
-            resources.ApplyResources(this.downButton, "downButton");
-            this.downButton.Name = "downButton";
-            this.downButton.UseVisualStyleBackColor = true;
-            this.downButton.Click += new System.EventHandler(this.downButton_Click);
-            // 
-            // upButton
-            // 
-            resources.ApplyResources(this.upButton, "upButton");
-            this.upButton.Name = "upButton";
-            this.upButton.UseVisualStyleBackColor = true;
-            this.upButton.Click += new System.EventHandler(this.upButton_Click);
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
@@ -285,5 +294,6 @@
         private System.Windows.Forms.ListBox allergensListBox;
         private System.Windows.Forms.Button upButton;
         private System.Windows.Forms.Button downButton;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="Common\CommonProcessor.cs" />
     <Compile Include="Common\ICommonProcessor.cs" />
+    <Compile Include="IBoardProcessor.cs" />
     <Compile Include="IFoodProcessor.cs" />
+    <Compile Include="Processors\BoardProcessor.cs" />
     <Compile Include="Processors\FoodProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

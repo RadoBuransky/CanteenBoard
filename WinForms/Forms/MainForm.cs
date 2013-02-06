@@ -14,6 +14,7 @@ using System.Threading;
 using CanteenBoard.WinForms.Validation;
 using CanteenBoard.WinForms.Forms.MainFormControls;
 using CanteenBoard.WinForms.Extensions;
+using CanteenBoard.WinForms.Forms.Boards;
 
 namespace CanteenBoard.WinForms.Forms
 {
@@ -110,6 +111,8 @@ namespace CanteenBoard.WinForms.Forms
 
         private void upButton_Click(object sender, EventArgs e)
         {
+            Screen[] screens = Screen.AllScreens;
+
             SwapFood(true);
         }
 
@@ -166,6 +169,12 @@ namespace CanteenBoard.WinForms.Forms
 
             _foodProcessor.SwapFood(foodTreeView.SelectedNode.Text, up);
             ReloadTree();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DailyMenuBoardForm form = new DailyMenuBoardForm();
+            form.Show();
         }
     }
 }

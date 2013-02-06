@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Boards\Board.cs" />
-    <Compile Include="Boards\Screen.cs" />
+    <Compile Include="Boards\BoardTemplate.cs" />
     <Compile Include="CanteenBoardException.cs" />
     <Compile Include="Menu\Allergen.cs" />
     <Compile Include="Menu\Amount.cs" />

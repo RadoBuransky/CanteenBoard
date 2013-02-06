@@ -64,9 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardTemplates\DailyMenuBoardTemplate.cs" />
     <Compile Include="CastleContainer.cs" />
     <Compile Include="Config\Windsor\CommonInstaller.cs" />
     <Compile Include="Extensions\TreeViewExtensions.cs" />
+    <Compile Include="Forms\Boards\DailyMenuBoardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Boards\DailyMenuBoardForm.Designer.cs">
+      <DependentUpon>DailyMenuBoardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +109,9 @@
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
     <Compile Include="Validation\CommonValidator.cs" />
+    <EmbeddedResource Include="Forms\Boards\DailyMenuBoardForm.resx">
+      <DependentUpon>DailyMenuBoardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
