@@ -121,6 +121,12 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="updateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
+  </data>
+  <data name="updateToolStripMenuItem.Text" xml:space="preserve">
+    <value>Update!</value>
+  </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 20</value>
   </data>
@@ -131,7 +137,7 @@
     <value>0, 0</value>
   </data>
   <data name="mainMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>969, 24</value>
+    <value>1201, 24</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="mainMenuStrip.TabIndex" type="System.Int32, mscorlib">
@@ -157,7 +163,7 @@
     <value>Fill</value>
   </data>
   <data name="foodSplitContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>0, 0</value>
   </data>
   <data name="upButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -166,7 +172,7 @@
     <value>False</value>
   </data>
   <data name="upButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 360</value>
+    <value>60, 473</value>
   </data>
   <data name="upButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 23</value>
@@ -193,7 +199,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="addNewFoodButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 361</value>
+    <value>286, 473</value>
   </data>
   <data name="addNewFoodButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -223,7 +229,7 @@
     <value>False</value>
   </data>
   <data name="downButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 360</value>
+    <value>3, 473</value>
   </data>
   <data name="downButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 23</value>
@@ -250,10 +256,10 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="foodTreeView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>3, 0</value>
   </data>
   <data name="foodTreeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 355</value>
+    <value>358, 467</value>
   </data>
   <data name="foodTreeView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -285,6 +291,63 @@
   <data name="foodSplitContainer.Panel1MinSize" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
+  <data name="boardTemplateComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="boardTemplateComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>655, 475</value>
+  </data>
+  <data name="boardTemplateComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 21</value>
+  </data>
+  <data name="boardTemplateComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;boardTemplateComboBox.Name" xml:space="preserve">
+    <value>boardTemplateComboBox</value>
+  </data>
+  <data name="&gt;&gt;boardTemplateComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;boardTemplateComboBox.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;boardTemplateComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="templateNameLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="templateNameLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="templateNameLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>566, 478</value>
+  </data>
+  <data name="templateNameLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 13</value>
+  </data>
+  <data name="templateNameLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="templateNameLabel.Text" xml:space="preserve">
+    <value>Template name:</value>
+  </data>
+  <data name="&gt;&gt;templateNameLabel.Name" xml:space="preserve">
+    <value>templateNameLabel</value>
+  </data>
+  <data name="&gt;&gt;templateNameLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;templateNameLabel.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;templateNameLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 356</value>
   </data>
@@ -307,7 +370,31 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
+  </data>
+  <data name="screenNameComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="screenNameComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>645, 448</value>
+  </data>
+  <data name="screenNameComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 21</value>
+  </data>
+  <data name="screenNameComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;screenNameComboBox.Name" xml:space="preserve">
+    <value>screenNameComboBox</value>
+  </data>
+  <data name="&gt;&gt;screenNameComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;screenNameComboBox.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;screenNameComboBox.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="allergensLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -334,13 +421,46 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;allergensLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>566, 452</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Screen name:</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="allergensListBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="allergensListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 108</value>
   </data>
   <data name="allergensListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 186</value>
+    <value>768, 186</value>
   </data>
   <data name="allergensListBox.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -355,7 +475,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;allergensListBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="deleteFoodButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 300</value>
@@ -379,7 +499,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;deleteFoodButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="euroLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -406,7 +526,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;euroLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="priceLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -433,7 +553,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;priceLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="priceTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 82</value>
@@ -460,7 +580,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;priceTextBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="amountLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -487,7 +607,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;amountLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="amountUnitComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>167, 56</value>
@@ -508,7 +628,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;amountUnitComboBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="amountTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 56</value>
@@ -535,13 +655,16 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;amountTextBox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
+  </data>
+  <data name="categoryComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="categoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 29</value>
   </data>
   <data name="categoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 21</value>
+    <value>768, 21</value>
   </data>
   <data name="categoryComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -556,7 +679,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;categoryComboBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="categoryLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -583,7 +706,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;categoryLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
   </data>
   <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 300</value>
@@ -607,13 +730,16 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
+  </data>
+  <data name="titleTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="titleTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 3</value>
   </data>
   <data name="titleTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 20</value>
+    <value>768, 20</value>
   </data>
   <data name="titleTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -628,7 +754,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;titleTextBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>17</value>
   </data>
   <data name="titleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -655,7 +781,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;titleLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>18</value>
   </data>
   <data name="&gt;&gt;foodSplitContainer.Panel2.Name" xml:space="preserve">
     <value>foodSplitContainer.Panel2</value>
@@ -670,10 +796,10 @@
     <value>1</value>
   </data>
   <data name="foodSplitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>955, 384</value>
+    <value>1201, 508</value>
   </data>
   <data name="foodSplitContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>297</value>
+    <value>364</value>
   </data>
   <data name="foodSplitContainer.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -685,87 +811,33 @@
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;foodSplitContainer.Parent" xml:space="preserve">
-    <value>foodMenuTabPage</value>
+    <value>leftPanel</value>
   </data>
   <data name="&gt;&gt;foodSplitContainer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="mainTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="leftPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="foodMenuTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="leftPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
   </data>
-  <data name="foodMenuTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="leftPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1201, 508</value>
   </data>
-  <data name="foodMenuTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>961, 390</value>
-  </data>
-  <data name="foodMenuTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="foodMenuTabPage.Text" xml:space="preserve">
-    <value>Food menu</value>
-  </data>
-  <data name="&gt;&gt;foodMenuTabPage.Name" xml:space="preserve">
-    <value>foodMenuTabPage</value>
-  </data>
-  <data name="&gt;&gt;foodMenuTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;foodMenuTabPage.Parent" xml:space="preserve">
-    <value>mainTabControl</value>
-  </data>
-  <data name="&gt;&gt;foodMenuTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="screensTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="screensTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="screensTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>961, 390</value>
-  </data>
-  <data name="screensTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="screensTabPage.Text" xml:space="preserve">
-    <value>Screens</value>
-  </data>
-  <data name="&gt;&gt;screensTabPage.Name" xml:space="preserve">
-    <value>screensTabPage</value>
-  </data>
-  <data name="&gt;&gt;screensTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;screensTabPage.Parent" xml:space="preserve">
-    <value>mainTabControl</value>
-  </data>
-  <data name="&gt;&gt;screensTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="mainTabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="mainTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>969, 416</value>
-  </data>
-  <data name="mainTabControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="leftPanel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;mainTabControl.Name" xml:space="preserve">
-    <value>mainTabControl</value>
+  <data name="&gt;&gt;leftPanel.Name" xml:space="preserve">
+    <value>leftPanel</value>
   </data>
-  <data name="&gt;&gt;mainTabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;leftPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;mainTabControl.Parent" xml:space="preserve">
+  <data name="&gt;&gt;leftPanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;mainTabControl.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;leftPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -775,7 +847,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>969, 443</value>
+    <value>1201, 532</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CanteenBoard</value>
@@ -784,6 +856,12 @@
     <value>exitToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;updateToolStripMenuItem.Name" xml:space="preserve">
+    <value>updateToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;updateToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

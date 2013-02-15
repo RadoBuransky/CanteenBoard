@@ -11,6 +11,8 @@ using CanteenBoard.Core.Processors;
 using CanteenBoard.Repositories;
 using CanteenBoard.Repositories.Impl;
 using System.Configuration;
+using CanteenBoard.Entities.Boards;
+using CanteenBoard.WinForms.BoardTemplates;
 
 namespace CanteenBoard.WinForms.Config.Windsor
 {
@@ -33,8 +35,13 @@ namespace CanteenBoard.WinForms.Config.Windsor
                     .DependsOn(
                         Dependency.OnValue("connectionString", ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString),
                         Dependency.OnAppSettingsValue("databaseName", "DbName")),
+
                 Component.For<IFoodProcessor>()
-                    .ImplementedBy<FoodProcessor>());
+                    .ImplementedBy<FoodProcessor>(),
+                    
+                Component.For<BoardTemplate>()
+                    .ImplementedBy<DailyMenuBoardTemplate>()
+                    .Named("DailyMenuBoardTemplate"));
         }
     }
 }

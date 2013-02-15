@@ -18,7 +18,12 @@ namespace CanteenBoard.WinForms.Forms.Boards
 
         private void DailyMenuBoardForm_MouseClick(object sender, MouseEventArgs e)
         {
-            Application.Exit();
+            Close();
+        }
+
+        private void DailyMenuBoardForm_Load(object sender, EventArgs e)
+        {
+            label1.Text = Bounds.Left + ", " + Bounds.Top + ", " + Bounds.Width + ", " + Bounds.Height;
         }
     }
 }

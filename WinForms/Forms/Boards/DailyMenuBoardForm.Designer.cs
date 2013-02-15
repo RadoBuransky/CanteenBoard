@@ -30,8 +30,9 @@
         {
             this._0labelWeight = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this._0labelFoodTitle = new System.Windows.Forms.Label();
             this._0labelFoodPrice = new System.Windows.Forms.Label();
+            this._0labelFoodTitle = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,15 +60,6 @@
             this.panel1.Size = new System.Drawing.Size(782, 87);
             this.panel1.TabIndex = 1;
             // 
-            // _0labelFoodTitle
-            // 
-            this._0labelFoodTitle.AutoSize = true;
-            this._0labelFoodTitle.Location = new System.Drawing.Point(190, 35);
-            this._0labelFoodTitle.Name = "_0labelFoodTitle";
-            this._0labelFoodTitle.Size = new System.Drawing.Size(54, 13);
-            this._0labelFoodTitle.TabIndex = 1;
-            this._0labelFoodTitle.Text = "Food.Title";
-            // 
             // _0labelFoodPrice
             // 
             this._0labelFoodPrice.AutoSize = true;
@@ -77,6 +69,24 @@
             this._0labelFoodPrice.TabIndex = 2;
             this._0labelFoodPrice.Text = "Food.Price";
             // 
+            // _0labelFoodTitle
+            // 
+            this._0labelFoodTitle.AutoSize = true;
+            this._0labelFoodTitle.Location = new System.Drawing.Point(190, 35);
+            this._0labelFoodTitle.Name = "_0labelFoodTitle";
+            this._0labelFoodTitle.Size = new System.Drawing.Size(54, 13);
+            this._0labelFoodTitle.TabIndex = 1;
+            this._0labelFoodTitle.Text = "Food.Title";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(329, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
+            // 
             // DailyMenuBoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -84,6 +94,7 @@
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
@@ -95,10 +106,12 @@
             this.ShowInTaskbar = false;
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.DailyMenuBoardForm_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DailyMenuBoardForm_MouseClick);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -108,5 +121,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label _0labelFoodPrice;
         private System.Windows.Forms.Label _0labelFoodTitle;
+        private System.Windows.Forms.Label label1;
     }
 }

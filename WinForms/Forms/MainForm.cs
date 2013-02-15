@@ -15,6 +15,8 @@ using CanteenBoard.WinForms.Validation;
 using CanteenBoard.WinForms.Forms.MainFormControls;
 using CanteenBoard.WinForms.Extensions;
 using CanteenBoard.WinForms.Forms.Boards;
+using Microsoft.Win32;
+using CanteenBoard.Entities.Boards;
 
 namespace CanteenBoard.WinForms.Forms
 {
@@ -65,6 +67,8 @@ namespace CanteenBoard.WinForms.Forms
             _foodPanel.InitAllergens();
             ReloadTree();
             _foodPanel.ReloadCategoriesComboBox();
+            InitBoardTemplates();
+            InitScreens();
 
             CommonValidator.ToDecimal(priceTextBox);
             CommonValidator.ToDecimal(amountTextBox);
@@ -114,6 +118,14 @@ namespace CanteenBoard.WinForms.Forms
             Screen[] screens = Screen.AllScreens;
 
             SwapFood(true);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DailyMenuBoardForm form = new DailyMenuBoardForm();
+            //form.StartPosition = FormStartPosition.Manual;
+            //form.SetBounds(bounds.Left, bounds.Top, bounds.Width, bounds.Height, BoundsSpecified.All);
+            form.Show();
         }
 
         //==========================================================================================
@@ -171,10 +183,62 @@ namespace CanteenBoard.WinForms.Forms
             ReloadTree();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void InitScreens()
         {
-            DailyMenuBoardForm form = new DailyMenuBoardForm();
-            form.Show();
+            SystemEvents.DisplaySettingsChanged += DisplaySettingsChanged;
+            RefreshScreens();
+        }
+
+        private void InitBoardTemplates()
+        {
+            boardTemplateComboBox.BeginUpdate();
+            try
+            {
+                boardTemplateComboBox.DisplayMember = "Key";
+                boardTemplateComboBox.ValueMember = "Value";
+                boardTemplateComboBox.Items.Clear();
+
+                BoardTemplate[] boardTemplates = CastleContainer.Instance.ResolveAll<BoardTemplate>();
+                foreach (BoardTemplate boardTemplate in boardTemplates)
+                {
+                    string typeName = boardTemplate.GetType().Name;
+                    boardTemplateComboBox.Items.Add(new KeyValuePair<string, string>(
+                        Res.BoardTemplate.ResourceManager.GetString(typeName), typeName));
+                }
+            }
+            finally
+            {
+                boardTemplateComboBox.EndUpdate();
+            }
+        }
+
+        private void RefreshScreens()
+        {
+            screenNameComboBox.BeginUpdate();
+            try
+            {
+                screenNameComboBox.DisplayMember = "Key";
+                screenNameComboBox.ValueMember = "Value";
+                screenNameComboBox.Items.Clear();
+                foreach (Screen screen in Screen.AllScreens)
+                {
+                    if (screen.Primary)
+                        continue;
+
+                    screenNameComboBox.Items.Add(new KeyValuePair<string, string>(
+                        string.Format("{0} {1}x{2}", screen.DeviceName, screen.Bounds.Width, screen.Bounds.Height),
+                        screen.DeviceName));
+                }
+            }
+            finally
+            {
+                screenNameComboBox.EndUpdate();
+            }
+        }
+
+        private void DisplaySettingsChanged(object sender, EventArgs e)
+        {
+            RefreshScreens();
         }
     }
 }
