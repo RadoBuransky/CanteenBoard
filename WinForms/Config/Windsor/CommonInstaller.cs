@@ -38,6 +38,9 @@ namespace CanteenBoard.WinForms.Config.Windsor
 
                 Component.For<IFoodProcessor>()
                     .ImplementedBy<FoodProcessor>(),
+
+                Component.For<IBoardProcessor>()
+                    .ImplementedBy<BoardProcessor>(),
                     
                 Component.For<BoardTemplate>()
                     .ImplementedBy<DailyMenuBoardTemplate>()

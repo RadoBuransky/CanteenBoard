@@ -30,14 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.foodSplitContainer = new System.Windows.Forms.SplitContainer();
             this.upButton = new System.Windows.Forms.Button();
             this.addNewFoodButton = new System.Windows.Forms.Button();
             this.downButton = new System.Windows.Forms.Button();
             this.foodTreeView = new System.Windows.Forms.TreeView();
+            this.boardTemplateComboBox = new System.Windows.Forms.ComboBox();
+            this.boardTemplateLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.screenNameComboBox = new System.Windows.Forms.ComboBox();
             this.allergensLabel = new System.Windows.Forms.Label();
+            this.screenNameLabel = new System.Windows.Forms.Label();
             this.allergensListBox = new System.Windows.Forms.ListBox();
             this.deleteFoodButton = new System.Windows.Forms.Button();
             this.euroLabel = new System.Windows.Forms.Label();
@@ -52,11 +57,8 @@
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.boardTemplateComboBox = new System.Windows.Forms.ComboBox();
-            this.templateNameLabel = new System.Windows.Forms.Label();
-            this.screenNameComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showItButton = new System.Windows.Forms.Button();
+            this.showItComboBox = new System.Windows.Forms.ComboBox();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).BeginInit();
             this.foodSplitContainer.Panel1.SuspendLayout();
@@ -72,6 +74,12 @@
             this.exitToolStripMenuItem});
             resources.ApplyResources(this.mainMenuStrip, "mainMenuStrip");
             this.mainMenuStrip.Name = "mainMenuStrip";
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            resources.ApplyResources(this.updateToolStripMenuItem, "updateToolStripMenuItem");
             // 
             // exitToolStripMenuItem
             // 
@@ -94,12 +102,14 @@
             // 
             // foodSplitContainer.Panel2
             // 
+            this.foodSplitContainer.Panel2.Controls.Add(this.showItComboBox);
+            this.foodSplitContainer.Panel2.Controls.Add(this.showItButton);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateComboBox);
-            this.foodSplitContainer.Panel2.Controls.Add(this.templateNameLabel);
+            this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateLabel);
             this.foodSplitContainer.Panel2.Controls.Add(this.button1);
             this.foodSplitContainer.Panel2.Controls.Add(this.screenNameComboBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.allergensLabel);
-            this.foodSplitContainer.Panel2.Controls.Add(this.label1);
+            this.foodSplitContainer.Panel2.Controls.Add(this.screenNameLabel);
             this.foodSplitContainer.Panel2.Controls.Add(this.allergensListBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.deleteFoodButton);
             this.foodSplitContainer.Panel2.Controls.Add(this.euroLabel);
@@ -143,6 +153,18 @@
             this.foodTreeView.Name = "foodTreeView";
             this.foodTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.foodTreeView_AfterSelect);
             // 
+            // boardTemplateComboBox
+            // 
+            resources.ApplyResources(this.boardTemplateComboBox, "boardTemplateComboBox");
+            this.boardTemplateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boardTemplateComboBox.FormattingEnabled = true;
+            this.boardTemplateComboBox.Name = "boardTemplateComboBox";
+            // 
+            // boardTemplateLabel
+            // 
+            resources.ApplyResources(this.boardTemplateLabel, "boardTemplateLabel");
+            this.boardTemplateLabel.Name = "boardTemplateLabel";
+            // 
             // button1
             // 
             resources.ApplyResources(this.button1, "button1");
@@ -150,10 +172,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // screenNameComboBox
+            // 
+            resources.ApplyResources(this.screenNameComboBox, "screenNameComboBox");
+            this.screenNameComboBox.FormattingEnabled = true;
+            this.screenNameComboBox.Name = "screenNameComboBox";
+            this.screenNameComboBox.SelectedIndexChanged += new System.EventHandler(this.screenNameComboBox_SelectedIndexChanged);
+            // 
             // allergensLabel
             // 
             resources.ApplyResources(this.allergensLabel, "allergensLabel");
             this.allergensLabel.Name = "allergensLabel";
+            // 
+            // screenNameLabel
+            // 
+            resources.ApplyResources(this.screenNameLabel, "screenNameLabel");
+            this.screenNameLabel.Name = "screenNameLabel";
             // 
             // allergensListBox
             // 
@@ -235,34 +269,18 @@
             resources.ApplyResources(this.leftPanel, "leftPanel");
             this.leftPanel.Name = "leftPanel";
             // 
-            // boardTemplateComboBox
+            // showItButton
             // 
-            resources.ApplyResources(this.boardTemplateComboBox, "boardTemplateComboBox");
-            this.boardTemplateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.boardTemplateComboBox.FormattingEnabled = true;
-            this.boardTemplateComboBox.Name = "boardTemplateComboBox";
+            resources.ApplyResources(this.showItButton, "showItButton");
+            this.showItButton.Name = "showItButton";
+            this.showItButton.UseVisualStyleBackColor = true;
             // 
-            // templateNameLabel
+            // showItComboBox
             // 
-            resources.ApplyResources(this.templateNameLabel, "templateNameLabel");
-            this.templateNameLabel.Name = "templateNameLabel";
-            // 
-            // screenNameComboBox
-            // 
-            resources.ApplyResources(this.screenNameComboBox, "screenNameComboBox");
-            this.screenNameComboBox.FormattingEnabled = true;
-            this.screenNameComboBox.Name = "screenNameComboBox";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // updateToolStripMenuItem
-            // 
-            this.updateToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            resources.ApplyResources(this.updateToolStripMenuItem, "updateToolStripMenuItem");
+            this.showItComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.showItComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.showItComboBox, "showItComboBox");
+            this.showItComboBox.Name = "showItComboBox";
             // 
             // MainForm
             // 
@@ -315,9 +333,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel leftPanel;
         private System.Windows.Forms.ComboBox screenNameComboBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label screenNameLabel;
         private System.Windows.Forms.ComboBox boardTemplateComboBox;
-        private System.Windows.Forms.Label templateNameLabel;
+        private System.Windows.Forms.Label boardTemplateLabel;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
+        private System.Windows.Forms.ComboBox showItComboBox;
+        private System.Windows.Forms.Button showItButton;
     }
 }

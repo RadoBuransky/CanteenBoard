@@ -17,6 +17,7 @@ using CanteenBoard.WinForms.Extensions;
 using CanteenBoard.WinForms.Forms.Boards;
 using Microsoft.Win32;
 using CanteenBoard.Entities.Boards;
+using System.Diagnostics.Contracts;
 
 namespace CanteenBoard.WinForms.Forms
 {
@@ -31,6 +32,11 @@ namespace CanteenBoard.WinForms.Forms
         private readonly IFoodProcessor _foodProcessor;
 
         /// <summary>
+        /// The board processor
+        /// </summary>
+        private readonly IBoardProcessor _boardProcessor;
+
+        /// <summary>
         /// The Food panel
         /// </summary>
         private readonly FoodPanel _foodPanel;
@@ -39,11 +45,16 @@ namespace CanteenBoard.WinForms.Forms
         /// Initializes a new instance of the <see cref="MainForm" /> class.
         /// </summary>
         /// <param name="foodProcessor">The food processor.</param>
-        public MainForm(IFoodProcessor foodProcessor)
+        /// <param name="boardProcessor">The board processor.</param>
+        public MainForm(IFoodProcessor foodProcessor, IBoardProcessor boardProcessor)
         {
+            Contract.Requires(foodProcessor != null);
+            Contract.Requires(boardProcessor != null);
+
             InitializeComponent();
 
             _foodProcessor = foodProcessor;
+            _boardProcessor = boardProcessor;
             _foodPanel = new FoodPanel(this, amountUnitComboBox, allergensListBox, titleTextBox, categoryComboBox, amountTextBox,
                 priceTextBox, foodProcessor);
         }
@@ -128,6 +139,36 @@ namespace CanteenBoard.WinForms.Forms
             form.Show();
         }
 
+        private void screenNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Board board = _boardProcessor.Get(((KeyValuePair<string, string>)screenNameComboBox.SelectedItem).Value);
+            if (board != null)
+            {
+                foreach (KeyValuePair<string, BoardTemplate> item in boardTemplateComboBox.Items)
+                {
+                    if (item.Value == board.BoardTemplate)
+                    {
+                        boardTemplateComboBox.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                boardTemplateComboBox.SelectedIndex = 0;
+            }
+        }
+
+        private void DisplaySettingsChanged(object sender, EventArgs e)
+        {
+            RefreshScreens();
+
+            /*
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_DesktopMonitor");
+            foreach (ManagementObject obj in searcher.Get())
+                Console.WriteLine("PNP Device ID: {0}", obj["PNPDeviceID"]);*/
+        }
+
         //==========================================================================================
         // Private methods
         //==========================================================================================
@@ -201,9 +242,8 @@ namespace CanteenBoard.WinForms.Forms
                 BoardTemplate[] boardTemplates = CastleContainer.Instance.ResolveAll<BoardTemplate>();
                 foreach (BoardTemplate boardTemplate in boardTemplates)
                 {
-                    string typeName = boardTemplate.GetType().Name;
-                    boardTemplateComboBox.Items.Add(new KeyValuePair<string, string>(
-                        Res.BoardTemplate.ResourceManager.GetString(typeName), typeName));
+                    boardTemplateComboBox.Items.Add(new KeyValuePair<string, BoardTemplate>(
+                        Res.BoardTemplate.ResourceManager.GetString(boardTemplate.GetType().Name), boardTemplate));
                 }
             }
             finally
@@ -220,6 +260,8 @@ namespace CanteenBoard.WinForms.Forms
                 screenNameComboBox.DisplayMember = "Key";
                 screenNameComboBox.ValueMember = "Value";
                 screenNameComboBox.Items.Clear();
+
+                /*
                 foreach (Screen screen in Screen.AllScreens)
                 {
                     if (screen.Primary)
@@ -228,17 +270,31 @@ namespace CanteenBoard.WinForms.Forms
                     screenNameComboBox.Items.Add(new KeyValuePair<string, string>(
                         string.Format("{0} {1}x{2}", screen.DeviceName, screen.Bounds.Width, screen.Bounds.Height),
                         screen.DeviceName));
-                }
+                }*/
+
+                screenNameComboBox.Items.Add(new KeyValuePair<string, string>(@"\\.\DEVICE1", @"\\.\DEVICE1"));
+                screenNameComboBox.Items.Add(new KeyValuePair<string, string>(@"\\.\DEVICE2", @"\\.\DEVICE2"));
             }
             finally
             {
                 screenNameComboBox.EndUpdate();
             }
-        }
 
-        private void DisplaySettingsChanged(object sender, EventArgs e)
-        {
-            RefreshScreens();
+            bool screenExists = screenNameComboBox.Items.Count > 0;
+
+            if (screenExists)
+            {
+                screenNameComboBox.SelectedIndex = 0;
+            }
+
+            showItButton.Visible = screenExists;
+            showItComboBox.Visible = screenExists;
+            updateToolStripMenuItem.Visible = screenExists;
+            showToolStripMenuItem.Visible = screenExists;
+            screenNameLabel.Visible = screenExists;
+            screenNameComboBox.Visible = screenExists;
+            boardTemplateLabel.Visible = screenExists;
+            boardTemplateComboBox.Visible = screenExists;
         }
     }
 }

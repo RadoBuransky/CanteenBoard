@@ -10,12 +10,14 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson;
 using System.Diagnostics.Contracts;
 using MongoDB.Driver.Builders;
+using CanteenBoard.Entities.Boards;
 
 namespace CanteenBoard.Repositories.Impl
 {
     public class GenericRepository : IRepository
     {
         private const string _foodCollection = "Food";
+        private const string _boardCollection = "Board";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GenericRepository" /> class.
@@ -139,6 +141,10 @@ namespace CanteenBoard.Repositories.Impl
             {
                 return _foodCollection;
             }
+            if (type.IsAssignableFrom(typeof(Board)))
+            {
+                return _boardCollection;
+            }
 
             throw new CanteenBoardException("Collection not defined!");
         }
@@ -152,6 +158,12 @@ namespace CanteenBoard.Repositories.Impl
             {
                 cm.AutoMap();
                 cm.SetIdMember(cm.GetMemberMap(c => c.Title));
+            });
+
+            BsonClassMap.RegisterClassMap<Board>(cm =>
+            {
+                cm.AutoMap();
+                cm.SetIdMember(cm.GetMemberMap(c => c.ScreenDeviceName));
             });
         }
     }

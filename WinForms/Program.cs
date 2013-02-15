@@ -44,7 +44,7 @@ namespace CanteenBoard.WinForms
                         // Initialize winforms
                         Application.EnableVisualStyles();
                         Application.SetCompatibleTextRenderingDefault(false);
-                        Application.Run(new MainForm(CastleContainer.Resolve<IFoodProcessor>()));
+                        Application.Run(new MainForm(CastleContainer.Resolve<IFoodProcessor>(), CastleContainer.Resolve<IBoardProcessor>()));
                     }
                     else
                     {
