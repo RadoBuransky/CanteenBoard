@@ -37,6 +37,7 @@
             this.addNewFoodButton = new System.Windows.Forms.Button();
             this.downButton = new System.Windows.Forms.Button();
             this.foodTreeView = new System.Windows.Forms.TreeView();
+            this.boardGroupComboBox = new System.Windows.Forms.ComboBox();
             this.boardTemplateComboBox = new System.Windows.Forms.ComboBox();
             this.boardTemplateLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -57,8 +58,7 @@
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.showItButton = new System.Windows.Forms.Button();
-            this.showItComboBox = new System.Windows.Forms.ComboBox();
+            this.boardLabel = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).BeginInit();
             this.foodSplitContainer.Panel1.SuspendLayout();
@@ -102,8 +102,8 @@
             // 
             // foodSplitContainer.Panel2
             // 
-            this.foodSplitContainer.Panel2.Controls.Add(this.showItComboBox);
-            this.foodSplitContainer.Panel2.Controls.Add(this.showItButton);
+            this.foodSplitContainer.Panel2.Controls.Add(this.boardLabel);
+            this.foodSplitContainer.Panel2.Controls.Add(this.boardGroupComboBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateComboBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateLabel);
             this.foodSplitContainer.Panel2.Controls.Add(this.button1);
@@ -153,12 +153,20 @@
             this.foodTreeView.Name = "foodTreeView";
             this.foodTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.foodTreeView_AfterSelect);
             // 
+            // boardGroupComboBox
+            // 
+            this.boardGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boardGroupComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.boardGroupComboBox, "boardGroupComboBox");
+            this.boardGroupComboBox.Name = "boardGroupComboBox";
+            // 
             // boardTemplateComboBox
             // 
             resources.ApplyResources(this.boardTemplateComboBox, "boardTemplateComboBox");
             this.boardTemplateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boardTemplateComboBox.FormattingEnabled = true;
             this.boardTemplateComboBox.Name = "boardTemplateComboBox";
+            this.boardTemplateComboBox.SelectedIndexChanged += new System.EventHandler(this.boardTemplateComboBox_SelectedIndexChanged);
             // 
             // boardTemplateLabel
             // 
@@ -175,6 +183,7 @@
             // screenNameComboBox
             // 
             resources.ApplyResources(this.screenNameComboBox, "screenNameComboBox");
+            this.screenNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.screenNameComboBox.FormattingEnabled = true;
             this.screenNameComboBox.Name = "screenNameComboBox";
             this.screenNameComboBox.SelectedIndexChanged += new System.EventHandler(this.screenNameComboBox_SelectedIndexChanged);
@@ -269,18 +278,10 @@
             resources.ApplyResources(this.leftPanel, "leftPanel");
             this.leftPanel.Name = "leftPanel";
             // 
-            // showItButton
+            // boardLabel
             // 
-            resources.ApplyResources(this.showItButton, "showItButton");
-            this.showItButton.Name = "showItButton";
-            this.showItButton.UseVisualStyleBackColor = true;
-            // 
-            // showItComboBox
-            // 
-            this.showItComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.showItComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.showItComboBox, "showItComboBox");
-            this.showItComboBox.Name = "showItComboBox";
+            resources.ApplyResources(this.boardLabel, "boardLabel");
+            this.boardLabel.Name = "boardLabel";
             // 
             // MainForm
             // 
@@ -337,7 +338,7 @@
         private System.Windows.Forms.ComboBox boardTemplateComboBox;
         private System.Windows.Forms.Label boardTemplateLabel;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
-        private System.Windows.Forms.ComboBox showItComboBox;
-        private System.Windows.Forms.Button showItButton;
+        private System.Windows.Forms.ComboBox boardGroupComboBox;
+        private System.Windows.Forms.Label boardLabel;
     }
 }

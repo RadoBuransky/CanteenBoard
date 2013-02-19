@@ -63,9 +63,27 @@ namespace CanteenBoard.WinForms.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Daily menu.
         /// </summary>
+        internal static string DailyMenu {
+            get {
+                return ResourceManager.GetString("DailyMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily menu.
+        /// </summary>
         internal static string DailyMenuBoardTemplate {
             get {
                 return ResourceManager.GetString("DailyMenuBoardTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soups.
+        /// </summary>
+        internal static string Soups {
+            get {
+                return ResourceManager.GetString("Soups", resourceCulture);
             }
         }
     }

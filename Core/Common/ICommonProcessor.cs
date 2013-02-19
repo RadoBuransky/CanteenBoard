@@ -1,4 +1,5 @@
-﻿namespace CanteenBoard.Core.Common
+﻿using System.Collections.Generic;
+namespace CanteenBoard.Core.Common
 {
     /// <summary>
     /// Common processor interface.
@@ -11,5 +12,11 @@
         /// </summary>
         /// <param name="entity">The entity.</param>
         void Save(T entity);
+
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<T> GetAll();
     }
 }

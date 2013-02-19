@@ -41,8 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boards\Board.cs" />
+    <Compile Include="Menu\BoardAssignment.cs" />
     <Compile Include="Boards\BoardTemplate.cs" />
+    <Compile Include="Boards\ScreenTemplate.cs" />
     <Compile Include="CanteenBoardException.cs" />
     <Compile Include="Menu\Allergen.cs" />
     <Compile Include="Menu\Amount.cs" />

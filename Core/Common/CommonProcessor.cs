@@ -1,5 +1,7 @@
 ﻿using CanteenBoard.Repositories;
 using System.Diagnostics.Contracts;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CanteenBoard.Core.Common
 {
@@ -27,6 +29,15 @@ namespace CanteenBoard.Core.Common
             Contract.Requires(entity != null);
 
             Repository.Save(entity);
+        }
+
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerable<T> GetAll()
+        {
+            return Repository.Find<T>().ToArray();
         }
 
         /// <summary>

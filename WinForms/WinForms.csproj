@@ -67,6 +67,7 @@
     <Compile Include="BoardTemplates\DailyMenuBoardTemplate.cs" />
     <Compile Include="CastleContainer.cs" />
     <Compile Include="Config\Windsor\CommonInstaller.cs" />
+    <Compile Include="Extensions\ComboBoxExtensions.cs" />
     <Compile Include="Extensions\TreeViewExtensions.cs" />
     <Compile Include="Forms\Boards\DailyMenuBoardForm.cs">
       <SubType>Form</SubType>

@@ -13,6 +13,8 @@ using CanteenBoard.Repositories.Impl;
 using System.Configuration;
 using CanteenBoard.Entities.Boards;
 using CanteenBoard.WinForms.BoardTemplates;
+using Castle.MicroKernel;
+using System.Collections;
 
 namespace CanteenBoard.WinForms.Config.Windsor
 {
@@ -40,11 +42,22 @@ namespace CanteenBoard.WinForms.Config.Windsor
                     .ImplementedBy<FoodProcessor>(),
 
                 Component.For<IBoardProcessor>()
-                    .ImplementedBy<BoardProcessor>(),
+                    .ImplementedBy<BoardProcessor>()
+                    .DynamicParameters((DynamicParametersDelegate)GetBoardTemplates),
                     
                 Component.For<BoardTemplate>()
                     .ImplementedBy<DailyMenuBoardTemplate>()
                     .Named("DailyMenuBoardTemplate"));
+        }
+
+        /// <summary>
+        /// Gets the board templates.
+        /// </summary>
+        /// <param name="kernel">The kernel.</param>
+        /// <param name="parameters">The parameters.</param>
+        public static void GetBoardTemplates(IKernel kernel, IDictionary parameters)
+        {
+            parameters["boardTemplates"] = CastleContainer.Instance.ResolveAll<BoardTemplate>();
         }
     }
 }

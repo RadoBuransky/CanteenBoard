@@ -1,4 +1,6 @@
-﻿namespace CanteenBoard.Entities.Menu
+﻿using CanteenBoard.Entities.Boards;
+
+namespace CanteenBoard.Entities.Menu
 {
     /// <summary>
     /// One food in a menu.
@@ -69,5 +71,13 @@
         /// The index.
         /// </value>
         public int Index { get; set; }
+
+        /// <summary>
+        /// Gets or sets the board.
+        /// </summary>
+        /// <value>
+        /// The board.
+        /// </value>
+        public BoardAssignment BoardAssignment { get; set; }
     }
 }

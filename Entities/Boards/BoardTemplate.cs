@@ -13,6 +13,17 @@ namespace CanteenBoard.Entities.Boards
     public abstract class BoardTemplate
     {
         /// <summary>
+        /// Gets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
+        public string Name
+        {
+            get { return GetType().Name; }
+        }
+
+        /// <summary>
         /// Gets the groups.
         /// </summary>
         /// <value>
@@ -41,15 +52,15 @@ namespace CanteenBoard.Entities.Boards
         /// <summary>
         /// Shows this instance.
         /// </summary>
-        /// <param name="board">The board.</param>
-        public void Show(Board board)
+        /// <param name="entities">The entities.</param>
+        public void Show(IEnumerable<object> entities)
         {
-            Contract.Requires(board != null);
+            Contract.Requires(entities != null);
 
             Form form = (Form)Activator.CreateInstance(FormType);
 
             // Map values from the board to the form
-            BoardToForm(board, form);
+            BoardToForm(entities, form);
             
             form.Show();
         }
@@ -57,9 +68,9 @@ namespace CanteenBoard.Entities.Boards
         /// <summary>
         /// Maps the values.
         /// </summary>
-        /// <param name="board">The board.</param>
+        /// <param name="entities">The entities.</param>
         /// <param name="form">The form.</param>
-        private void BoardToForm(Board board, Form form)
+        private void BoardToForm(IEnumerable<object> entities, Form form)
         {
         }
     }

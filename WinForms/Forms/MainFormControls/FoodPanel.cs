@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using CanteenBoard.Entities.Menu;
 using Res = CanteenBoard.WinForms.Resources;
 using CanteenBoard.Core;
+using CanteenBoard.Entities.Boards;
+using CanteenBoard.WinForms.Extensions;
 
 namespace CanteenBoard.WinForms.Forms.MainFormControls
 {
@@ -18,8 +20,10 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
         private readonly ComboBox _categoryComboBox;
         private readonly TextBox _amountTextBox;
         private readonly TextBox _priceTextBox;
+        private readonly ComboBox _boardGroupComboBox;
 
         private readonly IFoodProcessor _foodProcessor;
+        private readonly IBoardProcessor _boardProcessor;
 
         private Food _food = new Food();
 
@@ -30,7 +34,7 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
         /// <param name="amountUnitComboBox">The amount unit combo box.</param>
         /// <param name="allergensListBox">The allergens list box.</param>
         public FoodPanel(MainForm mainForm, ComboBox amountUnitComboBox, ListBox allergensListBox, TextBox titleTextBox, ComboBox categoryComboBox,
-            TextBox amountTextBox, TextBox priceTextBox, IFoodProcessor foodProcessor)
+            TextBox amountTextBox, TextBox priceTextBox, ComboBox boardGroupComboBox, IFoodProcessor foodProcessor, IBoardProcessor boardProcessor)
         {
             _mainForm = mainForm;
             _amountUnitComboBox = amountUnitComboBox;
@@ -39,7 +43,9 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             _categoryComboBox = categoryComboBox;
             _amountTextBox = amountTextBox;
             _priceTextBox = priceTextBox;
+            _boardGroupComboBox = boardGroupComboBox;
             _foodProcessor = foodProcessor;
+            _boardProcessor = boardProcessor;
         }
 
         //==========================================================================================
@@ -159,6 +165,11 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
                 _food.Allergens |= item.Value;
             }
 
+            Tuple<string, string> selectedBoardGroup = _boardGroupComboBox.SelectedValueKVP<string, Tuple<string, string>>();
+            if (selectedBoardGroup != null)
+            {
+            }
+
             // Save food
             _foodProcessor.Save(_food);
 
@@ -218,6 +229,54 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
                 {
                     _allergensListBox.SelectedItems.Add(item);
                 }
+            }
+
+            RefreshBoardGroupComboBox(food);
+        }
+
+        /// <summary>
+        /// Refreshes the board combo box.
+        /// </summary>
+        /// <param name="food">The food.</param>
+        private void RefreshBoardGroupComboBox(Food food)
+        {
+            _boardGroupComboBox.BeginUpdate();
+            try
+            {
+                _boardGroupComboBox.DisplayMember = "Key";
+                _boardGroupComboBox.ValueMember = "Value";
+
+                // Get all boards (= screens)
+                _boardGroupComboBox.Items.Clear();
+                _boardGroupComboBox.AddKVP<string, Tuple<string, string>>(null, null);
+                foreach (Screen screen in Screen.AllScreens)
+                {
+                    // Get screen template for this screen
+                    ScreenTemplate screenTemplate = _boardProcessor.GetScreenTemplate(screen.DeviceName);
+
+                    if (screenTemplate == null)
+                        continue;
+
+                    // Get template for each board
+                    BoardTemplate boardTemplate = _boardProcessor.GetBoardTemplate(screenTemplate.BoardTemplateName);
+                    string boardTemplateName = Res.BoardTemplate.ResourceManager.GetString(boardTemplate.GetType().Name);
+
+                    // Get all groups for the template
+                    foreach (string group in boardTemplate.Groups)
+                    {
+                        // Does this group support our food?
+                        if (boardTemplate.IsSupported(group, food))
+                        {
+                            string title = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group) + " (" + screen.DeviceName + ")";
+
+                            int index = _boardGroupComboBox.AddKVP(title, new Tuple<string, string>(screen.DeviceName, group));
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                _boardGroupComboBox.EndUpdate();
             }
         }
     }
