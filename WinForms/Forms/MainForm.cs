@@ -126,8 +126,6 @@ namespace CanteenBoard.WinForms.Forms
 
         private void upButton_Click(object sender, EventArgs e)
         {
-            Screen[] screens = Screen.AllScreens;
-
             SwapFood(true);
         }
 
@@ -283,15 +281,15 @@ namespace CanteenBoard.WinForms.Forms
                     if (screen.Primary)
                         continue;
 
-                    AddScreenToComboBox(string deviceName, int width, int height)
+                    AddScreenToComboBox(string screen.GetCorrectedDeviceName(), int width, int height)
 
                     screenNameComboBox.Items.Add(new KeyValuePair<string, string>(
-                        string.Format("{0} {1}x{2}", screen.DeviceName, screen.Bounds.Width, screen.Bounds.Height),
-                        screen.DeviceName));
+                        string.Format("{0} {1}x{2}", screen.GetCorrectedDeviceName(), screen.Bounds.Width, screen.Bounds.Height),
+                        screen.GetCorrectedDeviceName()));
                 }*/
 
-                AddScreenToComboBox(@"\\.\DEVICE1", 320, 240);
-                AddScreenToComboBox(@"\\.\DEVICE2", 1680, 1050);
+                AddScreenToComboBox(@"\\.\DISPLAY1", 320, 240);
+                AddScreenToComboBox(@"\\.\DISPLAY2", 1680, 1050);
             }
             finally
             {

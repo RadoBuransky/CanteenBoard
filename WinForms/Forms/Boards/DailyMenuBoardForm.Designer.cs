@@ -39,16 +39,16 @@
             // _0labelWeight
             // 
             this._0labelWeight.AutoSize = true;
+            this._0labelWeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._0labelWeight.Location = new System.Drawing.Point(16, 35);
             this._0labelWeight.Name = "_0labelWeight";
-            this._0labelWeight.Size = new System.Drawing.Size(100, 13);
+            this._0labelWeight.Size = new System.Drawing.Size(102, 15);
             this._0labelWeight.TabIndex = 0;
             this._0labelWeight.Text = "Food.Amount.Value";
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Controls.Add(this._0labelFoodPrice);
@@ -93,19 +93,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DailyMenuBoardForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DailyMenuBoardForm_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DailyMenuBoardForm_MouseClick);
             this.panel1.ResumeLayout(false);

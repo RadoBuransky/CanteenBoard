@@ -68,6 +68,7 @@
     <Compile Include="CastleContainer.cs" />
     <Compile Include="Config\Windsor\CommonInstaller.cs" />
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="Extensions\ScreenExtensions.cs" />
     <Compile Include="Extensions\TreeViewExtensions.cs" />
     <Compile Include="Forms\Boards\DailyMenuBoardForm.cs">
       <SubType>Form</SubType>
@@ -82,6 +83,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainFormControls\FoodPanel.cs" />
+    <Compile Include="Layout\RubberLayout.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Allergen.Designer.cs">

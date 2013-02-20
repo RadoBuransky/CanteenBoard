@@ -34,7 +34,8 @@ namespace CanteenBoard.WinForms.Extensions
 
             foreach (KeyValuePair<Key, Value> item in comboBox.Items)
             {
-                if (func(item.Value))
+                if ((item.Value != null) &&
+                    (func(item.Value)))
                 {
                     comboBox.SelectedItem = item;
                     break;

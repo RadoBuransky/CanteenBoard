@@ -168,7 +168,12 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             Tuple<string, string> selectedBoardGroup = _boardGroupComboBox.SelectedValueKVP<string, Tuple<string, string>>();
             if (selectedBoardGroup != null)
             {
+                _food.BoardAssignment = new BoardAssignment();
+                _food.BoardAssignment.ScreenDeviceName = selectedBoardGroup.Item1;
+                _food.BoardAssignment.Group = selectedBoardGroup.Item2;
             }
+            else
+                _food.BoardAssignment = null;
 
             // Save food
             _foodProcessor.Save(_food);
@@ -232,6 +237,10 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             }
 
             RefreshBoardGroupComboBox(food);
+            if (food.BoardAssignment != null)
+            {
+                _boardGroupComboBox.SelectKVP<string, Tuple<string, string>>(t => (t.Item1 == food.BoardAssignment.ScreenDeviceName) && (t.Item2 == food.BoardAssignment.Group));
+            }
         }
 
         /// <summary>
@@ -252,7 +261,7 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
                 foreach (Screen screen in Screen.AllScreens)
                 {
                     // Get screen template for this screen
-                    ScreenTemplate screenTemplate = _boardProcessor.GetScreenTemplate(screen.DeviceName);
+                    ScreenTemplate screenTemplate = _boardProcessor.GetScreenTemplate(screen.GetCorrectedDeviceName());
 
                     if (screenTemplate == null)
                         continue;
@@ -267,9 +276,9 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
                         // Does this group support our food?
                         if (boardTemplate.IsSupported(group, food))
                         {
-                            string title = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group) + " (" + screen.DeviceName + ")";
+                            string title = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group) + " (" + screen.GetCorrectedDeviceName() + ")";
 
-                            int index = _boardGroupComboBox.AddKVP(title, new Tuple<string, string>(screen.DeviceName, group));
+                            int index = _boardGroupComboBox.AddKVP(title, new Tuple<string, string>(screen.GetCorrectedDeviceName(), group));
                         }
                     }
                 }
