@@ -12,7 +12,7 @@ namespace CanteenBoard.WinForms.Layout
     {
         private readonly Form _form;
         private Size _originalFormSize;
-        private Size _oldFormSize;
+        private Dictionary<string, Rectangle> _originalBounds = new Dictionary<string, Rectangle>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RubberLayout" /> class.
@@ -32,7 +32,8 @@ namespace CanteenBoard.WinForms.Layout
         {
             // Save original positions and sizes
             _originalFormSize = _form.Size;
-            _oldFormSize = _form.Size;
+            GetOriginalBounds(_form);
+
             _form.Layout += Form_Layout;
         }
 
@@ -44,12 +45,23 @@ namespace CanteenBoard.WinForms.Layout
             if (sender != _form)
                 return;
 
-            double dX = (double)_form.Width / (double)_oldFormSize.Width;
-            double dY = (double)_form.Height / (double)_oldFormSize.Height;
+            double dX = (double)_form.Width / (double)_originalFormSize.Width;
+            double dY = (double)_form.Height / (double)_originalFormSize.Height;
 
             ResizeChildren(_form, dX, dY);
+        }
 
-            _oldFormSize = _form.Size;
+        /// <summary>
+        /// Gets the original sizes.
+        /// </summary>
+        /// <param name="control">The control.</param>
+        private void GetOriginalBounds(Control control)
+        {
+            foreach (Control child in control.Controls)
+            {
+                _originalBounds.Add(child.Name, child.Bounds);
+                GetOriginalBounds(child);
+            }
         }
 
         /// <summary>
@@ -63,18 +75,21 @@ namespace CanteenBoard.WinForms.Layout
             // Resize all controls
             foreach (Control c in control.Controls)
             {
-                int newWidth = (int)((double)c.Width * dX);
+                Rectangle originalBounds;
+                if (!_originalBounds.TryGetValue(c.Name, out originalBounds))
+                    continue;
+
                 c.Bounds = new Rectangle(
-                    (int)((double)c.Left * dX),
-                    (int)((double)c.Top * dY),
-                    newWidth,
-                    (int)((double)c.Height * dY));
+                    (int)((double)originalBounds.X * dX),
+                    (int)((double)originalBounds.Y * dY),
+                    (int)((double)originalBounds.Width * dX),
+                    (int)((double)originalBounds.Height * dY));
 
                 if (c is Label)
                 {
-                    //StretchLabel((Label)c, newWidth, dX > 1.0f);
                     Label label = (Label)c;
-                    label.Font = new Font(label.Font.FontFamily, (int)((double)label.Font.Size * dX), label.Font.Style);
+                    Size targetSize = new Size(label.Size.Width - 0, label.Size.Height - 0);
+                    label.Font = FitLabel(label, targetSize);
                 }
 
                 ResizeChildren(c, dX, dY);
@@ -82,22 +97,31 @@ namespace CanteenBoard.WinForms.Layout
         }
 
         /// <summary>
-        /// Stretches the label.
+        /// Fits the label.
         /// </summary>
         /// <param name="label">The label.</param>
-        /// <param name="targetWidth">Width of the target.</param>
-        /// <param name="grow">if set to <c>true</c> [grow].</param>
-        private void StretchLabel(Label label, int targetWidth, bool grow)
+        /// <returns></returns>
+        private Font FitLabel(Label label, Size targetSize)
         {
-/*            if (label.Width == targetWidth)
-                return;
-
-            int newWidth = label.Width;
-            Font newFont = label.Font;
+            // Measure current size
+            Size size = TextRenderer.MeasureText(label.Text, label.Font, targetSize, TextFormatFlags.SingleLine);
+            bool grow = (size.Width < targetSize.Width) && (size.Height < targetSize.Height);
             float delta = grow ? 0.5f : -0.5f;
 
-            while (grow ? (newWidth < targetWidth) : (newWidth > targetWidth))
+            if ((!grow) &&
+                ((size.Width == targetSize.Width) || (size.Height == targetSize.Height)))
+                return label.Font;
+            
+            Size newSize = size;
+            Font newFont = label.Font;
+            Font result;
+            do
             {
+                result = newFont;
+
+                if (newFont.Size + delta < 0f)
+                    break;
+
                 try
                 {
                     newFont = new Font(label.Font.FontFamily, newFont.Size + delta, label.Font.Style);
@@ -107,8 +131,11 @@ namespace CanteenBoard.WinForms.Layout
                     break;
                 }
 
-                newWidth = System.Windows.Forms.TextRenderer.MeasureText(label.Text, newFont).Width;
-            }*/
+                newSize = TextRenderer.MeasureText(label.Text, newFont, targetSize, TextFormatFlags.SingleLine);
+            } while (grow ? ((newSize.Width < targetSize.Width) && (newSize.Height < targetSize.Height)) :
+                            ((newSize.Width >= targetSize.Width) && (newSize.Height >= targetSize.Height)));
+
+            return grow ? result : newFont;
         }
     }
 }

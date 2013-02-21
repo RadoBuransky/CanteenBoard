@@ -26,10 +26,5 @@ namespace CanteenBoard.WinForms.Forms.Boards
         {
             Close();
         }
-
-        private void DailyMenuBoardForm_Load(object sender, EventArgs e)
-        {
-            label1.Text = Bounds.Left + ", " + Bounds.Top + ", " + Bounds.Width + ", " + Bounds.Height;
-        }
     }
 }
