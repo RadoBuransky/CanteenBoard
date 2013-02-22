@@ -258,16 +258,20 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
                 // Get all boards (= screens)
                 _boardGroupComboBox.Items.Clear();
                 _boardGroupComboBox.AddKVP<string, Tuple<string, string>>(null, null);
-                foreach (Screen screen in Screen.AllScreens)
+                foreach (string screenDeviceName in _boardProcessor.GetAllScreenDeviceNames())
                 {
                     // Get screen template for this screen
-                    ScreenTemplate screenTemplate = _boardProcessor.GetScreenTemplate(screen.GetCorrectedDeviceName());
+                    ScreenTemplate screenTemplate = _boardProcessor.GetScreenTemplate(screenDeviceName);
 
-                    if (screenTemplate == null)
+                    if ((screenTemplate == null) ||
+                        (string.IsNullOrEmpty(screenTemplate.BoardTemplateName)))
                         continue;
 
                     // Get template for each board
                     BoardTemplate boardTemplate = _boardProcessor.GetBoardTemplate(screenTemplate.BoardTemplateName);
+                    if (boardTemplate == null)
+                        continue;
+
                     string boardTemplateName = Res.BoardTemplate.ResourceManager.GetString(boardTemplate.GetType().Name);
 
                     // Get all groups for the template
@@ -276,9 +280,9 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
                         // Does this group support our food?
                         if (boardTemplate.IsSupported(group, food))
                         {
-                            string title = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group) + " (" + screen.GetCorrectedDeviceName() + ")";
+                            string title = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group) + " (" + screenDeviceName + ")";
 
-                            int index = _boardGroupComboBox.AddKVP(title, new Tuple<string, string>(screen.GetCorrectedDeviceName(), group));
+                            int index = _boardGroupComboBox.AddKVP(title, new Tuple<string, string>(screenDeviceName, group));
                         }
                     }
                 }

@@ -33,18 +33,36 @@ namespace CanteenBoard.WinForms.Layout
             // Save original positions and sizes
             _originalFormSize = _form.Size;
             GetOriginalBounds(_form);
-
-            _form.Layout += Form_Layout;
         }
 
         /// <summary>
-        /// Resizes this instance.
+        /// Called when [fit font].
         /// </summary>
-        public void Form_Layout(object sender, EventArgs e)
+        /// <param name="labels">The labels.</param>
+        public void OnesizeFitFont(IEnumerable<Label> labels)
         {
-            if (sender != _form)
-                return;
+            Contract.Requires(labels != null);
 
+            Font result = null;
+            foreach (Label label in labels)
+            {
+                Font fitFont = FitLabel(label, label.Size);
+
+                if ((result == null) ||
+                    (fitFont.Size < result.Size))
+                    result = fitFont;
+            }
+
+            // Apply resulting font to all
+            foreach (Label label in labels)
+                label.Font = result;
+        }
+
+        /// <summary>
+        /// Relayouts this instance.
+        /// </summary>
+        public void Relayout()
+        {
             double dX = (double)_form.Width / (double)_originalFormSize.Width;
             double dY = (double)_form.Height / (double)_originalFormSize.Height;
 
@@ -84,13 +102,6 @@ namespace CanteenBoard.WinForms.Layout
                     (int)((double)originalBounds.Y * dY),
                     (int)((double)originalBounds.Width * dX),
                     (int)((double)originalBounds.Height * dY));
-
-                if (c is Label)
-                {
-                    Label label = (Label)c;
-                    Size targetSize = new Size(label.Size.Width - 0, label.Size.Height - 0);
-                    label.Font = FitLabel(label, targetSize);
-                }
 
                 ResizeChildren(c, dX, dY);
             }
@@ -133,7 +144,7 @@ namespace CanteenBoard.WinForms.Layout
 
                 newSize = TextRenderer.MeasureText(label.Text, newFont, targetSize, TextFormatFlags.SingleLine);
             } while (grow ? ((newSize.Width < targetSize.Width) && (newSize.Height < targetSize.Height)) :
-                            ((newSize.Width >= targetSize.Width) && (newSize.Height >= targetSize.Height)));
+                            ((newSize.Width > targetSize.Width) || (newSize.Height > targetSize.Height)));
 
             return grow ? result : newFont;
         }

@@ -71,7 +71,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
-    <Compile Include="Extensions\ScreenExtensions.cs" />
     <Compile Include="Extensions\TreeViewExtensions.cs" />
     <Compile Include="Forms\Boards\DailyMenuBoardForm.cs">
       <SubType>Form</SubType>

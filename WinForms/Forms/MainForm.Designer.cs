@@ -37,10 +37,10 @@
             this.addNewFoodButton = new System.Windows.Forms.Button();
             this.downButton = new System.Windows.Forms.Button();
             this.foodTreeView = new System.Windows.Forms.TreeView();
+            this.boardLabel = new System.Windows.Forms.Label();
             this.boardGroupComboBox = new System.Windows.Forms.ComboBox();
             this.boardTemplateComboBox = new System.Windows.Forms.ComboBox();
             this.boardTemplateLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.screenNameComboBox = new System.Windows.Forms.ComboBox();
             this.allergensLabel = new System.Windows.Forms.Label();
             this.screenNameLabel = new System.Windows.Forms.Label();
@@ -58,7 +58,6 @@
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.boardLabel = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).BeginInit();
             this.foodSplitContainer.Panel1.SuspendLayout();
@@ -106,7 +105,6 @@
             this.foodSplitContainer.Panel2.Controls.Add(this.boardGroupComboBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateComboBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateLabel);
-            this.foodSplitContainer.Panel2.Controls.Add(this.button1);
             this.foodSplitContainer.Panel2.Controls.Add(this.screenNameComboBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.allergensLabel);
             this.foodSplitContainer.Panel2.Controls.Add(this.screenNameLabel);
@@ -153,6 +151,11 @@
             this.foodTreeView.Name = "foodTreeView";
             this.foodTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.foodTreeView_AfterSelect);
             // 
+            // boardLabel
+            // 
+            resources.ApplyResources(this.boardLabel, "boardLabel");
+            this.boardLabel.Name = "boardLabel";
+            // 
             // boardGroupComboBox
             // 
             this.boardGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -172,13 +175,6 @@
             // 
             resources.ApplyResources(this.boardTemplateLabel, "boardTemplateLabel");
             this.boardTemplateLabel.Name = "boardTemplateLabel";
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // screenNameComboBox
             // 
@@ -278,11 +274,6 @@
             resources.ApplyResources(this.leftPanel, "leftPanel");
             this.leftPanel.Name = "leftPanel";
             // 
-            // boardLabel
-            // 
-            resources.ApplyResources(this.boardLabel, "boardLabel");
-            this.boardLabel.Name = "boardLabel";
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -331,7 +322,6 @@
         private System.Windows.Forms.ListBox allergensListBox;
         private System.Windows.Forms.Button upButton;
         private System.Windows.Forms.Button downButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel leftPanel;
         private System.Windows.Forms.ComboBox screenNameComboBox;
         private System.Windows.Forms.Label screenNameLabel;

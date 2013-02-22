@@ -84,6 +84,8 @@ namespace CanteenBoard.WinForms.Forms
             CommonValidator.ToDecimal(priceTextBox);
             CommonValidator.ToDecimal(amountTextBox);
             CommonValidator.NotEmpty(titleTextBox);
+
+            _boardProcessor.ShowAllBoards();
         }
 
         public void saveButton_Click(object sender, EventArgs e)
@@ -129,14 +131,6 @@ namespace CanteenBoard.WinForms.Forms
             SwapFood(true);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DailyMenuBoardForm form = new DailyMenuBoardForm();
-            //form.StartPosition = FormStartPosition.Manual;
-            //form.SetBounds(bounds.Left, bounds.Top, bounds.Width, bounds.Height, BoundsSpecified.All);
-            form.Show();
-        }
-
         private void screenNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (screenNameComboBox.SelectedIndex < 0)
@@ -156,11 +150,6 @@ namespace CanteenBoard.WinForms.Forms
         private void DisplaySettingsChanged(object sender, EventArgs e)
         {
             RefreshScreens();
-
-            /*
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_DesktopMonitor");
-            foreach (ManagementObject obj in searcher.Get())
-                Console.WriteLine("PNP Device ID: {0}", obj["PNPDeviceID"]);*/
         }
 
         private void boardTemplateComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -275,21 +264,10 @@ namespace CanteenBoard.WinForms.Forms
                 screenNameComboBox.ValueMember = "Value";
                 screenNameComboBox.Items.Clear();
 
-                /*
-                foreach (Screen screen in Screen.AllScreens)
+                foreach (string screenDeviceName in _boardProcessor.GetAllScreenDeviceNames())
                 {
-                    if (screen.Primary)
-                        continue;
-
-                    AddScreenToComboBox(string screen.GetCorrectedDeviceName(), int width, int height)
-
-                    screenNameComboBox.Items.Add(new KeyValuePair<string, string>(
-                        string.Format("{0} {1}x{2}", screen.GetCorrectedDeviceName(), screen.Bounds.Width, screen.Bounds.Height),
-                        screen.GetCorrectedDeviceName()));
-                }*/
-
-                AddScreenToComboBox(@"\\.\DISPLAY1", 320, 240);
-                AddScreenToComboBox(@"\\.\DISPLAY2", 1680, 1050);
+                    AddScreenToComboBox(screenDeviceName);
+                }
             }
             finally
             {
@@ -315,9 +293,7 @@ namespace CanteenBoard.WinForms.Forms
         /// Adds the screen to combo box.
         /// </summary>
         /// <param name="deviceName">Name of the device.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        private void AddScreenToComboBox(string deviceName, int width, int height)
+        private void AddScreenToComboBox(string deviceName)
         {
             screenNameComboBox.Items.Add(new KeyValuePair<string, string>((screenNameComboBox.Items.Count + 1) + ": " + deviceName, deviceName));
         }

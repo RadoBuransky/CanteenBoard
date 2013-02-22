@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CanteenBoard.Entities.Boards;
+using System.Windows.Forms;
 
 namespace CanteenBoard.Core
 {
@@ -33,5 +34,16 @@ namespace CanteenBoard.Core
         /// </summary>
         /// <returns></returns>
         IEnumerable<BoardTemplate> GetBoardTemplates();
+
+        /// <summary>
+        /// Gets all screen device names.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<string> GetAllScreenDeviceNames();
+
+        /// <summary>
+        /// Shows all boards.
+        /// </summary>
+        void ShowAllBoards();
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics.Contracts;
+using System.Collections;
+using System.Drawing;
 
 namespace CanteenBoard.Entities.Boards
 {
@@ -12,6 +14,11 @@ namespace CanteenBoard.Entities.Boards
     /// </summary>
     public abstract class BoardTemplate
     {
+        /// <summary>
+        /// The _form
+        /// </summary>
+        private Form _form;
+
         /// <summary>
         /// Gets the name.
         /// </summary>
@@ -53,16 +60,33 @@ namespace CanteenBoard.Entities.Boards
         /// Shows this instance.
         /// </summary>
         /// <param name="entities">The entities.</param>
-        public void Show(IEnumerable<object> entities)
+        public void Show(IEnumerable entities, Rectangle bounds)
         {
             Contract.Requires(entities != null);
 
-            Form form = (Form)Activator.CreateInstance(FormType);
+            if (_form != null)
+                return;
+
+            _form = (Form)Activator.CreateInstance(FormType);
 
             // Map values from the board to the form
-            BoardToForm(entities, form);
-            
-            form.Show();
+            BoardToForm(entities, _form);
+
+            _form.StartPosition = FormStartPosition.Manual;
+            _form.SetBounds(bounds.Left, bounds.Top, bounds.Width, bounds.Height, BoundsSpecified.All);
+            _form.Show();
+        }
+
+        /// <summary>
+        /// Closes this instance.
+        /// </summary>
+        public void Close()
+        {
+            if (_form == null)
+                return;
+
+            _form.Close();
+            _form = null;
         }
 
         /// <summary>
@@ -70,7 +94,7 @@ namespace CanteenBoard.Entities.Boards
         /// </summary>
         /// <param name="entities">The entities.</param>
         /// <param name="form">The form.</param>
-        private void BoardToForm(IEnumerable<object> entities, Form form)
+        private void BoardToForm(IEnumerable entities, Form form)
         {
         }
     }
