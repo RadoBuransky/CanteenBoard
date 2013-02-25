@@ -47,7 +47,11 @@ namespace CanteenBoard.WinForms.Config.Windsor
                     
                 Component.For<BoardTemplate>()
                     .ImplementedBy<DailyMenuBoardTemplate>()
-                    .Named("DailyMenuBoardTemplate"));
+                    .Named("DailyMenuBoardTemplate"),
+
+                Component.For<BoardTemplate>()
+                    .ImplementedBy<SalatsBoardTemplate>()
+                    .Named("SalatsBoardTemplate"));
         }
 
         /// <summary>

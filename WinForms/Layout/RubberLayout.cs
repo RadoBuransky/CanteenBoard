@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics.Contracts;
 using System.Drawing;
+using cSouza.WinForms.Controls;
 
 namespace CanteenBoard.WinForms.Layout
 {
@@ -47,11 +48,16 @@ namespace CanteenBoard.WinForms.Layout
             foreach (Label label in labels)
             {
                 Font fitFont = FitLabel(label, label.Size);
+                if (fitFont == null)
+                    continue;
 
                 if ((result == null) ||
                     (fitFont.Size < result.Size))
                     result = fitFont;
             }
+
+            if (result == null)
+                return;
 
             // Apply resulting font to all
             foreach (Label label in labels)
@@ -114,8 +120,16 @@ namespace CanteenBoard.WinForms.Layout
         /// <returns></returns>
         private Font FitLabel(Label label, Size targetSize)
         {
+            if (string.IsNullOrEmpty(label.Text))
+                return null;
+
+            BorderLabel borderLabel = label as BorderLabel;
+
             // Measure current size
             Size size = TextRenderer.MeasureText(label.Text, label.Font, targetSize, TextFormatFlags.SingleLine);
+            if (borderLabel != null)
+                GrowSize(ref size, (int)borderLabel.BorderSize);
+
             bool grow = (size.Width < targetSize.Width) && (size.Height < targetSize.Height);
             float delta = grow ? 0.5f : -0.5f;
 
@@ -143,10 +157,24 @@ namespace CanteenBoard.WinForms.Layout
                 }
 
                 newSize = TextRenderer.MeasureText(label.Text, newFont, targetSize, TextFormatFlags.SingleLine);
+                if (borderLabel != null)
+                    GrowSize(ref newSize, (int)borderLabel.BorderSize);
+
             } while (grow ? ((newSize.Width < targetSize.Width) && (newSize.Height < targetSize.Height)) :
                             ((newSize.Width > targetSize.Width) || (newSize.Height > targetSize.Height)));
 
             return grow ? result : newFont;
+        }
+
+        /// <summary>
+        /// Grows the size.
+        /// </summary>
+        /// <param name="size">The size.</param>
+        /// <param name="amount">The amount.</param>
+        private static void GrowSize(ref Size size, int border)
+        {/*
+            size.Width += border;
+            size.Height += border;*/
         }
     }
 }

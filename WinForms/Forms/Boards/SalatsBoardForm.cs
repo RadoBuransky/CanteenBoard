@@ -15,17 +15,14 @@ using System.Globalization;
 
 namespace CanteenBoard.WinForms.Forms.Boards
 {
-    public partial class DailyMenuBoardForm : Form
+    public partial class SalatsBoardForm : Form
     {
-        private const int MaxSoups = 2;
-        private const int MaxDailyMenu = 8;
-
         private readonly RubberLayout _rubberLayout;
 
         private readonly Label[][] _labels;
         private readonly Label[]_allergenLabels;
 
-        public DailyMenuBoardForm()
+        public SalatsBoardForm()
         {
             InitializeComponent();
 
@@ -68,8 +65,7 @@ namespace CanteenBoard.WinForms.Forms.Boards
             Contract.Requires(entities != null);
 
             // Process all entities
-            int soupCounter = 0;
-            int dailyMenuCounter = 0;
+            int counter = 0;
             foreach (object entity in entities)
             {
                 if (!(entity is Food))
@@ -82,32 +78,14 @@ namespace CanteenBoard.WinForms.Forms.Boards
                 if (food.BoardAssignment == null)
                     continue;
 
-                if (food.BoardAssignment.Group == DailyMenuBoardTemplate.SoupGroup)
+                if (food.BoardAssignment.Group == SalatsBoardTemplate.SalatsGroup)
                 {
-                    if (soupCounter == MaxSoups)
-                        continue;
-
-                    SetFood(soupCounter, food);
-
-                    soupCounter++;
+                    SetFood(counter++, food);
                 }
-                else
-                    if (food.BoardAssignment.Group == DailyMenuBoardTemplate.DailyMenuGroup)
-                    {
-                        if (dailyMenuCounter == MaxDailyMenu)
-                            continue;
-
-                        SetFood(2 + dailyMenuCounter, food);
-
-                        dailyMenuCounter++;
-                    }
             }
 
-            for (int i = soupCounter; i < MaxSoups; i++)
+            for (int i = counter; i < _labels.Length; i++)
                 SetFood(i, null);
-
-            for (int i = dailyMenuCounter; i < MaxDailyMenu; i++)
-                SetFood(2 + i, null);
 
             Relayout();
         }

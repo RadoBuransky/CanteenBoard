@@ -21,6 +21,7 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
         private readonly TextBox _amountTextBox;
         private readonly TextBox _priceTextBox;
         private readonly ComboBox _boardGroupComboBox;
+        private readonly Label _boardGroupLabel;
 
         private readonly IFoodProcessor _foodProcessor;
         private readonly IBoardProcessor _boardProcessor;
@@ -33,8 +34,16 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
         /// <param name="mainForm">The main form.</param>
         /// <param name="amountUnitComboBox">The amount unit combo box.</param>
         /// <param name="allergensListBox">The allergens list box.</param>
+        /// <param name="titleTextBox">The title text box.</param>
+        /// <param name="categoryComboBox">The category combo box.</param>
+        /// <param name="amountTextBox">The amount text box.</param>
+        /// <param name="priceTextBox">The price text box.</param>
+        /// <param name="boardGroupComboBox">The board group combo box.</param>
+        /// <param name="boardGroupLabel">The board group label.</param>
+        /// <param name="foodProcessor">The food processor.</param>
+        /// <param name="boardProcessor">The board processor.</param>
         public FoodPanel(MainForm mainForm, ComboBox amountUnitComboBox, ListBox allergensListBox, TextBox titleTextBox, ComboBox categoryComboBox,
-            TextBox amountTextBox, TextBox priceTextBox, ComboBox boardGroupComboBox, IFoodProcessor foodProcessor, IBoardProcessor boardProcessor)
+            TextBox amountTextBox, TextBox priceTextBox, ComboBox boardGroupComboBox, Label boardGroupLabel, IFoodProcessor foodProcessor, IBoardProcessor boardProcessor)
         {
             _mainForm = mainForm;
             _amountUnitComboBox = amountUnitComboBox;
@@ -44,6 +53,7 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             _amountTextBox = amountTextBox;
             _priceTextBox = priceTextBox;
             _boardGroupComboBox = boardGroupComboBox;
+            _boardGroupLabel = boardGroupLabel;
             _foodProcessor = foodProcessor;
             _boardProcessor = boardProcessor;
         }
@@ -135,6 +145,8 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             _amountUnitComboBox.SelectedIndex = 0;
             _priceTextBox.Text = "0";
             _allergensListBox.SelectedItems.Clear();
+            RefreshBoardGroupComboBox(new Food());
+            _boardGroupComboBox.SelectedIndex = -1;
         }
 
         //==========================================================================================
@@ -149,6 +161,14 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             if (_food == null)
             {
                 _food = new Food();
+            }
+            else
+            {
+                if (_food.Title != _titleTextBox.Text)
+                {
+                    // Title (the key) has been changed, so we need to delete old record
+                    _foodProcessor.DeleteFood(_food.Title);
+                }
             }
 
             _food.Title = _titleTextBox.Text;
@@ -165,18 +185,22 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
                 _food.Allergens |= item.Value;
             }
 
-            Tuple<string, string> selectedBoardGroup = _boardGroupComboBox.SelectedValueKVP<string, Tuple<string, string>>();
-            if (selectedBoardGroup != null)
+            if (_boardGroupComboBox.Visible)
             {
-                _food.BoardAssignment = new BoardAssignment();
-                _food.BoardAssignment.ScreenDeviceName = selectedBoardGroup.Item1;
-                _food.BoardAssignment.Group = selectedBoardGroup.Item2;
+                Tuple<string, string> selectedBoardGroup = _boardGroupComboBox.SelectedValueKVP<string, Tuple<string, string>>();
+                if (selectedBoardGroup != null)
+                {
+                    _food.BoardAssignment = new BoardAssignment();
+                    _food.BoardAssignment.ScreenDeviceName = selectedBoardGroup.Item1;
+                    _food.BoardAssignment.Group = selectedBoardGroup.Item2;
+                }
+                else
+                    _food.BoardAssignment = null;
             }
-            else
-                _food.BoardAssignment = null;
 
             // Save food
             _foodProcessor.Save(_food);
+            _boardProcessor.RefreshAllBoards();
 
             // Reload controls
             _mainForm.ReloadTree();
@@ -289,6 +313,8 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             }
             finally
             {
+                _boardGroupComboBox.Visible = _boardGroupComboBox.Items.Count > 1;
+                _boardGroupLabel.Visible = _boardGroupComboBox.Visible;
                 _boardGroupComboBox.EndUpdate();
             }
         }

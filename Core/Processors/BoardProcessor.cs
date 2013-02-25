@@ -111,7 +111,12 @@ namespace CanteenBoard.Core.Processors
         /// </summary>
         public void ShowAllBoards()
         {
+            // Close all
+            foreach (BoardTemplate boardTemplate in _boardTemplates)
+                boardTemplate.CloseAll();
+
             // Check all screens
+            IEnumerable<Food> liveFood = GetLiveFood();
             foreach (string screenDeviceName in GetAllScreenDeviceNames())
             {
                 // Get screen template for this screen
@@ -125,15 +130,32 @@ namespace CanteenBoard.Core.Processors
                 if (boardTemplate == null)
                     continue;
 
-                // Get live food
-                var liveFood = from f in Repository.Find<Food>()
-                               where f.BoardAssignment != null
-                               orderby f.Index
-                               select f;
-
                 // Show board with live data
-                boardTemplate.Show(liveFood.ToArray(), GetScreenBounds(screenDeviceName));
+                boardTemplate.Show(liveFood, GetScreenBounds(screenDeviceName));
             }
+        }
+
+        /// <summary>
+        /// Refreshes all boards.
+        /// </summary>
+        public void RefreshAllBoards()
+        {
+            IEnumerable<Food> liveFood = GetLiveFood();
+            foreach (BoardTemplate boardTemplate in _boardTemplates)
+            {
+                boardTemplate.RefreshAll(liveFood);
+            }
+        }
+
+        private IEnumerable<Food> GetLiveFood()
+        {
+            // Get live food
+            var liveFood = from f in Repository.Find<Food>()
+                           where f.BoardAssignment != null
+                           orderby f.Index
+                           select f;
+
+            return liveFood.ToArray();
         }
 
         /// <summary>

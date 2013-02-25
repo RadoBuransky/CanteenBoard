@@ -45,5 +45,10 @@ namespace CanteenBoard.Core
         /// Shows all boards.
         /// </summary>
         void ShowAllBoards();
+
+        /// <summary>
+        /// Refreshes all boards.
+        /// </summary>
+        void RefreshAllBoards();
     }
 }

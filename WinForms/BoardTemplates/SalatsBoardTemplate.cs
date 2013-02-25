@@ -14,17 +14,12 @@ namespace CanteenBoard.WinForms.BoardTemplates
     /// <summary>
     /// Daily menu board template.
     /// </summary>
-    public class DailyMenuBoardTemplate : BoardTemplate
+    public class SalatsBoardTemplate : BoardTemplate
     {
         /// <summary>
         /// The soup group
         /// </summary>
-        public const string SoupGroup = "Soups";
-
-        /// <summary>
-        /// The daily menu group
-        /// </summary>
-        public const string DailyMenuGroup = "DailyMenu";
+        public const string SalatsGroup = "Salats";
 
         /// <summary>
         /// Gets the groups.
@@ -35,7 +30,7 @@ namespace CanteenBoard.WinForms.BoardTemplates
         /// <exception cref="System.NotImplementedException"></exception>
         public override string[] Groups
         {
-            get { return new [] { SoupGroup, DailyMenuGroup } ; }
+            get { return new[] { SalatsGroup }; }
         }
 
         /// <summary>
@@ -48,7 +43,7 @@ namespace CanteenBoard.WinForms.BoardTemplates
         {
             get
             {
-                return typeof(DailyMenuBoardForm);
+                return typeof(SalatsBoardForm);
             }
         }
 
@@ -65,8 +60,7 @@ namespace CanteenBoard.WinForms.BoardTemplates
             Contract.Requires(!string.IsNullOrEmpty(group));
             Contract.Requires(entity != null);
 
-            if ((group == SoupGroup) ||
-                (group == DailyMenuGroup))
+            if (group == SalatsGroup)
             {
                 return typeof(Food).IsAssignableFrom(entity.GetType());
             }
@@ -82,7 +76,7 @@ namespace CanteenBoard.WinForms.BoardTemplates
         /// <exception cref="System.NotImplementedException"></exception>
         protected override void BoardToForm(IEnumerable entities, Form form)
         {
-            ((DailyMenuBoardForm)form).BoardToForm(entities);
+            ((SalatsBoardForm)form).BoardToForm(entities);
         }
     }
 }

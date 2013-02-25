@@ -15,11 +15,6 @@ namespace CanteenBoard.Entities.Boards
     public abstract class BoardTemplate
     {
         /// <summary>
-        /// The _form
-        /// </summary>
-        private Form _form;
-
-        /// <summary>
         /// Gets the name.
         /// </summary>
         /// <value>
@@ -47,6 +42,14 @@ namespace CanteenBoard.Entities.Boards
         public abstract Type FormType { get; }
 
         /// <summary>
+        /// Gets the form.
+        /// </summary>
+        /// <value>
+        /// The form.
+        /// </value>
+        protected List<Form> Forms { get; private set; }
+
+        /// <summary>
         /// Determines whether the specified group is supported.
         /// </summary>
         /// <param name="group">The group.</param>
@@ -57,36 +60,55 @@ namespace CanteenBoard.Entities.Boards
         public abstract bool IsSupported(string group, object entity);
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="BoardTemplate" /> class.
+        /// </summary>
+        protected BoardTemplate()
+        {
+            Forms = new List<Form>();
+        }
+
+        /// <summary>
         /// Shows this instance.
         /// </summary>
         /// <param name="entities">The entities.</param>
-        public void Show(IEnumerable entities, Rectangle bounds)
+        public Form Show(IEnumerable entities, Rectangle bounds)
         {
             Contract.Requires(entities != null);
 
-            if (_form != null)
-                return;
-
-            _form = (Form)Activator.CreateInstance(FormType);
+            Form result = (Form)Activator.CreateInstance(FormType);
 
             // Map values from the board to the form
-            BoardToForm(entities, _form);
+            BoardToForm(entities, result);
 
-            _form.StartPosition = FormStartPosition.Manual;
-            _form.SetBounds(bounds.Left, bounds.Top, bounds.Width, bounds.Height, BoundsSpecified.All);
-            _form.Show();
+            result.StartPosition = FormStartPosition.Manual;
+            result.SetBounds(bounds.Left, bounds.Top, bounds.Width, bounds.Height, BoundsSpecified.All);
+            result.Show();
+
+            Forms.Add(result);
+
+            return result;
         }
 
         /// <summary>
         /// Closes this instance.
         /// </summary>
-        public void Close()
+        public void CloseAll()
         {
-            if (_form == null)
-                return;
+            Forms.ForEach(form =>
+                {
+                    form.Close();
+                    form = null;
+                });
+            Forms.Clear();
+        }
 
-            _form.Close();
-            _form = null;
+        /// <summary>
+        /// Refreshes all.
+        /// </summary>
+        /// <param name="entities">The entities.</param>
+        public void RefreshAll(IEnumerable entities)
+        {
+            Forms.ForEach(form => BoardToForm(entities, form));
         }
 
         /// <summary>
@@ -94,8 +116,6 @@ namespace CanteenBoard.Entities.Boards
         /// </summary>
         /// <param name="entities">The entities.</param>
         /// <param name="form">The form.</param>
-        private void BoardToForm(IEnumerable entities, Form form)
-        {
-        }
+        protected abstract void BoardToForm(IEnumerable entities, Form form);
     }
 }

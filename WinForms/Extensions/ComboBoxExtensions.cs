@@ -52,7 +52,11 @@ namespace CanteenBoard.WinForms.Extensions
         /// <returns></returns>
         public static Value SelectedValueKVP<Key, Value>(this ComboBox comboBox)
         {
-            return ((KeyValuePair<Key, Value>)comboBox.SelectedItem).Value;
+            object selectedItem = comboBox.SelectedItem;
+            if (selectedItem == null)
+                return default(Value);
+
+            return ((KeyValuePair<Key, Value>)selectedItem).Value;
         }
     }
 }

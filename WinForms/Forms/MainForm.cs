@@ -56,7 +56,7 @@ namespace CanteenBoard.WinForms.Forms
             _foodProcessor = foodProcessor;
             _boardProcessor = boardProcessor;
             _foodPanel = new FoodPanel(this, amountUnitComboBox, allergensListBox, titleTextBox, categoryComboBox, amountTextBox,
-                priceTextBox, boardGroupComboBox, foodProcessor, boardProcessor);
+                priceTextBox, boardGroupComboBox, boardGroupLabel, foodProcessor, boardProcessor);
         }
 
         //==========================================================================================
@@ -118,7 +118,10 @@ namespace CanteenBoard.WinForms.Forms
         private void deleteFoodButton_Click(object sender, EventArgs e)
         {
             if (_foodPanel.deleteFoodButton_Click(sender, e))
+            {
                 ReloadTree();
+                _boardProcessor.RefreshAllBoards();
+            }
         }
 
         private void downButton_Click(object sender, EventArgs e)
@@ -170,6 +173,10 @@ namespace CanteenBoard.WinForms.Forms
             screenTemplate.BoardTemplateName = selectedBoardTemplate == null ? null : selectedBoardTemplate.Name;
 
             _boardProcessor.SaveScreenTemplate(screenTemplate);
+            _boardProcessor.ShowAllBoards();
+            foodTreeView.SelectedNode = null;
+            ReloadTree();
+            _foodPanel.ClearPanel();
         }
 
         //==========================================================================================
@@ -225,6 +232,7 @@ namespace CanteenBoard.WinForms.Forms
 
             _foodProcessor.SwapFood(foodTreeView.SelectedNode.Text, up);
             ReloadTree();
+            _boardProcessor.RefreshAllBoards();
         }
 
         private void InitScreens()
@@ -280,7 +288,7 @@ namespace CanteenBoard.WinForms.Forms
                 screenNameComboBox.SelectedIndex = 0;
             }
 
-            boardLabel.Visible = screenExists;
+            boardGroupLabel.Visible = screenExists;
             boardGroupComboBox.Visible = screenExists;
             updateToolStripMenuItem.Visible = screenExists;
             screenNameLabel.Visible = screenExists;

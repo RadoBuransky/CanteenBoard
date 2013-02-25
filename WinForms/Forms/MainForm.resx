@@ -291,31 +291,31 @@
   <data name="foodSplitContainer.Panel1MinSize" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
-  <data name="boardLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="boardGroupLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="boardLabel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="boardGroupLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 303</value>
   </data>
-  <data name="boardLabel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="boardGroupLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 13</value>
   </data>
-  <data name="boardLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="boardGroupLabel.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="boardLabel.Text" xml:space="preserve">
+  <data name="boardGroupLabel.Text" xml:space="preserve">
     <value>Board:</value>
   </data>
-  <data name="&gt;&gt;boardLabel.Name" xml:space="preserve">
-    <value>boardLabel</value>
+  <data name="&gt;&gt;boardGroupLabel.Name" xml:space="preserve">
+    <value>boardGroupLabel</value>
   </data>
-  <data name="&gt;&gt;boardLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;boardGroupLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;boardLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;boardGroupLabel.Parent" xml:space="preserve">
     <value>foodSplitContainer.Panel2</value>
   </data>
-  <data name="&gt;&gt;boardLabel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;boardGroupLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="boardGroupComboBox.Location" type="System.Drawing.Point, System.Drawing">

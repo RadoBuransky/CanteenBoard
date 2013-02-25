@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardTemplates\SalatsBoardTemplate.cs" />
     <Compile Include="BoardTemplates\DailyMenuBoardTemplate.cs" />
     <Compile Include="CastleContainer.cs" />
     <Compile Include="Config\Windsor\CommonInstaller.cs" />
@@ -72,6 +73,12 @@
     </Compile>
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
     <Compile Include="Extensions\TreeViewExtensions.cs" />
+    <Compile Include="Forms\Boards\SalatsBoardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Boards\SalatsBoardForm.Designer.cs">
+      <DependentUpon>SalatsBoardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Boards\DailyMenuBoardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +131,9 @@
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
     <Compile Include="Validation\CommonValidator.cs" />
+    <EmbeddedResource Include="Forms\Boards\SalatsBoardForm.resx">
+      <DependentUpon>SalatsBoardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Boards\DailyMenuBoardForm.resx">
       <DependentUpon>DailyMenuBoardForm.cs</DependentUpon>
     </EmbeddedResource>

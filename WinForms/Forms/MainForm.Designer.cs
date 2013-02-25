@@ -37,7 +37,7 @@
             this.addNewFoodButton = new System.Windows.Forms.Button();
             this.downButton = new System.Windows.Forms.Button();
             this.foodTreeView = new System.Windows.Forms.TreeView();
-            this.boardLabel = new System.Windows.Forms.Label();
+            this.boardGroupLabel = new System.Windows.Forms.Label();
             this.boardGroupComboBox = new System.Windows.Forms.ComboBox();
             this.boardTemplateComboBox = new System.Windows.Forms.ComboBox();
             this.boardTemplateLabel = new System.Windows.Forms.Label();
@@ -101,7 +101,7 @@
             // 
             // foodSplitContainer.Panel2
             // 
-            this.foodSplitContainer.Panel2.Controls.Add(this.boardLabel);
+            this.foodSplitContainer.Panel2.Controls.Add(this.boardGroupLabel);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardGroupComboBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateComboBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateLabel);
@@ -151,10 +151,10 @@
             this.foodTreeView.Name = "foodTreeView";
             this.foodTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.foodTreeView_AfterSelect);
             // 
-            // boardLabel
+            // boardGroupLabel
             // 
-            resources.ApplyResources(this.boardLabel, "boardLabel");
-            this.boardLabel.Name = "boardLabel";
+            resources.ApplyResources(this.boardGroupLabel, "boardGroupLabel");
+            this.boardGroupLabel.Name = "boardGroupLabel";
             // 
             // boardGroupComboBox
             // 
@@ -329,6 +329,6 @@
         private System.Windows.Forms.Label boardTemplateLabel;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ComboBox boardGroupComboBox;
-        private System.Windows.Forms.Label boardLabel;
+        private System.Windows.Forms.Label boardGroupLabel;
     }
 }
