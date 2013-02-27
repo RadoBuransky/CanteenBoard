@@ -134,7 +134,8 @@ namespace CanteenBoard.WinForms.Layout
             float delta = grow ? 0.5f : -0.5f;
 
             if ((!grow) &&
-                ((size.Width == targetSize.Width) || (size.Height == targetSize.Height)))
+                (((size.Width == targetSize.Width) && (size.Height <= targetSize.Height)) ||
+                 ((size.Width <= targetSize.Width) && (size.Height == targetSize.Height))))
                 return label.Font;
             
             Size newSize = size;
@@ -160,7 +161,7 @@ namespace CanteenBoard.WinForms.Layout
                 if (borderLabel != null)
                     GrowSize(ref newSize, (int)borderLabel.BorderSize);
 
-            } while (grow ? ((newSize.Width < targetSize.Width) && (newSize.Height < targetSize.Height)) :
+            } while (grow ? ((newSize.Width <= targetSize.Width) && (newSize.Height <= targetSize.Height)) :
                             ((newSize.Width > targetSize.Width) || (newSize.Height > targetSize.Height)));
 
             return grow ? result : newFont;

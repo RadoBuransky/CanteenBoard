@@ -55,8 +55,8 @@ namespace CanteenBoard.WinForms.Forms
 
             _foodProcessor = foodProcessor;
             _boardProcessor = boardProcessor;
-            _foodPanel = new FoodPanel(this, amountUnitComboBox, allergensListBox, titleTextBox, categoryComboBox, amountTextBox,
-                priceTextBox, boardGroupComboBox, boardGroupLabel, foodProcessor, boardProcessor);
+            _foodPanel = new FoodPanel(this, amountUnitComboBox, allergensListBox, titleTextBox, boardGroupComboBox, amountTextBox,
+                priceTextBox, showHideButton, foodProcessor, boardProcessor);
         }
 
         //==========================================================================================
@@ -77,7 +77,7 @@ namespace CanteenBoard.WinForms.Forms
             _foodPanel.InitAmountUnits();
             _foodPanel.InitAllergens();
             ReloadTree();
-            _foodPanel.ReloadCategoriesComboBox();
+            _foodPanel.InitBoardGroupComboBox();
             InitBoardTemplates();
             InitScreens();
 
@@ -107,21 +107,9 @@ namespace CanteenBoard.WinForms.Forms
             _foodPanel.ShowFood(e.Node.Text);
         }
 
-        private void addNewFoodButton_Click(object sender, EventArgs e)
-        {
-            foodTreeView.SelectedNode = null;
-            upButton.Enabled = false;
-            downButton.Enabled = false;
-            _foodPanel.ClearPanel();
-        }
-
         private void deleteFoodButton_Click(object sender, EventArgs e)
         {
-            if (_foodPanel.deleteFoodButton_Click(sender, e))
-            {
-                ReloadTree();
-                _boardProcessor.RefreshAllBoards();
-            }
+            Delete();
         }
 
         private void downButton_Click(object sender, EventArgs e)
@@ -179,10 +167,41 @@ namespace CanteenBoard.WinForms.Forms
             _foodPanel.ClearPanel();
         }
 
+        private void newFoodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foodTreeView.SelectedNode = null;
+            upButton.Enabled = false;
+            downButton.Enabled = false;
+            _foodPanel.ClearPanel();
+        }
+
+        private void showHideButton_Click(object sender, EventArgs e)
+        {
+            _foodPanel.ShowHideToggle();
+        }
+
+        private void foodTreeView_KeyDown(object sender, KeyEventArgs e)
+        {
+            TreeNode selectedNode = foodTreeView.SelectedNode;
+            if (selectedNode == null ||
+                selectedNode.Level == 0)
+                return;
+
+            switch (e.KeyCode)
+            {
+                case Keys.Space:
+                    _foodPanel.ShowHideToggle();
+                    break;
+
+                case Keys.Delete:
+                    Delete();
+                    break;
+            }
+        }
+
         //==========================================================================================
         // Private methods
         //==========================================================================================
-
 
         /// <summary>
         /// Inits the tree.
@@ -198,14 +217,22 @@ namespace CanteenBoard.WinForms.Forms
                     selectedTitle = foodTreeView.SelectedNode.Text;
                 }
                 foodTreeView.Nodes.Clear();
-                foreach (string category in _foodProcessor.GetCategories())
+
+                foreach (BoardTemplate boardTemplate in _boardProcessor.GetBoardTemplates())
                 {
-                    TreeNode categoryTreeNode = foodTreeView.Nodes.Add(category);
-                    foreach (Food food in _foodProcessor.GetFoods(category))
+                    string boardTemplateName = Res.BoardTemplate.ResourceManager.GetString(boardTemplate.Name);
+                    foreach (string group in boardTemplate.Groups)
                     {
-                        categoryTreeNode.Nodes.Add(food.Title);
+                        string title = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group);
+                        TreeNode categoryTreeNode = foodTreeView.Nodes.Add(title);
+
+                        BoardAssignment boardAssignment = new BoardAssignment() { BoardTemplateName = boardTemplate.Name, Group = group };
+                        foreach (Food food in _foodProcessor.GetFoods(boardAssignment))
+                        {
+                            categoryTreeNode.Nodes.Add(food.Title);
+                        }
+                        categoryTreeNode.Expand();
                     }
-                    categoryTreeNode.Expand();
                 }
 
                 bool selected = false;
@@ -288,9 +315,6 @@ namespace CanteenBoard.WinForms.Forms
                 screenNameComboBox.SelectedIndex = 0;
             }
 
-            boardGroupLabel.Visible = screenExists;
-            boardGroupComboBox.Visible = screenExists;
-            updateToolStripMenuItem.Visible = screenExists;
             screenNameLabel.Visible = screenExists;
             screenNameComboBox.Visible = screenExists;
             boardTemplateLabel.Visible = screenExists;
@@ -304,6 +328,15 @@ namespace CanteenBoard.WinForms.Forms
         private void AddScreenToComboBox(string deviceName)
         {
             screenNameComboBox.Items.Add(new KeyValuePair<string, string>((screenNameComboBox.Items.Count + 1) + ": " + deviceName, deviceName));
+        }
+
+        private void Delete()
+        {
+            if (_foodPanel.deleteFoodButton_Click())
+            {
+                ReloadTree();
+                _boardProcessor.RefreshAllBoards();
+            }
         }
     }
 }

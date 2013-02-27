@@ -151,6 +151,7 @@ namespace CanteenBoard.WinForms.Forms.Boards
             _rubberLayout.Relayout();
             _rubberLayout.OnesizeFitFont(_labels.SelectMany(l => l));
             _rubberLayout.OnesizeFitFont(_allergenLabels);
+            Update();
         }
     }
 }

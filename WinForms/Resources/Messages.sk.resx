@@ -123,4 +123,10 @@
   <data name="DeleteText" xml:space="preserve">
     <value>Naozaj to chceš zmazať?</value>
   </data>
+  <data name="showHideButton_Hide" xml:space="preserve">
+    <value>Daj to preč!</value>
+  </data>
+  <data name="showHideButton_Show" xml:space="preserve">
+    <value>Daj to tam!</value>
+  </data>
 </root>

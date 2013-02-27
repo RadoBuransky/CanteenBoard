@@ -53,28 +53,6 @@ namespace CanteenBoard.WinForms.BoardTemplates
         }
 
         /// <summary>
-        /// Determines whether the specified group is supported.
-        /// </summary>
-        /// <param name="group">The group.</param>
-        /// <param name="entity">The entity.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified group is supported; otherwise, <c>false</c>.
-        /// </returns>
-        public override bool IsSupported(string group, object entity)
-        {
-            Contract.Requires(!string.IsNullOrEmpty(group));
-            Contract.Requires(entity != null);
-
-            if ((group == SoupGroup) ||
-                (group == DailyMenuGroup))
-            {
-                return typeof(Food).IsAssignableFrom(entity.GetType());
-            }
-
-            return false;
-        }
-
-        /// <summary>
         /// Maps the values.
         /// </summary>
         /// <param name="entities">The entities.</param>

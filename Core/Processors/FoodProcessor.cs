@@ -32,37 +32,31 @@ namespace CanteenBoard.Core.Processors
             if (entity.Index == -1)
             {
                 // Set new index as max + 1
-                entity.Index = Repository.Find<Food>().Max(f => f.Index) + 1;
+                if (Repository.Find<Food>().Any())
+                {
+                    entity.Index = (from food in Repository.Find<Food>()
+                                    select food.Index).Max() + 1;
+                }
+                else
+                    entity.Index = 0;
             }
 
             base.Save(entity);
         }
 
         /// <summary>
-        /// Gets the categories.
-        /// </summary>
-        /// <returns>
-        /// Array of categories.
-        /// </returns>
-        public string[] GetCategories()
-        {
-            var categories = (from f in Repository.Find<Food>()
-                             select f.Category).ToArray();
-
-            return categories.Distinct().ToArray();
-        }
-
-        /// <summary>
         /// Gets the food.
         /// </summary>
-        /// <param name="category">The category.</param>
+        /// <param name="boardAssignment">The board assignment.</param>
         /// <returns></returns>
-        public Food[] GetFoods(string category)
+        public Food[] GetFoods(BoardAssignment boardAssignment)
         {
-            Contract.Requires(!string.IsNullOrEmpty(category));
+            Contract.Requires(boardAssignment != null);
 
             var food = from f in Repository.Find<Food>()
-                       where f.Category == category
+                       where ((f.BoardAssignment != null) &&
+                              (f.BoardAssignment.BoardTemplateName == boardAssignment.BoardTemplateName) &&
+                              (f.BoardAssignment.Group == boardAssignment.Group))
                        orderby f.Index
                        select f;
 
@@ -106,7 +100,13 @@ namespace CanteenBoard.Core.Processors
                 (Func<Food, bool>)(f => f.Index < food.Index) :
                 (Func<Food, bool>)(f => f.Index > food.Index);
 
-            Food[] result = Repository.Find<Food>().Where(predicate).OrderBy(f => f.Index).ToArray();
+            Food[] result = Repository.Find<Food>()
+                .Where(predicate)
+                .Where(f => f.BoardAssignment != null &&
+                    f.BoardAssignment.BoardTemplateName == food.BoardAssignment.BoardTemplateName &&
+                    f.BoardAssignment.Group == food.BoardAssignment.Group)
+                .OrderBy(f => f.Index)
+                .ToArray();
             if (result.Length == 0)
                 return;
 

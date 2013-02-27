@@ -120,10 +120,61 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Táckareň</value>
   </data>
+  <data name="allergensLabel.Text" xml:space="preserve">
+    <value>Alergény:</value>
+  </data>
+  <data name="amountLabel.Text" xml:space="preserve">
+    <value>Množstvo:</value>
+  </data>
+  <data name="amountTextBox.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="boardTemplateLabel.Text" xml:space="preserve">
+    <value>Lístok:</value>
+  </data>
+  <data name="categoryLabel.Text" xml:space="preserve">
+    <value>Zaradenie:</value>
+  </data>
+  <data name="deleteFoodButton.Text" xml:space="preserve">
+    <value>Zmaž</value>
+  </data>
+  <data name="downButton.Text" xml:space="preserve">
+    <value>Dole</value>
+  </data>
+  <data name="euroLabel.Text" xml:space="preserve">
+    <value>€</value>
+  </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>Ko&amp;niec</value>
   </data>
-  <data name="newCatButton.Text" xml:space="preserve">
-    <value>+</value>
+  <data name="exitToolStripMenuItem.Text1" xml:space="preserve">
+    <value>&amp;Koniec</value>
+  </data>
+  <data name="mainMenuStrip.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="newFoodToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Nové jedlo</value>
+  </data>
+  <data name="priceLabel.Text" xml:space="preserve">
+    <value>Cena:</value>
+  </data>
+  <data name="priceTextBox.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="saveButton.Text" xml:space="preserve">
+    <value>Ulož zmeny</value>
+  </data>
+  <data name="screenNameLabel.Text" xml:space="preserve">
+    <value>Obrazovka:</value>
+  </data>
+  <data name="showHideButton.Text" xml:space="preserve">
+    <value>Daj to tam!</value>
+  </data>
+  <data name="titleLabel.Text" xml:space="preserve">
+    <value>Názov:</value>
+  </data>
+  <data name="upButton.Text" xml:space="preserve">
+    <value>Hore</value>
   </data>
 </root>

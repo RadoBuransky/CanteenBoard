@@ -49,14 +49,6 @@ namespace CanteenBoard.Entities.Menu
         public decimal Price { get; set; }
 
         /// <summary>
-        /// Gets or sets the category.
-        /// </summary>
-        /// <value>
-        /// The category.
-        /// </value>
-        public string Category { get; set; }
-
-        /// <summary>
         /// Gets or sets the allergens.
         /// </summary>
         /// <value>
@@ -79,5 +71,13 @@ namespace CanteenBoard.Entities.Menu
         /// The board.
         /// </value>
         public BoardAssignment BoardAssignment { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="Food" /> is visible.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if visible; otherwise, <c>false</c>.
+        /// </value>
+        public bool Visible { get; set; }
     }
 }

@@ -123,4 +123,10 @@
   <data name="DeleteText" xml:space="preserve">
     <value>Do you really want to delete this?</value>
   </data>
+  <data name="showHideButton_Hide" xml:space="preserve">
+    <value>Hide!</value>
+  </data>
+  <data name="showHideButton_Show" xml:space="preserve">
+    <value>Show!</value>
+  </data>
 </root>

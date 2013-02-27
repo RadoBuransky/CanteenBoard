@@ -50,16 +50,6 @@ namespace CanteenBoard.Entities.Boards
         protected List<Form> Forms { get; private set; }
 
         /// <summary>
-        /// Determines whether the specified group is supported.
-        /// </summary>
-        /// <param name="group">The group.</param>
-        /// <param name="entity">The entity.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified group is supported; otherwise, <c>false</c>.
-        /// </returns>
-        public abstract bool IsSupported(string group, object entity);
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="BoardTemplate" /> class.
         /// </summary>
         protected BoardTemplate()

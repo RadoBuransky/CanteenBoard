@@ -77,5 +77,23 @@ namespace CanteenBoard.WinForms.Resources {
                 return ResourceManager.GetString("DeleteText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide!.
+        /// </summary>
+        internal static string showHideButton_Hide {
+            get {
+                return ResourceManager.GetString("showHideButton_Hide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show!.
+        /// </summary>
+        internal static string showHideButton_Show {
+            get {
+                return ResourceManager.GetString("showHideButton_Show", resourceCulture);
+            }
+        }
     }
 }

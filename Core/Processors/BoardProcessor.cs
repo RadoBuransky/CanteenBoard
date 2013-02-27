@@ -151,7 +151,7 @@ namespace CanteenBoard.Core.Processors
         {
             // Get live food
             var liveFood = from f in Repository.Find<Food>()
-                           where f.BoardAssignment != null
+                           where f.Visible
                            orderby f.Index
                            select f;
 

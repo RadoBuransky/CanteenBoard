@@ -9,17 +9,11 @@ namespace CanteenBoard.Core
     public interface IFoodProcessor : ICommonProcessor<Food>
     {
         /// <summary>
-        /// Gets the categories.
-        /// </summary>
-        /// <returns>Array of categories.</returns>
-        string[] GetCategories();
-
-        /// <summary>
         /// Gets the food.
         /// </summary>
-        /// <param name="category">The category.</param>
+        /// <param name="boardAssignment">The board assignment.</param>
         /// <returns></returns>
-        Food[] GetFoods(string category);
+        Food[] GetFoods(BoardAssignment boardAssignment);
 
         /// <summary>
         /// Gets the food.
