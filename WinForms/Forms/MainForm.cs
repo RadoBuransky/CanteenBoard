@@ -84,13 +84,11 @@ namespace CanteenBoard.WinForms.Forms
             CommonValidator.ToDecimal(priceTextBox);
             CommonValidator.ToDecimal(amountTextBox);
             CommonValidator.NotEmpty(titleTextBox);
-
-            _boardProcessor.ShowAllBoards();
         }
 
         public void saveButton_Click(object sender, EventArgs e)
         {
-            _foodPanel.saveButton_Click(sender, e);
+            _foodPanel.Save();
         }
 
         private void foodTreeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -199,6 +197,11 @@ namespace CanteenBoard.WinForms.Forms
             }
         }
 
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _foodPanel.Save();
+        }
+
         //==========================================================================================
         // Private methods
         //==========================================================================================
@@ -223,13 +226,20 @@ namespace CanteenBoard.WinForms.Forms
                     string boardTemplateName = Res.BoardTemplate.ResourceManager.GetString(boardTemplate.Name);
                     foreach (string group in boardTemplate.Groups)
                     {
-                        string title = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group);
-                        TreeNode categoryTreeNode = foodTreeView.Nodes.Add(title);
+                        TreeNode categoryTreeNode = new TreeNode();
+                        categoryTreeNode.Text = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group);
+                        categoryTreeNode.ImageIndex = 1;
+                        categoryTreeNode.SelectedImageIndex = 1;
+                        foodTreeView.Nodes.Add(categoryTreeNode);
 
                         BoardAssignment boardAssignment = new BoardAssignment() { BoardTemplateName = boardTemplate.Name, Group = group };
                         foreach (Food food in _foodProcessor.GetFoods(boardAssignment))
                         {
-                            categoryTreeNode.Nodes.Add(food.Title);
+                            TreeNode newNode = new TreeNode();
+                            newNode.Text = food.Title;
+                            newNode.ImageIndex = food.Visible ? 2 : 0;
+                            newNode.SelectedImageIndex = newNode.ImageIndex;
+                            categoryTreeNode.Nodes.Add(newNode);
                         }
                         categoryTreeNode.Expand();
                     }

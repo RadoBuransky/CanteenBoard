@@ -43,7 +43,7 @@ namespace CanteenBoard.WinForms.BoardTemplates
         {
             get
             {
-                return typeof(SalatsBoardForm);
+                return typeof(SlotsBoardForm);
             }
         }
 
@@ -55,7 +55,6 @@ namespace CanteenBoard.WinForms.BoardTemplates
         /// <exception cref="System.NotImplementedException"></exception>
         protected override void BoardToForm(IEnumerable entities, Form form)
         {
-            ((SalatsBoardForm)form).BoardToForm(entities);
         }
     }
 }

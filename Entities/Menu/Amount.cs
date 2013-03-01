@@ -36,7 +36,7 @@ namespace CanteenBoard.Entities.Menu
             if (string.IsNullOrEmpty(unit))
                 return value;
 
-            return value + " " + unit;
+            return value + unit;
         }
 
         /// <summary>

@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.foodSplitContainer = new System.Windows.Forms.SplitContainer();
             this.upButton = new System.Windows.Forms.Button();
             this.downButton = new System.Windows.Forms.Button();
             this.foodTreeView = new System.Windows.Forms.TreeView();
+            this.foodTreeImageList = new System.Windows.Forms.ImageList(this.components);
+            this.showHideButton = new System.Windows.Forms.Button();
             this.boardTemplateComboBox = new System.Windows.Forms.ComboBox();
             this.boardTemplateLabel = new System.Windows.Forms.Label();
             this.screenNameComboBox = new System.Windows.Forms.ComboBox();
@@ -53,30 +54,18 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.leftPanel = new System.Windows.Forms.Panel();
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newFoodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showHideButton = new System.Windows.Forms.Button();
-            this.mainMenuStrip.SuspendLayout();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.leftPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).BeginInit();
             this.foodSplitContainer.Panel1.SuspendLayout();
             this.foodSplitContainer.Panel2.SuspendLayout();
             this.foodSplitContainer.SuspendLayout();
+            this.mainMenuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mainMenuStrip
-            // 
-            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newFoodToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            resources.ApplyResources(this.mainMenuStrip, "mainMenuStrip");
-            this.mainMenuStrip.Name = "mainMenuStrip";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // foodSplitContainer
             // 
@@ -89,6 +78,7 @@
             this.foodSplitContainer.Panel1.Controls.Add(this.upButton);
             this.foodSplitContainer.Panel1.Controls.Add(this.downButton);
             this.foodSplitContainer.Panel1.Controls.Add(this.foodTreeView);
+            resources.ApplyResources(this.foodSplitContainer.Panel1, "foodSplitContainer.Panel1");
             // 
             // foodSplitContainer.Panel2
             // 
@@ -111,6 +101,7 @@
             this.foodSplitContainer.Panel2.Controls.Add(this.saveButton);
             this.foodSplitContainer.Panel2.Controls.Add(this.titleTextBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.titleLabel);
+            resources.ApplyResources(this.foodSplitContainer.Panel2, "foodSplitContainer.Panel2");
             // 
             // upButton
             // 
@@ -131,9 +122,27 @@
             resources.ApplyResources(this.foodTreeView, "foodTreeView");
             this.foodTreeView.FullRowSelect = true;
             this.foodTreeView.HideSelection = false;
+            this.foodTreeView.ImageList = this.foodTreeImageList;
             this.foodTreeView.Name = "foodTreeView";
+            this.foodTreeView.StateImageList = this.foodTreeImageList;
             this.foodTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.foodTreeView_AfterSelect);
             this.foodTreeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.foodTreeView_KeyDown);
+            // 
+            // foodTreeImageList
+            // 
+            this.foodTreeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("foodTreeImageList.ImageStream")));
+            this.foodTreeImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.foodTreeImageList.Images.SetKeyName(0, "white.png");
+            this.foodTreeImageList.Images.SetKeyName(1, "blackBox.png");
+            this.foodTreeImageList.Images.SetKeyName(2, "redDot.png");
+            // 
+            // showHideButton
+            // 
+            resources.ApplyResources(this.showHideButton, "showHideButton");
+            this.showHideButton.BackColor = System.Drawing.Color.Pink;
+            this.showHideButton.Name = "showHideButton";
+            this.showHideButton.UseVisualStyleBackColor = false;
+            this.showHideButton.Click += new System.EventHandler(this.showHideButton_Click);
             // 
             // boardTemplateComboBox
             // 
@@ -203,8 +212,8 @@
             // amountUnitComboBox
             // 
             this.amountUnitComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.amountUnitComboBox.FormattingEnabled = true;
             resources.ApplyResources(this.amountUnitComboBox, "amountUnitComboBox");
+            this.amountUnitComboBox.FormattingEnabled = true;
             this.amountUnitComboBox.Name = "amountUnitComboBox";
             // 
             // amountTextBox
@@ -241,25 +250,38 @@
             resources.ApplyResources(this.titleLabel, "titleLabel");
             this.titleLabel.Name = "titleLabel";
             // 
+            // mainMenuStrip
+            // 
+            resources.ApplyResources(this.mainMenuStrip, "mainMenuStrip");
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.newFoodToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            // 
+            // saveToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // newFoodToolStripMenuItem
+            // 
+            resources.ApplyResources(this.newFoodToolStripMenuItem, "newFoodToolStripMenuItem");
+            this.newFoodToolStripMenuItem.Name = "newFoodToolStripMenuItem";
+            this.newFoodToolStripMenuItem.Click += new System.EventHandler(this.newFoodToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // leftPanel
             // 
             this.leftPanel.Controls.Add(this.foodSplitContainer);
             resources.ApplyResources(this.leftPanel, "leftPanel");
             this.leftPanel.Name = "leftPanel";
-            // 
-            // newFoodToolStripMenuItem
-            // 
-            this.newFoodToolStripMenuItem.Name = "newFoodToolStripMenuItem";
-            resources.ApplyResources(this.newFoodToolStripMenuItem, "newFoodToolStripMenuItem");
-            this.newFoodToolStripMenuItem.Click += new System.EventHandler(this.newFoodToolStripMenuItem_Click);
-            // 
-            // showHideButton
-            // 
-            resources.ApplyResources(this.showHideButton, "showHideButton");
-            this.showHideButton.BackColor = System.Drawing.Color.Pink;
-            this.showHideButton.Name = "showHideButton";
-            this.showHideButton.UseVisualStyleBackColor = false;
-            this.showHideButton.Click += new System.EventHandler(this.showHideButton_Click);
             // 
             // MainForm
             // 
@@ -273,13 +295,13 @@
             this.Name = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.mainMenuStrip.ResumeLayout(false);
-            this.mainMenuStrip.PerformLayout();
             this.foodSplitContainer.Panel1.ResumeLayout(false);
             this.foodSplitContainer.Panel2.ResumeLayout(false);
             this.foodSplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).EndInit();
             this.foodSplitContainer.ResumeLayout(false);
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
             this.leftPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -315,5 +337,7 @@
         private System.Windows.Forms.Label boardTemplateLabel;
         private System.Windows.Forms.ToolStripMenuItem newFoodToolStripMenuItem;
         private System.Windows.Forms.Button showHideButton;
+        private System.Windows.Forms.ImageList foodTreeImageList;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     }
 }

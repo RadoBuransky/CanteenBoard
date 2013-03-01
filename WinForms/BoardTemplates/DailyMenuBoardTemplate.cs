@@ -8,18 +8,17 @@ using CanteenBoard.Entities.Menu;
 using System.Diagnostics.Contracts;
 using System.Collections;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace CanteenBoard.WinForms.BoardTemplates
 {
     /// <summary>
     /// Daily menu board template.
     /// </summary>
-    public class DailyMenuBoardTemplate : BoardTemplate
+    public class DailyMenuBoardTemplate : BaseBoardTemplate
     {
-        /// <summary>
-        /// The soup group
-        /// </summary>
-        public const string SoupGroup = "Soups";
+        private static readonly Color FoodBackColor = Color.FromArgb(64, 64, 64);
+        private static readonly Color FreeBackColor = Color.FromArgb(0, 0, 0);
 
         /// <summary>
         /// The daily menu group
@@ -35,7 +34,7 @@ namespace CanteenBoard.WinForms.BoardTemplates
         /// <exception cref="System.NotImplementedException"></exception>
         public override string[] Groups
         {
-            get { return new [] { SoupGroup, DailyMenuGroup } ; }
+            get { return new [] { DailyMenuGroup } ; }
         }
 
         /// <summary>
@@ -48,7 +47,7 @@ namespace CanteenBoard.WinForms.BoardTemplates
         {
             get
             {
-                return typeof(DailyMenuBoardForm);
+                return typeof(SlotsBoardForm);
             }
         }
 
@@ -60,7 +59,33 @@ namespace CanteenBoard.WinForms.BoardTemplates
         /// <exception cref="System.NotImplementedException"></exception>
         protected override void BoardToForm(IEnumerable entities, Form form)
         {
-            ((DailyMenuBoardForm)form).BoardToForm(entities);
+            SlotsBoardForm slotsForm = (SlotsBoardForm)form;
+
+            slotsForm.ClearAll();
+            for (int i = 0; i < slotsForm.Slots.Count - 1; i++)
+            {
+                slotsForm.Slots[i].BackgroundColor = FoodBackColor;
+            }
+            slotsForm.Slots[slotsForm.Slots.Count - 1].BackgroundColor = FreeBackColor;
+
+            int index = 0;
+            foreach (object entity in entities)
+            {
+                Food food = entity as Food;
+                if (food == null)
+                    continue;
+
+                if (index >= slotsForm.Slots.Count - 1)
+                    break;
+
+                slotsForm[index][0] = food.Amount;
+                slotsForm[index][1] = FoodTitleWithAllergensToString(food.Title, food.Allergens);
+                slotsForm[index][2] = PriceToString(food.Price);
+
+                index++;
+            }
+
+            slotsForm.Relayout();
         }
     }
 }

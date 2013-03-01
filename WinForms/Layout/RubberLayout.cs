@@ -40,12 +40,12 @@ namespace CanteenBoard.WinForms.Layout
         /// Called when [fit font].
         /// </summary>
         /// <param name="labels">The labels.</param>
-        public void OnesizeFitFont(IEnumerable<Label> labels)
+        public void OnesizeFitFont(IEnumerable<BorderLabel> labels)
         {
             Contract.Requires(labels != null);
 
             Font result = null;
-            foreach (Label label in labels)
+            foreach (BorderLabel label in labels)
             {
                 Font fitFont = FitLabel(label, label.Size);
                 if (fitFont == null)
@@ -60,8 +60,10 @@ namespace CanteenBoard.WinForms.Layout
                 return;
 
             // Apply resulting font to all
-            foreach (Label label in labels)
+            foreach (BorderLabel label in labels)
+            {
                 label.Font = result;
+            }
         }
 
         /// <summary>
@@ -118,17 +120,13 @@ namespace CanteenBoard.WinForms.Layout
         /// </summary>
         /// <param name="label">The label.</param>
         /// <returns></returns>
-        private Font FitLabel(Label label, Size targetSize)
+        private Font FitLabel(BorderLabel borderLabel, Size targetSize)
         {
-            if (string.IsNullOrEmpty(label.Text))
+            if (string.IsNullOrEmpty(borderLabel.Text))
                 return null;
 
-            BorderLabel borderLabel = label as BorderLabel;
-
             // Measure current size
-            Size size = TextRenderer.MeasureText(label.Text, label.Font, targetSize, TextFormatFlags.SingleLine);
-            if (borderLabel != null)
-                GrowSize(ref size, (int)borderLabel.BorderSize);
+            Size size = borderLabel.GetMeasuredSize();
 
             bool grow = (size.Width < targetSize.Width) && (size.Height < targetSize.Height);
             float delta = grow ? 0.5f : -0.5f;
@@ -136,46 +134,33 @@ namespace CanteenBoard.WinForms.Layout
             if ((!grow) &&
                 (((size.Width == targetSize.Width) && (size.Height <= targetSize.Height)) ||
                  ((size.Width <= targetSize.Width) && (size.Height == targetSize.Height))))
-                return label.Font;
+                return borderLabel.Font;
             
             Size newSize = size;
-            Font newFont = label.Font;
+            Font newFont = borderLabel.Font;
             Font result;
             do
             {
                 result = newFont;
 
-                if (newFont.Size + delta < 0f)
+                if (newFont.Size + delta <= 0f)
                     break;
 
                 try
                 {
-                    newFont = new Font(label.Font.FontFamily, newFont.Size + delta, label.Font.Style);
+                    newFont = new Font(borderLabel.Font.FontFamily, newFont.Size + delta, borderLabel.Font.Style);
                 }
                 catch (Exception)
                 {
                     break;
                 }
 
-                newSize = TextRenderer.MeasureText(label.Text, newFont, targetSize, TextFormatFlags.SingleLine);
-                if (borderLabel != null)
-                    GrowSize(ref newSize, (int)borderLabel.BorderSize);
+                newSize = borderLabel.GetMeasuredSize(newFont.Size);
 
             } while (grow ? ((newSize.Width <= targetSize.Width) && (newSize.Height <= targetSize.Height)) :
                             ((newSize.Width > targetSize.Width) || (newSize.Height > targetSize.Height)));
 
             return grow ? result : newFont;
-        }
-
-        /// <summary>
-        /// Grows the size.
-        /// </summary>
-        /// <param name="size">The size.</param>
-        /// <param name="amount">The amount.</param>
-        private static void GrowSize(ref Size size, int border)
-        {/*
-            size.Width += border;
-            size.Height += border;*/
         }
     }
 }

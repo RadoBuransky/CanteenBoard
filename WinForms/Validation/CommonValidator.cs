@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace CanteenBoard.WinForms.Validation
 {
@@ -30,6 +31,14 @@ namespace CanteenBoard.WinForms.Validation
         {
             try
             {
+                Control control = (Control)sender;
+
+                string text = control.Text;
+                string sep = CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator;
+                text = text.Replace(",", sep);
+                text = text.Replace(".", sep);
+                control.Text = text;
+
                 Convert.ToDecimal(((Control)sender).Text);
             }
             catch (Exception)

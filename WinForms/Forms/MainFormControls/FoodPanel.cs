@@ -153,50 +153,14 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             _amountUnitComboBox.SelectedIndex = 0;
             _priceTextBox.Text = "0";
             _allergensListBox.SelectedItems.Clear();
-        }
-
-        //==========================================================================================
-        // Event handlers
-        //==========================================================================================
-
-        public void saveButton_Click(object sender, EventArgs e)
-        {
-            Save();
-        }
-
-        public bool deleteFoodButton_Click()
-        {
-            if (MessageBox.Show(Res.Messages.DeleteText, Res.Messages.DeleteCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
-                return false;
-
-            _foodProcessor.DeleteFood(_titleTextBox.Text);
-            ClearPanel();
-
-            return true;
-        }
-
-        public void ShowHideToggle()
-        {
-            if (Save(_food == null ? false : !_food.Visible))
-            {
-                UpdateShowHideButton(_food.Visible);
-            }
-        }
-
-        //==========================================================================================
-        // Private methods
-        //==========================================================================================
-
-        private void UpdateShowHideButton(bool visible)
-        {
-            _showHideButton.Text = visible ? Res.Messages.showHideButton_Hide : Res.Messages.showHideButton_Show;
+            UpdateShowHideButton(false);
         }
 
         /// <summary>
         /// Saves this instance.
         /// </summary>
         /// <returns></returns>
-        private bool Save(bool visible = false)
+        public bool Save(bool defaultVisible = false)
         {
             if (!_mainForm.ValidateChildren())
                 return false;
@@ -204,6 +168,7 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             if (_food == null)
             {
                 _food = new Food();
+                _food.Visible = defaultVisible;
             }
             else
             {
@@ -232,8 +197,6 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             _food.BoardAssignment.BoardTemplateName = selectedBoardGroup.Item1;
             _food.BoardAssignment.Group = selectedBoardGroup.Item2;
 
-            _food.Visible = visible;
-
             // Save food
             _foodProcessor.Save(_food);
             _boardProcessor.RefreshAllBoards();
@@ -242,6 +205,41 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             _mainForm.ReloadTree();
 
             return true;
+        }
+
+        //==========================================================================================
+        // Event handlers
+        //==========================================================================================
+
+        public bool deleteFoodButton_Click()
+        {
+            if (MessageBox.Show(Res.Messages.DeleteText, Res.Messages.DeleteCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+                return false;
+
+            _foodProcessor.DeleteFood(_titleTextBox.Text);
+            ClearPanel();
+
+            return true;
+        }
+
+        public void ShowHideToggle()
+        {
+            if (_food != null)
+                _food.Visible = !_food.Visible;
+
+            if (Save(true))
+            {
+                UpdateShowHideButton(_food.Visible);
+            }
+        }
+
+        //==========================================================================================
+        // Private methods
+        //==========================================================================================
+
+        private void UpdateShowHideButton(bool visible)
+        {
+            _showHideButton.Text = visible ? Res.Messages.showHideButton_Hide : Res.Messages.showHideButton_Show;
         }
 
         /// <summary>
