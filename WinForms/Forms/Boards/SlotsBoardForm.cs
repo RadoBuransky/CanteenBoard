@@ -19,25 +19,24 @@ namespace CanteenBoard.WinForms.Forms.Boards
 {
     public partial class SlotsBoardForm : Form
     {
-        private readonly RubberLayout _rubberLayout;
-
         private readonly BoardSlot[] _slots;
+        private readonly RubberLayout _rubberLayout;
 
         public SlotsBoardForm()
         {
             InitializeComponent();
 
             _slots = new BoardSlot[] {
-                new BoardSlot(slotPanel0, amountLabel0, nameLabel0, priceLabel0 ),
-                new BoardSlot(slotPanel1, amountLabel1, nameLabel1, priceLabel1 ),
-                new BoardSlot(slotPanel2, amountLabel2, nameLabel2, priceLabel2 ),
-                new BoardSlot(slotPanel3, amountLabel3, nameLabel3, priceLabel3 ),
-                new BoardSlot(slotPanel4, amountLabel4, nameLabel4, priceLabel4 ),
-                new BoardSlot(slotPanel5, amountLabel5, nameLabel5, priceLabel5 ),
-                new BoardSlot(slotPanel6, amountLabel6, nameLabel6, priceLabel6 ),
-                new BoardSlot(slotPanel7, amountLabel7, nameLabel7, priceLabel7 ),
-                new BoardSlot(slotPanel8, amountLabel8, nameLabel8, priceLabel8 ),
-                new BoardSlot(slotPanel9, freeLabel)
+                new FoodBoardSlot(slotPanel0, amountLabel0, nameLabel0, priceLabel0 ),
+                new FoodBoardSlot(slotPanel1, amountLabel1, nameLabel1, priceLabel1 ),
+                new FoodBoardSlot(slotPanel2, amountLabel2, nameLabel2, priceLabel2 ),
+                new FoodBoardSlot(slotPanel3, amountLabel3, nameLabel3, priceLabel3 ),
+                new FoodBoardSlot(slotPanel4, amountLabel4, nameLabel4, priceLabel4 ),
+                new FoodBoardSlot(slotPanel5, amountLabel5, nameLabel5, priceLabel5 ),
+                new FoodBoardSlot(slotPanel6, amountLabel6, nameLabel6, priceLabel6 ),
+                new FoodBoardSlot(slotPanel7, amountLabel7, nameLabel7, priceLabel7 ),
+                new FoodBoardSlot(slotPanel8, amountLabel8, nameLabel8, priceLabel8 ),
+                new FreeBoardSlot(slotPanel9, freeLabel)
             };
 
             _rubberLayout = new RubberLayout(this);
@@ -70,20 +69,29 @@ namespace CanteenBoard.WinForms.Forms.Boards
         }
 
         /// <summary>
-        /// Clears all.
+        /// Gets or sets the slot groups.
         /// </summary>
-        public void ClearAll()
+        /// <value>
+        /// The slot groups.
+        /// </value>
+        public SlotGroup[] SlotGroups { get; set; }
+
+        /// <summary>
+        /// Sets the data.
+        /// </summary>
+        /// <param name="entities">The entities.</param>
+        public void SetData(object[] entities)
         {
-            foreach (BoardSlot slot in _slots)
-            {
-                foreach (Label label in slot.Labels)
-                {
-                    label.Text = string.Empty;
-                }
-            }
+            Contract.Requires(entities != null);
+
+            // Assign data to all slot groups
+            foreach (SlotGroup slotGroup in SlotGroups)
+                slotGroup.SetData(entities);
+
+            Relayout();
         }
 
-        public void Relayout()
+        private void Relayout()
         {
             List<BorderLabel> labels = _slots.SelectMany(s => s.Labels).Cast<BorderLabel>().ToList();
             labels.Add(freeLabel);

@@ -59,6 +59,7 @@
             this.newFoodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.boardGroupColorButton = new CanteenBoard.WinForms.Controls.ColorButton();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).BeginInit();
             this.foodSplitContainer.Panel1.SuspendLayout();
             this.foodSplitContainer.Panel2.SuspendLayout();
@@ -82,6 +83,7 @@
             // 
             // foodSplitContainer.Panel2
             // 
+            this.foodSplitContainer.Panel2.Controls.Add(this.boardGroupColorButton);
             this.foodSplitContainer.Panel2.Controls.Add(this.showHideButton);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateComboBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateLabel);
@@ -227,6 +229,7 @@
             this.boardGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boardGroupComboBox.FormattingEnabled = true;
             this.boardGroupComboBox.Name = "boardGroupComboBox";
+            this.boardGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.boardGroupComboBox_SelectedIndexChanged);
             // 
             // categoryLabel
             // 
@@ -282,6 +285,15 @@
             this.leftPanel.Controls.Add(this.foodSplitContainer);
             resources.ApplyResources(this.leftPanel, "leftPanel");
             this.leftPanel.Name = "leftPanel";
+            // 
+            // boardGroupColorButton
+            // 
+            resources.ApplyResources(this.boardGroupColorButton, "boardGroupColorButton");
+            this.boardGroupColorButton.BackColor = System.Drawing.Color.Transparent;
+            this.boardGroupColorButton.Color = System.Drawing.Color.Transparent;
+            this.boardGroupColorButton.Name = "boardGroupColorButton";
+            this.boardGroupColorButton.UseVisualStyleBackColor = true;
+            this.boardGroupColorButton.ColorChanged += new System.EventHandler(this.boardGroupColorButton_ColorChanged);
             // 
             // MainForm
             // 
@@ -339,5 +351,6 @@
         private System.Windows.Forms.Button showHideButton;
         private System.Windows.Forms.ImageList foodTreeImageList;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private Controls.ColorButton boardGroupColorButton;
     }
 }

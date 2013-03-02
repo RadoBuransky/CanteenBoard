@@ -9,6 +9,7 @@ using CanteenBoard.Core;
 using CanteenBoard.Entities.Boards;
 using CanteenBoard.WinForms.Extensions;
 using System.Resources;
+using CanteenBoard.WinForms.Controls;
 
 namespace CanteenBoard.WinForms.Forms.MainFormControls
 {
@@ -22,6 +23,7 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
         private readonly TextBox _amountTextBox;
         private readonly TextBox _priceTextBox;
         private readonly Button _showHideButton;
+        private readonly ColorButton _boardGroupColorButton;
 
         private readonly IFoodProcessor _foodProcessor;
         private readonly IBoardProcessor _boardProcessor;
@@ -39,10 +41,11 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
         /// <param name="amountTextBox">The amount text box.</param>
         /// <param name="priceTextBox">The price text box.</param>
         /// <param name="showHideButton">The show hide button.</param>
+        /// <param name="boardGroupColorButton">The board group color button.</param>
         /// <param name="foodProcessor">The food processor.</param>
         /// <param name="boardProcessor">The board processor.</param>
         public FoodPanel(MainForm mainForm, ComboBox amountUnitComboBox, ListBox allergensListBox, TextBox titleTextBox, ComboBox boardGroupComboBox,
-            TextBox amountTextBox, TextBox priceTextBox, Button showHideButton, IFoodProcessor foodProcessor, IBoardProcessor boardProcessor)
+            TextBox amountTextBox, TextBox priceTextBox, Button showHideButton, ColorButton boardGroupColorButton, IFoodProcessor foodProcessor, IBoardProcessor boardProcessor)
         {
             _mainForm = mainForm;
             _amountUnitComboBox = amountUnitComboBox;
@@ -52,6 +55,7 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             _amountTextBox = amountTextBox;
             _priceTextBox = priceTextBox;
             _showHideButton = showHideButton;
+            _boardGroupColorButton = boardGroupColorButton;
             _foodProcessor = foodProcessor;
             _boardProcessor = boardProcessor;
         }
@@ -231,6 +235,18 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
             {
                 UpdateShowHideButton(_food.Visible);
             }
+        }
+
+        public void boardGroupComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Tuple<string, string> selectedBoardGroup = _boardGroupComboBox.SelectedValueKVP<string, Tuple<string, string>>();
+            _boardGroupColorButton.Color = _boardProcessor.GetCustomColor(selectedBoardGroup.Item1, selectedBoardGroup.Item2);
+        }
+
+        public void boardGroupColorButton_ColorChanged(object sender, EventArgs e)
+        {
+            Tuple<string, string> selectedBoardGroup = _boardGroupComboBox.SelectedValueKVP<string, Tuple<string, string>>();
+            _boardProcessor.SetCustomColor(selectedBoardGroup.Item1, selectedBoardGroup.Item2, _boardGroupColorButton.Color);
         }
 
         //==========================================================================================

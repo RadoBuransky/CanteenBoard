@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CanteenBoard.Entities.Boards;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace CanteenBoard.Core
 {
@@ -50,5 +51,21 @@ namespace CanteenBoard.Core
         /// Refreshes all boards.
         /// </summary>
         void RefreshAllBoards();
+
+        /// <summary>
+        /// Sets the color of the custom.
+        /// </summary>
+        /// <param name="boardTemplateName">Name of the board template.</param>
+        /// <param name="group">The group.</param>
+        /// <param name="color">The color.</param>
+        void SetCustomColor(string boardTemplateName, string group, Color color);
+
+        /// <summary>
+        /// Gets the color of the custom.
+        /// </summary>
+        /// <param name="boardTemplateName">Name of the board template.</param>
+        /// <param name="group">The group.</param>
+        /// <returns></returns>
+        Color GetCustomColor(string boardTemplateName, string group);
     }
 }

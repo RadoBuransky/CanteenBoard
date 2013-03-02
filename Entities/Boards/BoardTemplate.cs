@@ -32,15 +32,7 @@ namespace CanteenBoard.Entities.Boards
         /// The groups.
         /// </value>
         public abstract string[] Groups { get; }
-
-        /// <summary>
-        /// Gets the type of the form.
-        /// </summary>
-        /// <value>
-        /// The type of the form.
-        /// </value>
-        public abstract Type FormType { get; }
-
+        
         /// <summary>
         /// Gets the form.
         /// </summary>
@@ -61,11 +53,12 @@ namespace CanteenBoard.Entities.Boards
         /// Shows this instance.
         /// </summary>
         /// <param name="entities">The entities.</param>
-        public Form Show(IEnumerable entities, Rectangle bounds)
+        public Form Show(object[] entities, Rectangle bounds)
         {
             Contract.Requires(entities != null);
 
-            Form result = (Form)Activator.CreateInstance(FormType);
+            // Create form
+            Form result = CreateForm();
 
             // Map values from the board to the form
             BoardToForm(entities, result);
@@ -96,16 +89,22 @@ namespace CanteenBoard.Entities.Boards
         /// Refreshes all.
         /// </summary>
         /// <param name="entities">The entities.</param>
-        public void RefreshAll(IEnumerable entities)
+        public void RefreshAll(object[] entities)
         {
             Forms.ForEach(form => BoardToForm(entities, form));
         }
+
+        /// <summary>
+        /// Creates the form.
+        /// </summary>
+        /// <returns></returns>
+        protected abstract Form CreateForm();
 
         /// <summary>
         /// Maps the values.
         /// </summary>
         /// <param name="entities">The entities.</param>
         /// <param name="form">The form.</param>
-        protected abstract void BoardToForm(IEnumerable entities, Form form);
+        protected abstract void BoardToForm(object[] entities, Form form);
     }
 }

@@ -18,6 +18,7 @@ namespace CanteenBoard.Repositories.Impl
     {
         private const string _foodCollection = "Food";
         private const string _screenTemplateCollection = "ScreenTemplate";
+        private const string _customColorsCollection = "CustomColors";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GenericRepository" /> class.
@@ -145,6 +146,10 @@ namespace CanteenBoard.Repositories.Impl
             {
                 return _screenTemplateCollection;
             }
+            if (type.IsAssignableFrom(typeof(CustomColor)))
+            {
+                return _customColorsCollection;
+            }
 
             throw new CanteenBoardException("Collection not defined!");
         }
@@ -163,6 +168,11 @@ namespace CanteenBoard.Repositories.Impl
             {
                 cm.AutoMap();
                 cm.SetIdMember(cm.GetMemberMap(c => c.ScreenDeviceName));
+            });
+            BsonClassMap.RegisterClassMap<CustomColor>(cm =>
+            {
+                cm.AutoMap();
+                cm.SetIdMember(cm.GetMemberMap(c => c.Key));
             });
         }
     }

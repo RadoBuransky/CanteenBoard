@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boards\CustomColor.cs" />
     <Compile Include="Menu\BoardAssignment.cs" />
     <Compile Include="Boards\BoardTemplate.cs" />
     <Compile Include="Boards\ScreenTemplate.cs" />

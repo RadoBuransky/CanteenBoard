@@ -56,7 +56,7 @@ namespace CanteenBoard.WinForms.Forms
             _foodProcessor = foodProcessor;
             _boardProcessor = boardProcessor;
             _foodPanel = new FoodPanel(this, amountUnitComboBox, allergensListBox, titleTextBox, boardGroupComboBox, amountTextBox,
-                priceTextBox, showHideButton, foodProcessor, boardProcessor);
+                priceTextBox, showHideButton, boardGroupColorButton, foodProcessor, boardProcessor);
         }
 
         //==========================================================================================
@@ -200,6 +200,16 @@ namespace CanteenBoard.WinForms.Forms
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _foodPanel.Save();
+        }
+
+        private void boardGroupComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _foodPanel.boardGroupComboBox_SelectedIndexChanged(sender, e);
+        }
+
+        private void boardGroupColorButton_ColorChanged(object sender, EventArgs e)
+        {
+            _foodPanel.boardGroupColorButton_ColorChanged(sender, e);
         }
 
         //==========================================================================================

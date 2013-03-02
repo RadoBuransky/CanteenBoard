@@ -138,6 +138,9 @@
   <data name="upButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt</value>
   </data>
+  <data name="upButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="upButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 608</value>
   </data>
@@ -305,11 +308,41 @@
   <data name="foodSplitContainer.Panel1MinSize" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
+  <data name="boardGroupColorButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="boardGroupColorButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="boardGroupColorButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>646, 48</value>
+  </data>
+  <data name="boardGroupColorButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 31</value>
+  </data>
+  <data name="boardGroupColorButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;boardGroupColorButton.Name" xml:space="preserve">
+    <value>boardGroupColorButton</value>
+  </data>
+  <data name="&gt;&gt;boardGroupColorButton.Type" xml:space="preserve">
+    <value>CanteenBoard.WinForms.Controls.ColorButton, CanteenBoard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;boardGroupColorButton.Parent" xml:space="preserve">
+    <value>foodSplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;boardGroupColorButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="showHideButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="showHideButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt, style=Bold</value>
+  </data>
+  <data name="showHideButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="showHideButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>502, 515</value>
@@ -333,7 +366,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;showHideButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="boardTemplateComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -360,7 +393,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;boardTemplateComboBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="boardTemplateLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -396,7 +429,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;boardTemplateLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="screenNameComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -423,13 +456,16 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;screenNameComboBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="allergensLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="allergensLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt, style=Bold</value>
+  </data>
+  <data name="allergensLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="allergensLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 160</value>
@@ -453,7 +489,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;allergensLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="screenNameLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -489,7 +525,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;screenNameLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="allergensListBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -522,10 +558,13 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;allergensListBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="deleteFoodButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt</value>
+  </data>
+  <data name="deleteFoodButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="deleteFoodButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>246, 515</value>
@@ -549,13 +588,16 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;deleteFoodButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="euroLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="euroLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt, style=Bold</value>
+  </data>
+  <data name="euroLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="euroLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 125</value>
@@ -579,13 +621,16 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;euroLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="priceLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="priceLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt, style=Bold</value>
+  </data>
+  <data name="priceLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="priceLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 125</value>
@@ -609,7 +654,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;priceLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="priceTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt</value>
@@ -639,13 +684,16 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;priceTextBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="amountLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="amountLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt, style=Bold</value>
+  </data>
+  <data name="amountLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="amountLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 88</value>
@@ -669,7 +717,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;amountLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="amountUnitComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt</value>
@@ -693,7 +741,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;amountUnitComboBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="amountTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt</value>
@@ -723,7 +771,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;amountTextBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="boardGroupComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -735,7 +783,7 @@
     <value>153, 48</value>
   </data>
   <data name="boardGroupComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 31</value>
+    <value>487, 31</value>
   </data>
   <data name="boardGroupComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -750,13 +798,16 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;boardGroupComboBox.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="categoryLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="categoryLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt, style=Bold</value>
+  </data>
+  <data name="categoryLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="categoryLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 51</value>
@@ -780,7 +831,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;categoryLabel.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="saveButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt</value>
@@ -810,7 +861,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="titleTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -837,13 +888,16 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;titleTextBox.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="titleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="titleLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt, style=Bold</value>
+  </data>
+  <data name="titleLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="titleLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 16</value>
@@ -867,7 +921,7 @@
     <value>foodSplitContainer.Panel2</value>
   </data>
   <data name="&gt;&gt;titleLabel.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="foodSplitContainer.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 10, 10, 10</value>
@@ -1003,6 +1057,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1201, 683</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CanteenBoard</value>

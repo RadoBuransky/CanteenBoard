@@ -15,7 +15,7 @@ namespace CanteenBoard.WinForms.BoardTemplates
     /// <summary>
     /// Daily menu board template.
     /// </summary>
-    public class DailyMenuBoardTemplate : BaseBoardTemplate
+    public class DailyMenuBoardTemplate : BoardTemplate
     {
         private static readonly Color FoodBackColor = Color.FromArgb(64, 64, 64);
         private static readonly Color FreeBackColor = Color.FromArgb(0, 0, 0);
@@ -38,17 +38,19 @@ namespace CanteenBoard.WinForms.BoardTemplates
         }
 
         /// <summary>
-        /// Gets the type of the form.
+        /// Creates the form.
         /// </summary>
-        /// <value>
-        /// The type of the form.
-        /// </value>
-        public override Type FormType
+        /// <returns></returns>
+        protected override Form CreateForm()
         {
-            get
-            {
-                return typeof(SlotsBoardForm);
-            }
+            SlotsBoardForm result = new SlotsBoardForm();
+
+            SlotGroup dailyMenuSlotGroup = new SlotGroup(result.Slots, DailyMenuGroup, FoodBackColor, 0);
+            SlotGroup freeTextSlotGroup = new SlotGroup(result.Slots, null, FreeBackColor, 9, 1, 1);
+
+            result.SlotGroups = SlotGroup.Chain(dailyMenuSlotGroup, freeTextSlotGroup);
+
+            return result;
         }
 
         /// <summary>
@@ -57,35 +59,9 @@ namespace CanteenBoard.WinForms.BoardTemplates
         /// <param name="entities">The entities.</param>
         /// <param name="form">The form.</param>
         /// <exception cref="System.NotImplementedException"></exception>
-        protected override void BoardToForm(IEnumerable entities, Form form)
+        protected override void BoardToForm(object[] entities, Form form)
         {
-            SlotsBoardForm slotsForm = (SlotsBoardForm)form;
-
-            slotsForm.ClearAll();
-            for (int i = 0; i < slotsForm.Slots.Count - 1; i++)
-            {
-                slotsForm.Slots[i].BackgroundColor = FoodBackColor;
-            }
-            slotsForm.Slots[slotsForm.Slots.Count - 1].BackgroundColor = FreeBackColor;
-
-            int index = 0;
-            foreach (object entity in entities)
-            {
-                Food food = entity as Food;
-                if (food == null)
-                    continue;
-
-                if (index >= slotsForm.Slots.Count - 1)
-                    break;
-
-                slotsForm[index][0] = food.Amount;
-                slotsForm[index][1] = FoodTitleWithAllergensToString(food.Title, food.Allergens);
-                slotsForm[index][2] = PriceToString(food.Price);
-
-                index++;
-            }
-
-            slotsForm.Relayout();
+            ((SlotsBoardForm)form).SetData(entities);
         }
     }
 }

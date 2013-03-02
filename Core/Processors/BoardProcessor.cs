@@ -116,7 +116,7 @@ namespace CanteenBoard.Core.Processors
                 boardTemplate.CloseAll();
 
             // Check all screens
-            IEnumerable<Food> liveFood = GetLiveFood();
+            Food[] liveFood = GetLiveFood();
             foreach (string screenDeviceName in GetAllScreenDeviceNames())
             {
                 // Get screen template for this screen
@@ -140,14 +140,45 @@ namespace CanteenBoard.Core.Processors
         /// </summary>
         public void RefreshAllBoards()
         {
-            IEnumerable<Food> liveFood = GetLiveFood();
+            Food[] liveFood = GetLiveFood();
             foreach (BoardTemplate boardTemplate in _boardTemplates)
             {
                 boardTemplate.RefreshAll(liveFood);
             }
         }
 
-        private IEnumerable<Food> GetLiveFood()
+        /// <summary>
+        /// Sets the color of the custom.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="color">The color.</param>
+        public void SetCustomColor(string boardTemplateName, string group, Color color)
+        {
+            Contract.Requires(!string.IsNullOrEmpty(boardTemplateName));
+            Contract.Requires(!string.IsNullOrEmpty(group));
+
+            Repository.Save(new CustomColor() { Key = boardTemplateName + group, Color = color });
+        }
+
+        /// <summary>
+        /// Gets the color of the custom.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        public Color GetCustomColor(string boardTemplateName, string group)
+        {
+            Contract.Requires(!string.IsNullOrEmpty(boardTemplateName));
+            Contract.Requires(!string.IsNullOrEmpty(group));
+
+            string key = boardTemplateName + group;
+            CustomColor result = Repository.Find<CustomColor>().Where(cc => cc.Key == key).FirstOrDefault();
+            if (result == null)
+                return Color.Empty;
+
+            return result.Color;
+        }
+
+        private Food[] GetLiveFood()
         {
             // Get live food
             var liveFood = from f in Repository.Find<Food>()
