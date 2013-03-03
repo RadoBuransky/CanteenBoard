@@ -17,9 +17,9 @@ namespace CanteenBoard.WinForms.BoardTemplates
     /// </summary>
     public class DailyMenuBoardTemplate : BoardTemplate
     {
-        private static readonly Color FoodBackColor = Color.FromArgb(64, 64, 64);
-        private static readonly Color FreeBackColor = Color.FromArgb(0, 0, 0);
-
+        private static readonly Color DefaultFoodBackColor = Color.FromArgb(64, 64, 64);
+        private static readonly Color DefaultFreeBackColor = Color.FromArgb(0, 0, 0);
+        
         /// <summary>
         /// The daily menu group
         /// </summary>
@@ -38,6 +38,17 @@ namespace CanteenBoard.WinForms.BoardTemplates
         }
 
         /// <summary>
+        /// Gets the default colors.
+        /// </summary>
+        /// <value>
+        /// The default colors.
+        /// </value>
+        protected override Color[] DefaultBackColors
+        {
+            get { return new Color[] { DefaultFoodBackColor, DefaultFreeBackColor }; }
+        }
+
+        /// <summary>
         /// Creates the form.
         /// </summary>
         /// <returns></returns>
@@ -45,8 +56,8 @@ namespace CanteenBoard.WinForms.BoardTemplates
         {
             SlotsBoardForm result = new SlotsBoardForm();
 
-            SlotGroup dailyMenuSlotGroup = new SlotGroup(result.Slots, DailyMenuGroup, FoodBackColor, 0);
-            SlotGroup freeTextSlotGroup = new SlotGroup(result.Slots, null, FreeBackColor, 9, 1, 1);
+            SlotGroup dailyMenuSlotGroup = new SlotGroup(result.Slots, DailyMenuGroup, BackColors[DailyMenuGroup], 0);
+            SlotGroup freeTextSlotGroup = new SlotGroup(result.Slots, FreeTextGroup, BackColors[FreeTextGroup], 9, 1, 1);
 
             result.SlotGroups = SlotGroup.Chain(dailyMenuSlotGroup, freeTextSlotGroup);
 
@@ -61,7 +72,11 @@ namespace CanteenBoard.WinForms.BoardTemplates
         /// <exception cref="System.NotImplementedException"></exception>
         protected override void BoardToForm(object[] entities, Form form)
         {
-            ((SlotsBoardForm)form).SetData(entities);
+            SlotsBoardForm slotsBoardForm = (SlotsBoardForm)form;
+            for (int i = 0; i < Groups.Length; i++)
+                slotsBoardForm.SlotGroups[i].BackColor = BackColors[Groups[i]];
+            slotsBoardForm.SlotGroups[slotsBoardForm.SlotGroups.Length - 1].BackColor = BackColors[FreeTextGroup];
+            slotsBoardForm.SetData(entities);
         }
     }
 }

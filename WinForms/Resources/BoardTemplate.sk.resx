@@ -121,13 +121,13 @@
     <value>Jedlá</value>
   </data>
   <data name="DailyMenuBoardTemplate" xml:space="preserve">
-    <value>Denné menu</value>
+    <value>Jedlá</value>
   </data>
   <data name="Salats" xml:space="preserve">
     <value>Šaláty</value>
   </data>
   <data name="SalatsBoardTemplate" xml:space="preserve">
-    <value>Šalátové menu</value>
+    <value>Polievky a šaláty</value>
   </data>
   <data name="Soups" xml:space="preserve">
     <value>Polievky</value>

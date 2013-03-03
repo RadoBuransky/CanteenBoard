@@ -129,12 +129,10 @@ namespace CanteenBoard.WinForms.Forms.MainFormControls
                 _boardGroupComboBox.Items.Clear();
                 foreach (BoardTemplate boardTemplate in _boardProcessor.GetBoardTemplates())
                 {
-                    string boardTemplateName = Res.BoardTemplate.ResourceManager.GetString(boardTemplate.Name);
-
                     // Get all groups for the template
                     foreach (string group in boardTemplate.Groups)
                     {
-                        string title = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group);
+                        string title = Res.BoardTemplate.ResourceManager.GetString(group);
                         int index = _boardGroupComboBox.AddKVP(title, new Tuple<string, string>(boardTemplate.Name, group));
                     }
                 }

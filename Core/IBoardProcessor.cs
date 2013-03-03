@@ -67,5 +67,19 @@ namespace CanteenBoard.Core
         /// <param name="group">The group.</param>
         /// <returns></returns>
         Color GetCustomColor(string boardTemplateName, string group);
+
+        /// <summary>
+        /// Gets the free text.
+        /// </summary>
+        /// <param name="boardTemplateName">Name of the board template.</param>
+        /// <returns></returns>
+        string GetFreeText(string boardTemplateName);
+
+        /// <summary>
+        /// Sets the free text.
+        /// </summary>
+        /// <param name="boardTemplateName">Name of the board template.</param>
+        /// <param name="text">The text.</param>
+        void SetFreeText(string boardTemplateName, string text);
     }
 }

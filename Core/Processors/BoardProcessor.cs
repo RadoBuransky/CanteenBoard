@@ -116,7 +116,6 @@ namespace CanteenBoard.Core.Processors
                 boardTemplate.CloseAll();
 
             // Check all screens
-            Food[] liveFood = GetLiveFood();
             foreach (string screenDeviceName in GetAllScreenDeviceNames())
             {
                 // Get screen template for this screen
@@ -130,8 +129,14 @@ namespace CanteenBoard.Core.Processors
                 if (boardTemplate == null)
                     continue;
 
+                foreach (string group in boardTemplate.Groups)
+                {
+                    boardTemplate.BackColors[group] = GetCustomColor(boardTemplate.Name, group);
+                }
+                boardTemplate.BackColors[BoardTemplate.FreeTextGroup] = GetCustomColor(boardTemplate.Name, BoardTemplate.FreeTextGroup);
+
                 // Show board with live data
-                boardTemplate.Show(liveFood, GetScreenBounds(screenDeviceName));
+                boardTemplate.Show(GetLiveFood(boardTemplate.Name), GetScreenBounds(screenDeviceName));
             }
         }
 
@@ -140,10 +145,9 @@ namespace CanteenBoard.Core.Processors
         /// </summary>
         public void RefreshAllBoards()
         {
-            Food[] liveFood = GetLiveFood();
             foreach (BoardTemplate boardTemplate in _boardTemplates)
             {
-                boardTemplate.RefreshAll(liveFood);
+                boardTemplate.RefreshAll(GetLiveFood(boardTemplate.Name));
             }
         }
 
@@ -157,7 +161,15 @@ namespace CanteenBoard.Core.Processors
             Contract.Requires(!string.IsNullOrEmpty(boardTemplateName));
             Contract.Requires(!string.IsNullOrEmpty(group));
 
-            Repository.Save(new CustomColor() { Key = boardTemplateName + group, Color = color });
+            CustomColor customColor = new CustomColor();
+            customColor.Key = CustomColorKey(boardTemplateName, group);
+            customColor.SetColor(color);
+            Repository.Save(customColor);
+
+            BoardTemplate boardTemplate = GetBoardTemplate(boardTemplateName);
+            boardTemplate.BackColors[group] = color;
+
+            RefreshAllBoards();
         }
 
         /// <summary>
@@ -175,14 +187,71 @@ namespace CanteenBoard.Core.Processors
             if (result == null)
                 return Color.Empty;
 
-            return result.Color;
+            return result;
         }
 
-        private Food[] GetLiveFood()
+        /// <summary>
+        /// Gets the free text.
+        /// </summary>
+        /// <param name="boardTemplateName">Name of the board template.</param>
+        /// <returns></returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public string GetFreeText(string boardTemplateName)
+        {
+            Food food = FindFreeText(boardTemplateName);
+            if (food == null)
+                return string.Empty;
+
+            return food.Title;
+        }
+
+        /// <summary>
+        /// Sets the free text.
+        /// </summary>
+        /// <param name="boardTemplateName">Name of the board template.</param>
+        /// <param name="text">The text.</param>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void SetFreeText(string boardTemplateName, string text)
+        {
+            Food food = FindFreeText(boardTemplateName);
+            if (food != null)
+                Repository.Delete<Food>(food.Title);
+
+            food = new Food();
+            food.Title = text;
+            food.BoardAssignment = new BoardAssignment() { BoardTemplateName = boardTemplateName, Group = BoardTemplate.FreeTextGroup };
+            food.Visible = true;
+            Repository.Save(food);
+
+            RefreshAllBoards();
+        }
+
+        /// <summary>
+        /// Finds the free text.
+        /// </summary>
+        /// <param name="boardTemplateName">Name of the board template.</param>
+        /// <returns></returns>
+        private Food FindFreeText(string boardTemplateName)
+        {
+            return (from f in Repository.Find<Food>()
+                    where f.BoardAssignment != null &&
+                        f.BoardAssignment.BoardTemplateName == boardTemplateName &&
+                        f.BoardAssignment.Group == BoardTemplate.FreeTextGroup
+                    select f).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Gets the live food.
+        /// </summary>
+        /// <param name="boardTemplateName">Name of the board template.</param>
+        /// <returns></returns>
+        private Food[] GetLiveFood(string boardTemplateName)
         {
             // Get live food
             var liveFood = from f in Repository.Find<Food>()
-                           where f.Visible
+                           where f.Visible &&
+                            f.BoardAssignment != null &&
+                            f.BoardAssignment.BoardTemplateName == boardTemplateName
                            orderby f.Index
                            select f;
 
@@ -205,6 +274,17 @@ namespace CanteenBoard.Core.Processors
             }
 
             return screen.DeviceName;
+        }
+
+        /// <summary>
+        /// Customs the color key.
+        /// </summary>
+        /// <param name="boardTemplateName">Name of the board template.</param>
+        /// <param name="group">The group.</param>
+        /// <returns></returns>
+        private static string CustomColorKey(string boardTemplateName, string group)
+        {
+            return boardTemplateName + group;
         }
 
         /// <summary>

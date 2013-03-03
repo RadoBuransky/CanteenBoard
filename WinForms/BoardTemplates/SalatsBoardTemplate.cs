@@ -17,9 +17,9 @@ namespace CanteenBoard.WinForms.BoardTemplates
     /// </summary>
     public class SalatsBoardTemplate : BoardTemplate
     {
-        private static readonly Color SoupsBackColor = Color.Purple;
-        private static readonly Color SalatsBackColor = Color.FromArgb(128, 255, 128);
-        private static readonly Color FreeBackColor = Color.FromArgb(0, 0, 0);
+        private static readonly Color DefaultSoupsBackColor = Color.Purple;
+        private static readonly Color DefaultSalatsBackColor = Color.FromArgb(128, 255, 128);
+        private static readonly Color DefaultFreeBackColor = Color.FromArgb(0, 0, 0);
 
         public const string SoupsGroup = "Soups";
         public const string SalatsGroup = "Salats";
@@ -36,13 +36,24 @@ namespace CanteenBoard.WinForms.BoardTemplates
             get { return new[] { SoupsGroup, SalatsGroup }; }
         }
 
+        /// <summary>
+        /// Gets the default colors.
+        /// </summary>
+        /// <value>
+        /// The default colors.
+        /// </value>
+        protected override Color[] DefaultBackColors
+        {
+            get { return new Color[] { DefaultSoupsBackColor, DefaultSalatsBackColor, DefaultFreeBackColor }; }
+        }
+
         protected override Form CreateForm()
         {
             SlotsBoardForm result = new SlotsBoardForm();
 
-            SlotGroup soupsSlotGroup = new SlotGroup(result.Slots, SoupsGroup, SoupsBackColor, 0, 3);
-            SlotGroup salatsBackColor = new SlotGroup(result.Slots, SalatsGroup, SalatsBackColor);
-            SlotGroup freeTextSlotGroup = new SlotGroup(result.Slots, null, FreeBackColor, 9, 1, 1);
+            SlotGroup soupsSlotGroup = new SlotGroup(result.Slots, SoupsGroup, BackColors[SoupsGroup], 0, 3);
+            SlotGroup salatsBackColor = new SlotGroup(result.Slots, SalatsGroup, BackColors[SalatsGroup]);
+            SlotGroup freeTextSlotGroup = new SlotGroup(result.Slots, FreeTextGroup, BackColors[FreeTextGroup], 9, 1, 1);
 
             result.SlotGroups = SlotGroup.Chain(soupsSlotGroup, salatsBackColor, freeTextSlotGroup);
 
@@ -57,7 +68,11 @@ namespace CanteenBoard.WinForms.BoardTemplates
         /// <exception cref="System.NotImplementedException"></exception>
         protected override void BoardToForm(object[] entities, Form form)
         {
-            ((SlotsBoardForm)form).SetData(entities);
+            SlotsBoardForm slotsBoardForm = (SlotsBoardForm)form;
+            for (int i = 0; i < Groups.Length; i++)
+                slotsBoardForm.SlotGroups[i].BackColor = BackColors[Groups[i]];
+            slotsBoardForm.SlotGroups[slotsBoardForm.SlotGroups.Length - 1].BackColor = BackColors[FreeTextGroup];
+            slotsBoardForm.SetData(entities);
         }
     }
 }

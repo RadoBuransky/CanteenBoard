@@ -15,6 +15,24 @@ namespace CanteenBoard.Entities.Boards
     public abstract class BoardTemplate
     {
         /// <summary>
+        /// The _back colors
+        /// </summary>
+        private readonly Dictionary<string, Color> _backColors = new Dictionary<string,Color>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoardTemplate" /> class.
+        /// </summary>
+        protected BoardTemplate()
+        {
+            Forms = new List<Form>();
+            for (int i = 0; i < Groups.Length; i++)
+            {
+                BackColors[Groups[i]] = DefaultBackColors[i];
+            }
+            BackColors[FreeTextGroup] = DefaultBackColors[DefaultBackColors.Length - 1];
+        }
+
+        /// <summary>
         /// Gets the name.
         /// </summary>
         /// <value>
@@ -32,6 +50,19 @@ namespace CanteenBoard.Entities.Boards
         /// The groups.
         /// </value>
         public abstract string[] Groups { get; }
+
+        /// <summary>
+        /// The free text group
+        /// </summary>
+        public const string FreeTextGroup = "#FreeText#";
+
+        /// <summary>
+        /// Gets the back colors.
+        /// </summary>
+        /// <value>
+        /// The back colors.
+        /// </value>
+        public Dictionary<string, Color> BackColors { get { return _backColors; } }
         
         /// <summary>
         /// Gets the form.
@@ -42,12 +73,12 @@ namespace CanteenBoard.Entities.Boards
         protected List<Form> Forms { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoardTemplate" /> class.
+        /// Gets the default colors.
         /// </summary>
-        protected BoardTemplate()
-        {
-            Forms = new List<Form>();
-        }
+        /// <value>
+        /// The default colors.
+        /// </value>
+        protected abstract Color[] DefaultBackColors { get; }
 
         /// <summary>
         /// Shows this instance.

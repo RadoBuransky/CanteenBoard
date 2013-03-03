@@ -35,6 +35,10 @@
             this.downButton = new System.Windows.Forms.Button();
             this.foodTreeView = new System.Windows.Forms.TreeView();
             this.foodTreeImageList = new System.Windows.Forms.ImageList(this.components);
+            this.freeText1Label = new System.Windows.Forms.Label();
+            this.freeText2Label = new System.Windows.Forms.Label();
+            this.freeText1TextBox = new System.Windows.Forms.TextBox();
+            this.freeText2TextBox = new System.Windows.Forms.TextBox();
             this.showHideButton = new System.Windows.Forms.Button();
             this.boardTemplateComboBox = new System.Windows.Forms.ComboBox();
             this.boardTemplateLabel = new System.Windows.Forms.Label();
@@ -59,6 +63,8 @@
             this.newFoodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.freeText2ColorButton = new CanteenBoard.WinForms.Controls.ColorButton();
+            this.freeText1ColorButton = new CanteenBoard.WinForms.Controls.ColorButton();
             this.boardGroupColorButton = new CanteenBoard.WinForms.Controls.ColorButton();
             ((System.ComponentModel.ISupportInitialize)(this.foodSplitContainer)).BeginInit();
             this.foodSplitContainer.Panel1.SuspendLayout();
@@ -83,6 +89,12 @@
             // 
             // foodSplitContainer.Panel2
             // 
+            this.foodSplitContainer.Panel2.Controls.Add(this.freeText2ColorButton);
+            this.foodSplitContainer.Panel2.Controls.Add(this.freeText1ColorButton);
+            this.foodSplitContainer.Panel2.Controls.Add(this.freeText1Label);
+            this.foodSplitContainer.Panel2.Controls.Add(this.freeText2Label);
+            this.foodSplitContainer.Panel2.Controls.Add(this.freeText1TextBox);
+            this.foodSplitContainer.Panel2.Controls.Add(this.freeText2TextBox);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardGroupColorButton);
             this.foodSplitContainer.Panel2.Controls.Add(this.showHideButton);
             this.foodSplitContainer.Panel2.Controls.Add(this.boardTemplateComboBox);
@@ -137,6 +149,28 @@
             this.foodTreeImageList.Images.SetKeyName(0, "white.png");
             this.foodTreeImageList.Images.SetKeyName(1, "blackBox.png");
             this.foodTreeImageList.Images.SetKeyName(2, "redDot.png");
+            // 
+            // freeText1Label
+            // 
+            resources.ApplyResources(this.freeText1Label, "freeText1Label");
+            this.freeText1Label.Name = "freeText1Label";
+            // 
+            // freeText2Label
+            // 
+            resources.ApplyResources(this.freeText2Label, "freeText2Label");
+            this.freeText2Label.Name = "freeText2Label";
+            // 
+            // freeText1TextBox
+            // 
+            resources.ApplyResources(this.freeText1TextBox, "freeText1TextBox");
+            this.freeText1TextBox.Name = "freeText1TextBox";
+            this.freeText1TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.freeText1TextBox_KeyDown);
+            // 
+            // freeText2TextBox
+            // 
+            resources.ApplyResources(this.freeText2TextBox, "freeText2TextBox");
+            this.freeText2TextBox.Name = "freeText2TextBox";
+            this.freeText2TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.freeText2TextBox_KeyDown);
             // 
             // showHideButton
             // 
@@ -286,6 +320,24 @@
             resources.ApplyResources(this.leftPanel, "leftPanel");
             this.leftPanel.Name = "leftPanel";
             // 
+            // freeText2ColorButton
+            // 
+            resources.ApplyResources(this.freeText2ColorButton, "freeText2ColorButton");
+            this.freeText2ColorButton.BackColor = System.Drawing.Color.Transparent;
+            this.freeText2ColorButton.Color = System.Drawing.Color.Transparent;
+            this.freeText2ColorButton.Name = "freeText2ColorButton";
+            this.freeText2ColorButton.UseVisualStyleBackColor = true;
+            this.freeText2ColorButton.ColorChanged += new System.EventHandler(this.freeText2ColorButton_ColorChanged);
+            // 
+            // freeText1ColorButton
+            // 
+            resources.ApplyResources(this.freeText1ColorButton, "freeText1ColorButton");
+            this.freeText1ColorButton.BackColor = System.Drawing.Color.Transparent;
+            this.freeText1ColorButton.Color = System.Drawing.Color.Transparent;
+            this.freeText1ColorButton.Name = "freeText1ColorButton";
+            this.freeText1ColorButton.UseVisualStyleBackColor = true;
+            this.freeText1ColorButton.ColorChanged += new System.EventHandler(this.freeText1ColorButton_ColorChanged);
+            // 
             // boardGroupColorButton
             // 
             resources.ApplyResources(this.boardGroupColorButton, "boardGroupColorButton");
@@ -352,5 +404,11 @@
         private System.Windows.Forms.ImageList foodTreeImageList;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private Controls.ColorButton boardGroupColorButton;
+        private Controls.ColorButton freeText2ColorButton;
+        private Controls.ColorButton freeText1ColorButton;
+        private System.Windows.Forms.Label freeText1Label;
+        private System.Windows.Forms.Label freeText2Label;
+        private System.Windows.Forms.TextBox freeText1TextBox;
+        private System.Windows.Forms.TextBox freeText2TextBox;
     }
 }

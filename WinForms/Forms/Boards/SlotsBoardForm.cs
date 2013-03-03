@@ -93,11 +93,11 @@ namespace CanteenBoard.WinForms.Forms.Boards
 
         private void Relayout()
         {
-            List<BorderLabel> labels = _slots.SelectMany(s => s.Labels).Cast<BorderLabel>().ToList();
-            labels.Add(freeLabel);
+            List<BorderLabel> labels = _slots.Where(bs => bs is FoodBoardSlot).SelectMany(s => s.Labels).Cast<BorderLabel>().ToList();
 
             _rubberLayout.Relayout();
             _rubberLayout.OnesizeFitFont(labels);
+            _rubberLayout.OnesizeFitFont(new [] { freeLabel });
         }
 
         private void DailyMenuBoardForm_Layout(object sender, LayoutEventArgs e)

@@ -18,6 +18,7 @@ using CanteenBoard.WinForms.Forms.Boards;
 using Microsoft.Win32;
 using CanteenBoard.Entities.Boards;
 using System.Diagnostics.Contracts;
+using CanteenBoard.WinForms.BoardTemplates;
 
 namespace CanteenBoard.WinForms.Forms
 {
@@ -80,6 +81,7 @@ namespace CanteenBoard.WinForms.Forms
             _foodPanel.InitBoardGroupComboBox();
             InitBoardTemplates();
             InitScreens();
+            InitFreeTexts();
 
             CommonValidator.ToDecimal(priceTextBox);
             CommonValidator.ToDecimal(amountTextBox);
@@ -233,11 +235,10 @@ namespace CanteenBoard.WinForms.Forms
 
                 foreach (BoardTemplate boardTemplate in _boardProcessor.GetBoardTemplates())
                 {
-                    string boardTemplateName = Res.BoardTemplate.ResourceManager.GetString(boardTemplate.Name);
                     foreach (string group in boardTemplate.Groups)
                     {
                         TreeNode categoryTreeNode = new TreeNode();
-                        categoryTreeNode.Text = boardTemplateName + " - " + Res.BoardTemplate.ResourceManager.GetString(group);
+                        categoryTreeNode.Text = Res.BoardTemplate.ResourceManager.GetString(group);
                         categoryTreeNode.ImageIndex = 1;
                         categoryTreeNode.SelectedImageIndex = 1;
                         foodTreeView.Nodes.Add(categoryTreeNode);
@@ -268,6 +269,18 @@ namespace CanteenBoard.WinForms.Forms
             {
                 foodTreeView.EndUpdate();
             }
+        }
+
+        private void InitFreeTexts()
+        {
+            freeText1Label.Text = Res.BoardTemplate.ResourceManager.GetString(typeof(DailyMenuBoardTemplate).Name) + " text:";
+            freeText2Label.Text = Res.BoardTemplate.ResourceManager.GetString(typeof(SalatsBoardTemplate).Name) + " text:";
+
+            freeText1TextBox.Text = _boardProcessor.GetFreeText(typeof(DailyMenuBoardTemplate).Name);
+            freeText2TextBox.Text = _boardProcessor.GetFreeText(typeof(SalatsBoardTemplate).Name);
+
+            freeText1ColorButton.Color = _boardProcessor.GetCustomColor(typeof(DailyMenuBoardTemplate).Name, BoardTemplate.FreeTextGroup);
+            freeText2ColorButton.Color = _boardProcessor.GetCustomColor(typeof(SalatsBoardTemplate).Name, BoardTemplate.FreeTextGroup);
         }
 
         private void SwapFood(bool up)
@@ -357,6 +370,32 @@ namespace CanteenBoard.WinForms.Forms
                 ReloadTree();
                 _boardProcessor.RefreshAllBoards();
             }
+        }
+
+        private void freeText1TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter)
+                return;
+
+            _boardProcessor.SetFreeText(typeof(DailyMenuBoardTemplate).Name, freeText1TextBox.Text);
+        }
+
+        private void freeText2TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter)
+                return;
+
+            _boardProcessor.SetFreeText(typeof(SalatsBoardTemplate).Name, freeText2TextBox.Text);
+        }
+
+        private void freeText1ColorButton_ColorChanged(object sender, EventArgs e)
+        {
+            _boardProcessor.SetCustomColor(typeof(DailyMenuBoardTemplate).Name, BoardTemplate.FreeTextGroup, freeText1ColorButton.Color);
+        }
+
+        private void freeText2ColorButton_ColorChanged(object sender, EventArgs e)
+        {
+            _boardProcessor.SetCustomColor(typeof(SalatsBoardTemplate).Name, BoardTemplate.FreeTextGroup, freeText2ColorButton.Color);
         }
     }
 }

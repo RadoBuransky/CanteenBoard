@@ -51,7 +51,7 @@ namespace CanteenBoard.WinForms.BoardTemplates
         /// <value>
         /// The color of the back.
         /// </value>
-        public Color BackColor { get; private set; }
+        public Color BackColor { get; set; }
 
         /// <summary>
         /// Gets the start index.

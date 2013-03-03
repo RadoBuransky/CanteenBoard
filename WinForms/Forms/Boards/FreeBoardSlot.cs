@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CanteenBoard.Entities.Menu;
 
 namespace CanteenBoard.WinForms.Forms.Boards
 {
@@ -28,10 +29,10 @@ namespace CanteenBoard.WinForms.Forms.Boards
         /// <exception cref="System.NotImplementedException"></exception>
         public override void SetData(object entity)
         {
-            if (!(entity is string))
+            if (!(entity is Food))
                 return;
 
-            this[0] = (string)entity;
+            this[0] = ((Food)entity).Title;
         }
     }
 }

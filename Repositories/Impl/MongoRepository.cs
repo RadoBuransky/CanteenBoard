@@ -11,6 +11,7 @@ using MongoDB.Bson;
 using System.Diagnostics.Contracts;
 using MongoDB.Driver.Builders;
 using CanteenBoard.Entities.Boards;
+using System.Drawing;
 
 namespace CanteenBoard.Repositories.Impl
 {
