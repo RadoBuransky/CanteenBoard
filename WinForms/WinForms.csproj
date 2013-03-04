@@ -121,6 +121,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Resources\AmountUnit.sk.Designer.cs">
+      <DependentUpon>AmountUnit.sk.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\Messages.sk.Designer.cs">
       <DependentUpon>Messages.sk.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -166,6 +171,10 @@
     <EmbeddedResource Include="Resources\BoardTemplate.sk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BoardTemplate.sk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AmountUnit.sk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AmountUnit.sk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Messages.sk.resx">
       <Generator>ResXFileCodeGenerator</Generator>

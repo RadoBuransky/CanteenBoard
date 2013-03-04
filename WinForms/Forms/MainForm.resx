@@ -519,7 +519,7 @@
     <value>NoControl</value>
   </data>
   <data name="showHideButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>502, 515</value>
+    <value>502, 478</value>
   </data>
   <data name="showHideButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 32</value>
@@ -529,6 +529,9 @@
   </data>
   <data name="showHideButton.Text" xml:space="preserve">
     <value>Show!</value>
+  </data>
+  <data name="showHideButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;showHideButton.Name" xml:space="preserve">
     <value>showHideButton</value>
@@ -642,7 +645,7 @@
     <value>NoControl</value>
   </data>
   <data name="allergensLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 160</value>
+    <value>18, 122</value>
   </data>
   <data name="allergensLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 23</value>
@@ -714,7 +717,7 @@
     <value>23</value>
   </data>
   <data name="allergensListBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 160</value>
+    <value>153, 122</value>
   </data>
   <data name="allergensListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>525, 349</value>
@@ -741,7 +744,7 @@
     <value>NoControl</value>
   </data>
   <data name="deleteFoodButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>246, 515</value>
+    <value>246, 478</value>
   </data>
   <data name="deleteFoodButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 32</value>
@@ -764,6 +767,9 @@
   <data name="&gt;&gt;deleteFoodButton.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <data name="euroLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="euroLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -774,7 +780,7 @@
     <value>NoControl</value>
   </data>
   <data name="euroLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 125</value>
+    <value>654, 91</value>
   </data>
   <data name="euroLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 23</value>
@@ -797,6 +803,9 @@
   <data name="&gt;&gt;euroLabel.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="priceLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="priceLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -807,7 +816,7 @@
     <value>NoControl</value>
   </data>
   <data name="priceLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 125</value>
+    <value>465, 91</value>
   </data>
   <data name="priceLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 23</value>
@@ -830,11 +839,14 @@
   <data name="&gt;&gt;priceLabel.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
+  <data name="priceTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="priceTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Georgia, 14.25pt</value>
   </data>
   <data name="priceTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 122</value>
+    <value>548, 85</value>
   </data>
   <data name="priceTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 29</value>
@@ -1014,7 +1026,7 @@
     <value>NoControl</value>
   </data>
   <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 515</value>
+    <value>152, 478</value>
   </data>
   <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 32</value>

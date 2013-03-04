@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using CanteenBoard.Entities.Menu;
 using cSouza.WinForms.Controls;
+using Res = CanteenBoard.WinForms.Resources;
 
 namespace CanteenBoard.WinForms.Forms.Boards
 {
@@ -33,7 +34,7 @@ namespace CanteenBoard.WinForms.Forms.Boards
             if (food == null)
                 return;
 
-            this[0] = food.Amount;
+            this[0] = food.Amount.Value.ToString() + Res.AmountUnit.ResourceManager.GetString(Enum.GetName(typeof(AmountUnit), food.Amount.Unit));
             this[1] = FoodTitleWithAllergensToString(food.Title, food.Allergens);
             this[2] = PriceToString(food.Price);
         }
