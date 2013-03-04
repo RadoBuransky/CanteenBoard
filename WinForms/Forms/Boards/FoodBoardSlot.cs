@@ -46,7 +46,7 @@ namespace CanteenBoard.WinForms.Forms.Boards
         /// <returns></returns>
         private static string PriceToString(decimal price)
         {
-            return String.Format("{0:C}", price);
+            return price.ToString("0.00 €");
         }
 
         /// <summary>

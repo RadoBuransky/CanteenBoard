@@ -65,6 +65,17 @@ namespace CanteenBoard.WinForms.Forms.Boards
         }
 
         /// <summary>
+        /// Gets the panel.
+        /// </summary>
+        /// <value>
+        /// The panel.
+        /// </value>
+        public Panel Panel
+        {
+            get { return _panel; }
+        }
+
+        /// <summary>
         /// Gets the labels.
         /// </summary>
         /// <value>

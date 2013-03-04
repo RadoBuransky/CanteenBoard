@@ -41,6 +41,8 @@ namespace CanteenBoard.WinForms.Forms.Boards
 
             _rubberLayout = new RubberLayout(this);
             _rubberLayout.Init();
+
+            Cursor.Hide();
         }
 
         /// <summary>
@@ -98,6 +100,20 @@ namespace CanteenBoard.WinForms.Forms.Boards
             _rubberLayout.Relayout();
             _rubberLayout.OnesizeFitFont(labels);
             _rubberLayout.OnesizeFitFont(new [] { freeLabel });
+
+            FixPanelGaps();
+        }
+
+        /// <summary>
+        /// Fixes the panel gaps.
+        /// </summary>
+        private void FixPanelGaps()
+        {
+            // All slots should be aligned next to each other
+            for (int i = 0; i < _slots.Length - 1; i++)
+            {
+                _slots[i].Panel.Height = _slots[i + 1].Panel.Top - _slots[i].Panel.Top;
+            }
         }
 
         private void DailyMenuBoardForm_Layout(object sender, LayoutEventArgs e)
