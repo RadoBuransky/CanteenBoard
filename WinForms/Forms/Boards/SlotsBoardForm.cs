@@ -41,8 +41,6 @@ namespace CanteenBoard.WinForms.Forms.Boards
 
             _rubberLayout = new RubberLayout(this);
             _rubberLayout.Init();
-
-            Cursor.Hide();
         }
 
         /// <summary>
