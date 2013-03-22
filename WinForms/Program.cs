@@ -10,6 +10,9 @@ using Castle.Windsor.Installer;
 using Castle.Core.Logging;
 using System.Globalization;
 using CanteenBoard.Core;
+using System.IO;
+using System.Configuration;
+using System.ServiceProcess;
 
 namespace CanteenBoard.WinForms
 {
@@ -41,6 +44,9 @@ namespace CanteenBoard.WinForms
                         Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("sk");
                         Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
+                        // Delete Mongo lock file
+                        MongoResuscitation();
+
                         // Initialize winforms
                         Application.EnableVisualStyles();
                         Application.SetCompatibleTextRenderingDefault(false);
@@ -58,6 +64,38 @@ namespace CanteenBoard.WinForms
                 CastleContainer.Resolve<ILogger>().Error(ex.ToString());
                 CastleContainer.Dispose();
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// Mongoes the resuscitation.
+        /// </summary>
+        private static void MongoResuscitation()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                try
+                {
+                    using (ServiceController mongoServiceController = new ServiceController(ConfigurationManager.AppSettings["MongoServiceName"]))
+                    {
+                        try { mongoServiceController.Stop(); }
+                        catch (Exception) { }
+
+                        try { File.Delete(ConfigurationManager.AppSettings["MongoLockFilePath"]); }
+                        catch (Exception) { }
+
+                        try { mongoServiceController.Start(); }
+                        catch (Exception) { }
+
+                        mongoServiceController.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromMilliseconds(3000.0));
+                        break;
+                    }
+                }
+                catch (Exception)
+                {
+                }
+
+                Thread.Sleep(300);
             }
         }
 

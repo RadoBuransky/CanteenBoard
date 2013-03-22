@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
+  <asmv1:assemblyIdentity name="Táckareň Hjústn.exe" version="1.2.0.0" publicKeyToken="378d4cb0fdc78912" language="neutral" processorArchitecture="x86" type="win32" />
+  <description asmv2:iconFile="Resources\MainIcon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Táckareň Hjústn" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <commandLine file="Táckareň Hjústn.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CanteenBoard.Core.dll" size="14336">
+      <assemblyIdentity name="CanteenBoard.Core" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>u1DLDWXKqlm0DoE2I/SutmBICgw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CanteenBoard.Entities.dll" size="10240">
+      <assemblyIdentity name="CanteenBoard.Entities" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>vj/o0lIgwTIGBLcX/eQfww2d1NE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CanteenBoard.Repositories.dll" size="8192">
+      <assemblyIdentity name="CanteenBoard.Repositories" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>qHr4Y2jgRLPM+BrzXq3k1bFHcP8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Castle.Core.dll" size="434688">
+      <assemblyIdentity name="Castle.Core" version="3.1.0.0" publicKeyToken="407DD0808D44FBDC" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>V7j0d0ssbMAmReT88oUSxdaM9fI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Castle.Facilities.Logging.dll" size="14336">
+      <assemblyIdentity name="Castle.Facilities.Logging" version="3.1.0.0" publicKeyToken="407DD0808D44FBDC" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>a28kF8pcnVxOIsd12xxMpfwn9H0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Castle.Services.Logging.Log4netIntegration.dll" size="24576">
+      <assemblyIdentity name="Castle.Services.Logging.Log4netIntegration" version="3.1.0.0" publicKeyToken="407DD0808D44FBDC" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>RaAK8Oj3cZTxzordXNqecHLDof0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Castle.Windsor.dll" size="354304">
+      <assemblyIdentity name="Castle.Windsor" version="3.1.0.0" publicKeyToken="407DD0808D44FBDC" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>loKe/aJnPMQXEgbOQucfR5o/I5Y=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="log4net.dll" size="270336">
+      <assemblyIdentity name="log4net" version="1.2.10.0" publicKeyToken="1B44E1D426115821" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>gs3mWnUUwORl7g1QW+VsVmOf8LE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MongoDB.Bson.dll" size="301056">
+      <assemblyIdentity name="MongoDB.Bson" version="1.7.0.4714" publicKeyToken="F686731CFB9CC103" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>7JXXMXCnDJVQRQhXswZioNYM2gk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MongoDB.Driver.dll" size="342528">
+      <assemblyIdentity name="MongoDB.Driver" version="1.7.0.4714" publicKeyToken="F686731CFB9CC103" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>gjmDKf71ct3qk91cBfGFfIZ+jt0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Táckareň Hjústn.exe" size="141312">
+      <assemblyIdentity name="Táckareň Hjústn" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>aiAQqCLBsDgJ8OcTZA4zT74YDdY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sk\Táckareň Hjústn.resources.dll" size="7168">
+      <assemblyIdentity name="Táckareň Hjústn.resources" version="1.0.0.0" language="sk" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>hAH1ZsAbz7yyn5XSw0FPAhiDiDo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Resources\MainIcon.ico" size="4150">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>fUIy12hYv9dwG1D+piMChK5G8zw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Táckareň Hjústn.exe.config" size="1743">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>nWsGL0RN/Co6lCBpjC0eVnr4Qeg=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=RADO\Rado" issuerKeyHash="a30935c8044753f9a9ea585017b75838000501ee" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>bI3EhAVJGlisoDVP3TrVPKS4DZE=</DigestValue></Reference></SignedInfo><SignatureValue>nl/BA6dcKHb+5V957M6cGbRULMXCLL42pVhoHIUFMQofxOmCXTbHThXnnxObY8ToSJ2hlKHrRJJ8jwHa7RBnqHWrDN6Sy0xqRk97LmoldHaH/+XI+ESnRSN/aVRP6LPzHX/AWufhCDEl0CMZBystJI3DM6VY+isIlWyp5bQoSvU=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>tRTaoe7OHpIcnDdI1DrA8RylOthAgijz/LVMmVWGI3tbyD8FfdkkeHd0Noi4DEm2BUhkD9/4keT12+ID3VRWYBas16zZzmGYppmxI/l247a4dJO+rvcrMyLmS1PRTb7ZmeO6s80NNUUfXxthGEaXvgthPq6KwKVSYWM7ulIQigs=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="910db8a43cd53add4f35a0ac581a490584c48d6c" Description="" Url=""><as:assemblyIdentity name="Táckareň Hjústn.exe" version="1.2.0.0" publicKeyToken="378d4cb0fdc78912" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=RADO\Rado</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>QfPyQ+smQ1ANFc8YnIFR57c/FO4=</DigestValue></Reference></SignedInfo><SignatureValue>E3fO3Vqs8NL2nwbOZk3YJ7JWPhqLheqcEosS7ePmAA0MrUm0zStnFlab+5FvH70MwbgJKUtZzwgGsy7+4MwfjtaXEUKVSukEQYK6/Kps1btHSzcrq7zDb+yaELXXir5326OSlCY0MTeyK2bDlmMtZ3roASX+b2abXQi8rGEDtKA=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>tRTaoe7OHpIcnDdI1DrA8RylOthAgijz/LVMmVWGI3tbyD8FfdkkeHd0Noi4DEm2BUhkD9/4keT12+ID3VRWYBas16zZzmGYppmxI/l247a4dJO+rvcrMyLmS1PRTb7ZmeO6s80NNUUfXxthGEaXvgthPq6KwKVSYWM7ulIQigs=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBtTCCASKgAwIBAgIQbS2ejKLe8aRPSHy7PA3FMzAJBgUrDgMCHQUAMB0xGzAZBgNVBAMeEgBSAEEARABPAFwAUgBhAGQAbzAeFw0xMzAzMDQwODAzMjRaFw0xNDAzMDQxNDAzMjRaMB0xGzAZBgNVBAMeEgBSAEEARABPAFwAUgBhAGQAbzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAtRTaoe7OHpIcnDdI1DrA8RylOthAgijz/LVMmVWGI3tbyD8FfdkkeHd0Noi4DEm2BUhkD9/4keT12+ID3VRWYBas16zZzmGYppmxI/l247a4dJO+rvcrMyLmS1PRTb7ZmeO6s80NNUUfXxthGEaXvgthPq6KwKVSYWM7ulIQigsCAwEAATAJBgUrDgMCHQUAA4GBAHxEmLJ2pdP5bWlBoTU6HVqPGFF4RB9jio9uDVBxPGVqIRnNo4ZTw3ZMqEy2CQU/dbs1BvNycC2IoCPbvWQxm2YgoNVVl/dDqFEt3LufDZch6goy56sXeXWqIN3nv4U4v0XCzte2oX3XDuK7wouz3DrJ2/Ye6YbPJJmXFq9TRxbr</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
